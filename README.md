@@ -16,6 +16,11 @@ This section is also where you would share links to any wireframes, mockups, dia
 Expected users of the website include content creators, creator fans, book readers, publishers, authors.
 
 ## User Stories
+1. A content creator user recieves book suggestions, chooses which to read and gives reviews.
+2. A creator fan user leaves suggestions on which books to read.
+3. A reader user finds descriptive reviews of books they may like.
+4. A publisher user evaluates the popularity of genres of target demographics.
+5. An author user surveys star-rating reviews of their work.
 
 ## Design
 
@@ -23,7 +28,7 @@ Expected users of the website include content creators, creator fans, book reade
 - [Suggest a Book](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A26)
 - [Suggested Books](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A2)
 - [Reading List](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A71)
-- [Write Review](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A2)
+- [Write Review](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=2%3A2)
 - [Reviews](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A112)
 
 # Features
