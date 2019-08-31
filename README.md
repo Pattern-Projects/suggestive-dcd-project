@@ -23,6 +23,11 @@ Expected users of the website include content creators, creator fans, book reade
 5. An author user surveys star-rating reviews of their work.
 
 ## Design
+![Website Logo - Pink circle with a white line inside representing a smile on a face](documentation/logo.png)
+- Colour Scheme consists of complementary colours
+    - cheeky-pink:   ![#E9AFAF](https://placehold.it/15/E9AFAF/000000?text=+) `#E9AFAF`
+    - cool-green:   ![#AFE9AF](https://placehold.it/15/AFE9AF/000000?text=+) `#AFE9AF`
+- [Custom designed logo](documentation/logo.png) representing a smile on a face.
 
 ## Mockups
 - [Suggest a Book](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A26)
@@ -34,7 +39,7 @@ Expected users of the website include content creators, creator fans, book reade
 # Features
 Features planned, implemented and outlined for later development
 
-###Planned Features
+### Planned Features
 - Suggest a new book
     - Title
     - Author
