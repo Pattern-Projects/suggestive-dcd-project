@@ -5,24 +5,19 @@ Fans can suggest books for the site owner to read and upvote other suggestions, 
 
 ## UX
  
-Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
+[responsive image missing]
 
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
-- As a user type, I want to perform an action, so that I can achieve a goal.
-
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
-
-## Users
+### Users
 Expected users of the website include content creators, creator fans, book readers, publishers, authors.
 
-## User Stories
+### User Stories
 1. A content creator user recieves book suggestions, chooses which to read and gives reviews.
 2. A creator fan user leaves suggestions on which books to read.
 3. A reader user finds descriptive reviews of books they may like.
 4. A publisher user evaluates the popularity of genres of target demographics.
 5. An author user surveys star-rating reviews of their work.
 
-## Design
+### Design
 ![Website Logo - Pink circle with a white line inside representing a smile on a face](documentation/logo.png)
 - Colour Scheme consists of complementary colours
     - cheeky-pink:  ![#E9AFAF](https://placehold.it/15/E9AFAF/000000?text=+) `#E9AFAF`
@@ -37,14 +32,14 @@ Expected users of the website include content creators, creator fans, book reade
     - bg-grey:      ![#F1EFEF](https://placehold.it/15/F1EFEF/000000?text=+) `#F1EFEF`
 - [Custom designed logo](documentation/logo.png) representing a smile on a face.
 
-## Mockups
+### Mockups
 - [Suggest a Book](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A26)
 - [Suggested Books](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A2)
 - [Reading List](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A71)
 - [Write Review](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=2%3A2)
 - [Reviews](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A112)
 
-# Features
+## Features
 Features planned, implemented and outlined for later development
 
 ### Planned Features
