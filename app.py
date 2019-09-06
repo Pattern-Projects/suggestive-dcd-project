@@ -1,7 +1,14 @@
 import os
 from flask import Flask
+from config import Config
+from pymongo import MongoClient
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
+app.config.from_object(Config)
+
+client = MongoClient(Config.MONGO_URI)
+db = client.suggestive
 
 @app.route('/')
 @app.route('/books')
