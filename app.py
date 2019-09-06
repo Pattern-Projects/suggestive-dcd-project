@@ -4,8 +4,12 @@ from flask import Flask
 app = Flask(__name__)
 
 @app.route('/')
-def test():
-    return 'Ello world'
+def home():
+    return 'Home'
+
+@app.route('/second')
+def second():
+    return 'Second Page'
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
