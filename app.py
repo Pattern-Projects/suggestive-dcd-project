@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, render_template
 from config import Config
 from pymongo import MongoClient
 from bson.objectid import ObjectId
@@ -13,8 +13,9 @@ db = client.suggestive
 @app.route('/')
 @app.route('/books')
 def books():
-    return 'Books List Page'
-
+    return render_template('base.html',
+                            books=db.books.find())
+    
 @app.route('/suggest')
 def suggest():
     return 'Suggest A Book Page'
