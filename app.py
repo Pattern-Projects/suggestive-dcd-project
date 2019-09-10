@@ -1,20 +1,22 @@
 import os
-from flask import Flask, render_template
-from config import Config
-from pymongo import MongoClient
+from flask import Flask, render_template, redirect, request, url_for
+from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
-app.config.from_object(Config)
 
-client = MongoClient(Config.MONGO_URI)
-db = client.suggestive
+app.config["MONGO_URI"] = os.getenv("MONGO_URI")
+DBS_NAME = "suggestive"
+COLLECTION_NAME = "itmes"
+
+mongo = PyMongo(app)
+
+# db = client.suggestive
 
 @app.route('/')
 @app.route('/books')
 def books():
-    return render_template('base.html',
-                            books=db.books.find())
+    return render_template('base.html', items=mongo.db.items.find())
     
 @app.route('/suggest')
 def suggest():
@@ -39,5 +41,5 @@ def reviews():
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT', 8000)),
+            port=int(os.environ.get('PORT')),
             debug=True)
