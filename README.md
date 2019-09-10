@@ -132,4 +132,8 @@ Thank you to the following for inspiration, motivation and the direction I neede
 
 - Seun Owonikoko    @seun_mentor
 
+- Sean Murphy       @Seán_alumni
+- Anna Greave       @Anna_G
+- Shane Muirhead    @Shane Muirhead
+
 - Code Institute
