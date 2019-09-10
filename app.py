@@ -11,12 +11,10 @@ COLLECTION_NAME = "itmes"
 
 mongo = PyMongo(app)
 
-# db = client.suggestive
-
 @app.route('/')
 @app.route('/books')
 def books():
-    return render_template('base.html', items=mongo.db.items.find())
+    return render_template('books.html', items=mongo.db.items.find())
     
 @app.route('/suggest')
 def suggest():
