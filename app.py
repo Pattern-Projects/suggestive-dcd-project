@@ -12,9 +12,9 @@ COLLECTION_NAME = "itmes"
 mongo = PyMongo(app)
 
 @app.route('/')
-@app.route('/books')
-def books():
-    return render_template('books.html', items=mongo.db.items.find())
+@app.route('/items')
+def items():
+    return render_template('items.html', items=mongo.db.items.find())
     
 @app.route('/suggest')
 def suggest():
