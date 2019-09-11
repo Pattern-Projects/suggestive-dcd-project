@@ -18,7 +18,8 @@ def items():
     
 @app.route('/suggest')
 def suggest():
-    return 'Suggest A Book Page'
+    return render_template('suggest.html',
+                                authors=mongo.db.authors.find())
 
 @app.route('/reading')
 def reading():
