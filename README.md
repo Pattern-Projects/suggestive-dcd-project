@@ -137,5 +137,6 @@ Thank you to the following for inspiration, motivation and the direction I neede
 - Anna Greave       @Anna_G
 - Shane Muirhead    @Shane Muirhead
 - Sunny Hebbar      @hebs97
+- Heather Olcot     @heather
 
 - Code Institute
