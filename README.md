@@ -25,8 +25,8 @@ Expected users of the website include content creators, creator fans, book reade
     - light-blue:   ![#7EC8F2](https://placehold.it/15/7EC8F2/000000?text=+) `#7EC8F2`
     - cheeky-pink buttons are seen by all users. cool-green and light-blue buttons are seen by site owner.
     - active-gold:  ![#FFF4CB](https://placehold.it/15/FFF4CB/000000?text=+) `#FFF4CB`
-    - font-grey:    ![#3D3D3D](https://placehold.it/15/3D3D3D/000000?text=+) `#3D3D3D`
-    - font-white:   ![#FFFFFF](https://placehold.it/15/FFFFFF/000000?text=+) `#FFFFFF`
+    - text-grey:    ![#3D3D3D](https://placehold.it/15/3D3D3D/000000?text=+) `#3D3D3D`
+    - text-white:   ![#FFFFFF](https://placehold.it/15/FFFFFF/000000?text=+) `#FFFFFF`
     - star-gold:    ![#F1B929](https://placehold.it/15/F1B929/000000?text=+) `#F1B929`
     - star-grey:    ![#C4C4C4](https://placehold.it/15/F1B929/000000?text=+) `#C4C4C4`
     - bg-grey:      ![#F1EFEF](https://placehold.it/15/F1EFEF/000000?text=+) `#F1EFEF`
