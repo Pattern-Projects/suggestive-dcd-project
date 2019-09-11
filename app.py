@@ -23,7 +23,7 @@ def suggest():
 
 @app.route('/reading')
 def reading():
-    return 'Reading List Page'
+    return render_template('reading.html')
 
 @app.route('/complete')
 def complete():
@@ -31,7 +31,7 @@ def complete():
 
 @app.route('/reviews')
 def reviews():
-    return 'Reviewed List Page'
+    return render_template('reviews.html')
 
 
 
