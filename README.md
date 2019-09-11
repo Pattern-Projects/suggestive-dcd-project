@@ -85,7 +85,8 @@ In this section, you should mention all of the languages, frameworks, libraries,
 
 - [JQuery](https://jquery.com)
     - The project uses **JQuery** to simplify DOM manipulation.
-
+- [Materialize](https://materializecss.com/about.html)
+    - Material Design by Google
 
 ## Testing
 
