@@ -138,5 +138,6 @@ Thank you to the following for inspiration, motivation and the direction I neede
 - Shane Muirhead    @Shane Muirhead
 - Sunny Hebbar      @hebs97
 - Heather Olcot     @heather
+- Simen Daehlin     @Eventyret_mentor
 
 - Code Institute

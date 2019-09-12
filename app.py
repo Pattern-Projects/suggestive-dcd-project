@@ -25,23 +25,23 @@ def suggest():
 def insert_item():
     items =  mongo.db.items
     items.insert_one(request.form.to_dict())
-    return redirect(url_for('items'))
+    return redirect( url_for('items') )
 
 @app.route('/add_reading/<item_id>')
 def add_reading(item_id):
     items =  mongo.db.items
     items.update( {'_id': ObjectId(item_id)},
     {
-        'reading': True
+        '$set': {'reading': True}
     })
-    return redirect(url_for('items'))   #not working?
+    return redirect(url_for( 'items') )   #not working?
 
 @app.route('/remove_reading/<item_id>')
 def remove_reading(item_id):
     items =  mongo.db.items
     items.update( {'_id': ObjectId(item_id)},
     {
-        'reading': False
+        '$set': {'reading': False}
     })
     return redirect(url_for('items'))   #not working?
 
