@@ -21,6 +21,13 @@ def suggest():
     return render_template('suggest.html',
                                 authors=mongo.db.authors.find())
 
+@app.route('/insert_item', methods=['POST'])
+def insert_item():
+    items =  mongo.db.items
+    items.insert_one(request.form.to_dict())
+    return redirect(url_for('items'))
+
+
 @app.route('/reading')
 def reading():
     return render_template('reading.html')

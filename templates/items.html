@@ -3,11 +3,18 @@
 <h2> Books </h2>
 <a href="{{url_for('suggest')}}" >Add Suggestion</a></br>
 {% for item in items %}
+    <div class="card"> 
         <strong>{{item.title}}</strong>
         <p>{{item.author}}</p>
         <p>Favorites: {{item.favorites | length}}<p>
         {% for favorite in item.favorites %}
-            {% if favorite == "John" %}Unfavorite{% endif %}
+            {% if favorite == "John" %}<p>Unfavorite</p></br>{% endif %}
         {% endfor %}
-    {% endfor %}
+            {% if item.reading %}
+                <a href="{{url_for('suggest')}}" >Reading</a>
+            {% else %}
+                <a href="{{url_for('suggest')}}" >Add to Reading</a>
+            {% endif %}
+        {% endfor %}
+    </div>
 {% endblock %}
