@@ -32,7 +32,7 @@ def favorite(item_id):
     items =  mongo.db.items
     items.update( {'_id': ObjectId(item_id)},
     {
-        '$pull': {'favorites': 'John'}
+        '$push': {'favorites': 'John'}
     })
     return redirect(url_for( 'items' ) )   #not working?
 
