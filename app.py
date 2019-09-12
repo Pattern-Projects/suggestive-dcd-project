@@ -27,6 +27,14 @@ def insert_item():
     items.insert_one(request.form.to_dict())
     return redirect(url_for('items'))
 
+@app.route('/add_reading/<item_id>')
+def add_reading(item_id):
+    items =  mongo.db.items
+    items.update( {'_id': ObjectId(item_id)},
+    {
+        'reading': True
+    })
+    return redirect(url_for('items'))
 
 @app.route('/reading')
 def reading():
