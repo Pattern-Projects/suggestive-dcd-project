@@ -34,7 +34,7 @@ def add_reading(item_id):
     {
         '$set': {'reading': True}
     })
-    return redirect(url_for( 'items') )   #not working?
+    return redirect(url_for( 'items' ) )   #not working?
 
 @app.route('/remove_reading/<item_id>')
 def remove_reading(item_id):
@@ -43,12 +43,17 @@ def remove_reading(item_id):
     {
         '$set': {'reading': False}
     })
-    return redirect(url_for('items'))   #not working?
+    return redirect(url_for( 'items'))   #not working?
 
 
 @app.route('/reading')
 def reading():
-    return render_template('reading.html')
+    reading = mongo.db.items.find(
+        {'$filter':{
+            'reading': True
+        }}
+        )
+    return render_template('reading.html', reading = mongo.db.items.find({'reading': True}))
 
 @app.route('/complete')
 def complete():

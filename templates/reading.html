@@ -1,5 +1,14 @@
 {% extends 'base.html'%} {% block content %}
 
 <h2>Reading</h2>
-
+{% for item in reading %}
+    <div class="card"> 
+        <strong>{{item.title}}</strong>
+        <p>{{item.author}}</p>
+        <p>Favorites: {{item.favorites | length}}<p>
+        {% for favorite in item.favorites %}
+            {% if favorite == "John" %}<p>Unfavorite</p></br>{% endif %}
+        {% endfor %}
+    </div>
+{% endfor %}
 {% endblock %}
