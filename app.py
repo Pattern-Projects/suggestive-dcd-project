@@ -36,6 +36,16 @@ def add_reading(item_id):
     })
     return redirect(url_for('items'))
 
+@app.route('/remove_reading/<item_id>')
+def remove_reading(item_id):
+    items =  mongo.db.items
+    items.update( {'_id': ObjectId(item_id)},
+    {
+        'reading': False
+    })
+    return redirect(url_for('items'))
+
+
 @app.route('/reading')
 def reading():
     return render_template('reading.html')
