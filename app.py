@@ -27,6 +27,24 @@ def insert_item():
     items.insert_one(request.form.to_dict())
     return redirect( url_for('items') )
 
+@app.route('/favorite/<item_id>')
+def favorite(item_id):
+    items =  mongo.db.items
+    items.update( {'_id': ObjectId(item_id)},
+    {
+        '$pull': {'favorites': 'John'}
+    })
+    return redirect(url_for( 'items' ) )   #not working?
+
+@app.route('/unfavorite/<item_id>')
+def unfavorite(item_id):
+    items =  mongo.db.items
+    items.update( {'_id': ObjectId(item_id)},
+    {
+        '$pull': {'favorites': 'John'}
+    })
+    return redirect(url_for( 'items' ) )   #not working?
+
 @app.route('/add_reading/<item_id>')
 def add_reading(item_id):
     items =  mongo.db.items

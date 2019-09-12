@@ -8,7 +8,9 @@
         <p>{{item.author}}</p>
         <p>Favorites: {{item.favorites | length}}<p>
         {% for favorite in item.favorites %}
-            {% if favorite == "John" %}<p>Unfavorite</p></br>{% endif %}
+            {% if favorite == "John" %}
+            <a href="{{ url_for('unfavorite', item_id=item._id) }}">Unfavorite</a></br>
+            {% endif %}
         {% endfor %}
             {% if item.reading %}
                 <a href="{{ url_for('remove_reading', item_id=item._id )}}" >Reading</a>
