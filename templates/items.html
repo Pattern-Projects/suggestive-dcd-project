@@ -11,9 +11,9 @@
             {% if favorite == "John" %}<p>Unfavorite</p></br>{% endif %}
         {% endfor %}
             {% if item.reading %}
-                <a href="{{url_for('suggest')}}" >Reading</a>
+                <a href="{{ url_for('remove_reading', item_id=item._id )}}" >Reading</a>
             {% else %}
-                <a href="{{url_for('suggest')}}" >Add to Reading</a>
+                <a href="{{ url_for('add_reading', item_id=item._id)}}" >Add to Reading</a>
             {% endif %}
         {% endfor %}
     </div>

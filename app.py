@@ -34,7 +34,7 @@ def add_reading(item_id):
     {
         'reading': True
     })
-    return redirect(url_for('items'))
+    return redirect(url_for('items'))   #not working?
 
 @app.route('/remove_reading/<item_id>')
 def remove_reading(item_id):
@@ -43,7 +43,7 @@ def remove_reading(item_id):
     {
         'reading': False
     })
-    return redirect(url_for('items'))
+    return redirect(url_for('items'))   #not working?
 
 
 @app.route('/reading')
