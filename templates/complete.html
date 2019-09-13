@@ -1,16 +1,16 @@
 {% extends 'base.html'%} {% block content %}
 
-<h2>Suggest</h2>
+<h2>Review Book</h2>
 
 <div class="row">
-    <form action="{{ url_for('insert_item') }}" method="POST" class="col s12">
+    <form action="{{ url_for('complete_item') }}" method="POST" class="col s12">
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="Book Title" name="title" type="text" class="validate">
+          <input placeholder="{{ item.title }}" name="title" type="text" class="validate">
           <label for="title">Title</label>
         </div>
         <div class="input-field col s6">
-            <input placeholder="Author Name" name="author" type="text" class="validate">
+            <input placeholder="{{ item.author }}" name="author" type="text" class="validate">
             <label for="author">Author</label>
         </div>
     </div>

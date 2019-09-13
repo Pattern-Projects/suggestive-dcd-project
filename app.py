@@ -69,16 +69,24 @@ def reading():
 
 @app.route('/add_current/<item_id>')
 def add_current(item_id):
-    items =  mongo.db.items
     items.update( {'_id': ObjectId(item_id)},
     {
         '$set': {'status': 'current'}
     })
     return redirect(url_for( 'reading')) 
 
-@app.route('/complete')
-def complete():
-    return redirect(url_for( 'reviews')) 
+@app.route('/complete/<item_id>')
+def complete(item_id):
+    item =  mongo.db.items.find_one({"_id": ObjectId(item_id)})
+    return render_template('complete.html', item=item) 
+
+#Required editing of data passed with POST
+
+@app.route('/complete_item', methods=['POST'])
+def complete_item():
+    items =  mongo.db.items
+    items.insert_one(request.form.to_dict())
+    return redirect( 'reviews' )     
 
 @app.route('/reviews')
 def reviews():
