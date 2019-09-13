@@ -50,7 +50,7 @@ def add_reading(item_id):
     items =  mongo.db.items
     items.update( {'_id': ObjectId(item_id)},
     {
-        '$set': {'reading': True}
+        '$set': {'status': 'reading'}
     })
     return redirect(url_for( 'items' ) )   #not working?
 
@@ -59,19 +59,22 @@ def remove_reading(item_id):
     items =  mongo.db.items
     items.update( {'_id': ObjectId(item_id)},
     {
-        '$set': {'reading': False}
+        '$set': {'status': 'suggested'}
     })
     return redirect(url_for( 'items'))   #not working?
 
-
 @app.route('/reading')
 def reading():
-    reading = mongo.db.items.find(
-        {'$filter':{
-            'reading': True
-        }}
-        )
     return render_template('reading.html', reading = mongo.db.items.find({'reading': True}))
+
+@app.route('/add_current/<item_id>')
+def add_current(item_id):
+    items =  mongo.db.items
+    items.update( {'_id': ObjectId(item_id)},
+    {
+        '$set': {'status': 'current'}
+    })
+    return redirect(url_for( 'reading'))   #not working?
 
 @app.route('/complete')
 def complete():
