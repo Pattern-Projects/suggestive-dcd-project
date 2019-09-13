@@ -25,7 +25,7 @@ def suggest():
 def insert_item():
     items =  mongo.db.items
     items.insert_one(request.form.to_dict())
-    return redirect( url_for('items') )
+    return redirect( url_for('items') )     #not working?
 
 @app.route('/favorite/<item_id>')
 def favorite(item_id):
@@ -50,7 +50,7 @@ def add_reading(item_id):
     items =  mongo.db.items
     items.update( {'_id': ObjectId(item_id)},
     {
-        '$set': {'status': 'reading'}
+        '$set': {'reading': True}
     })
     return redirect(url_for( 'items' ) )   #not working?
 
@@ -59,9 +59,9 @@ def remove_reading(item_id):
     items =  mongo.db.items
     items.update( {'_id': ObjectId(item_id)},
     {
-        '$set': {'status': 'suggested'}
+        '$set': {'reading': False}
     })
-    return redirect(url_for( 'items'))   #not working?
+    return redirect(url_for( 'items' ))   #not working?
 
 @app.route('/reading')
 def reading():

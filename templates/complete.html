@@ -1,0 +1,25 @@
+{% extends 'base.html'%} {% block content %}
+
+<h2>Suggest</h2>
+
+<div class="row">
+    <form action="{{ url_for('insert_item') }}" method="POST" class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Book Title" name="title" type="text" class="validate">
+          <label for="title">Title</label>
+        </div>
+        <div class="input-field col s6">
+            <input placeholder="Author Name" name="author" type="text" class="validate">
+            <label for="author">Author</label>
+        </div>
+    </div>
+    <div class="row">
+        <button class="btn waves-effect waves-light red lighten-3 right" type="submit" name="action">Suggest
+            <i class="material-icons right">Send</i>
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
