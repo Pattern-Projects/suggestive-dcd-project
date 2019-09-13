@@ -25,7 +25,7 @@ def suggest():
 def insert_item():
     items =  mongo.db.items
     items.insert_one(request.form.to_dict())
-    return redirect( url_for('items') )     #not working?
+    return redirect( url_for('items') )     
 
 @app.route('/favorite/<item_id>')
 def favorite(item_id):
@@ -34,7 +34,7 @@ def favorite(item_id):
     {
         '$push': {'favorites': 'John'}
     })
-    return redirect(url_for( 'items' ) )   #not working?
+    return redirect(url_for( 'items' ) )   
 
 @app.route('/unfavorite/<item_id>')
 def unfavorite(item_id):
@@ -43,7 +43,7 @@ def unfavorite(item_id):
     {
         '$pull': {'favorites': 'John'}
     })
-    return redirect(url_for( 'items' ) )   #not working?
+    return redirect(url_for( 'items' ) )   
 
 @app.route('/add_reading/<item_id>')
 def add_reading(item_id):
@@ -52,7 +52,7 @@ def add_reading(item_id):
     {
         '$set': {'reading': True}
     })
-    return redirect(url_for( 'items' ) )   #not working?
+    return redirect(url_for( 'items' ) )
 
 @app.route('/remove_reading/<item_id>')
 def remove_reading(item_id):
@@ -61,7 +61,7 @@ def remove_reading(item_id):
     {
         '$set': {'reading': False}
     })
-    return redirect(url_for( 'items' ))   #not working?
+    return redirect(url_for( 'items' ))
 
 @app.route('/reading')
 def reading():
@@ -74,15 +74,15 @@ def add_current(item_id):
     {
         '$set': {'status': 'current'}
     })
-    return redirect(url_for( 'reading'))   #not working?
+    return redirect(url_for( 'reading')) 
 
 @app.route('/complete')
 def complete():
-    return 'Complete A Book Page'
+    return redirect(url_for( 'reviews')) 
 
 @app.route('/reviews')
 def reviews():
-    return render_template('reviews.html')
+    return render_template('reviews.html', reviews = mongo.db.items.find({'status': 'complete'}))
 
 
 

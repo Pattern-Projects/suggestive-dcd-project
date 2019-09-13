@@ -1,5 +1,13 @@
 {% extends 'base.html'%} {% block content %}
 
 <h2>Reviews</h2>
-
+{% for item in reviews %}
+    <div class="card"> 
+        <strong>{{item.title}}</strong>
+        <p>{{item.author}}</p>
+        <p>Favorites: {{item.favorites | length}}<p>
+        <p><strong>Stars:</strong>{{item.stars}}</p>
+        <p>{{ item.review }}</p>
+    </div>
+{% endfor %}
 {% endblock %}
