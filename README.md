@@ -139,5 +139,6 @@ Thank you to the following for inspiration, motivation and the direction I neede
 - Sunny Hebbar      @hebs97
 - Heather Olcot     @heather
 - Simen Daehlin     @Eventyret_mentor
+- Sonya             @Sonya_alumni
 
 - Code Institute
