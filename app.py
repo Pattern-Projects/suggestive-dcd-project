@@ -27,6 +27,12 @@ def insert_item():
     items.insert_one(request.form.to_dict())
     return redirect( url_for('items') )     
 
+@app.route('/delete/<item_id>')
+def delete(item_id):
+    items = mongo.db.items
+    items.remove( {'_id':ObjectId(item_id)})
+    return redirect(url_for( 'items' ))
+
 @app.route('/favorite/<item_id>')
 def favorite(item_id):
     items =  mongo.db.items
@@ -69,6 +75,7 @@ def reading():
 
 @app.route('/add_current/<item_id>')
 def add_current(item_id):
+    items = mongo.db.items
     items.update( {'_id': ObjectId(item_id)},
     {
         '$set': {'status': 'current'}
@@ -80,13 +87,20 @@ def complete(item_id):
     item =  mongo.db.items.find_one({"_id": ObjectId(item_id)})
     return render_template('complete.html', item=item) 
 
-#Required editing of data passed with POST
+#Required - editing of data passed with POST
 
-@app.route('/complete_item', methods=['POST'])
-def complete_item():
-    items =  mongo.db.items
-    items.insert_one(request.form.to_dict())
-    return redirect( 'reviews' )     
+@app.route('/complete_item/<item_id>', methods=['POST'])
+def complete_item(item_id):
+    items = mongo.db.items
+    items.update( {'_id': ObjectId(item_id)},
+    {
+        'title':request.form.get('title'),
+        'author':request.form.get('author'),
+        'stars': request.form.get('stars'),
+        'review': request.form.get('review'),
+        'status': 'complete'
+    })
+    return redirect( url_for( 'reviews') )     
 
 @app.route('/reviews')
 def reviews():

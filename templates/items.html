@@ -19,6 +19,8 @@
         {% else %}
             <a href="{{ url_for('add_reading', item_id=item._id)}}" >Add to Reading</a>
         {% endif %}
+        
+        <a href="{{ url_for('delete', item_id=item._id)}}">Delete</a>
 
     </div>
 {% endfor %}

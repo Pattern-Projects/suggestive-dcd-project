@@ -52,6 +52,9 @@ Features planned, implemented and outlined for later development
 - Owner can add books to reading list
 - Owner can remove books from suggestions
 - Owner can review books on reading list, removing them from list
+- Sign Up and Login
+- Flask Routing
+- Jinja web templates
 - Documentation - ReadMe File & Mockups
 - Bootstrap - HTML, CSS Framework
     - Grid System - Columns and Rows
@@ -74,7 +77,6 @@ Features planned, implemented and outlined for later development
 
 For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
 
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
 
 ### Features Left to Implement
 - Another feature idea
@@ -82,7 +84,11 @@ In addition, you may also use this section to discuss plans for additional featu
 ## Technologies Used
 
 In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
-
+- [Python](https://www.python.org/)
+- [Flask](https://palletsprojects.com/p/flask/)
+- [Jinja](https://palletsprojects.com/p/jinja/)
+- [Flask-Pymongo](https://flask-pymongo.readthedocs.io/en/latest/)
+- [dnspython](https://pypi.org/project/dnspython/)
 - [JQuery](https://jquery.com)
     - The project uses **JQuery** to simplify DOM manipulation.
 - [Materialize](https://materializecss.com/about.html)
@@ -119,6 +125,10 @@ In particular, you should provide all details of the differences between the dep
 
 In addition, if it is not obvious, you should also describe how to run your code locally.
 
+- git pull
+- mongodb
+- heroku
+- 
 
 ## Credits
 
