@@ -94,12 +94,11 @@ def complete_item(item_id):
     items = mongo.db.items
     items.update( {'_id': ObjectId(item_id)},
     {
-        'title':request.form.get('title'),
-        'author':request.form.get('author'),
+        '$set': {
         'stars': request.form.get('stars'),
         'review': request.form.get('review'),
         'status': 'complete'
-    })
+    }})
     return redirect( url_for( 'reviews') )     
 
 @app.route('/reviews')
