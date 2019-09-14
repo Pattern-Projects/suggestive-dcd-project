@@ -2,14 +2,9 @@
 
 <h2>Reviews</h2>
 {% for item in reviews %}
+    
     {% import 'card.html' as card with context %}
     {{ card.box('reviews') }}
-    <div class="card"> 
-        <strong>{{item.title}}</strong>
-        <p>{{item.author}}</p>
-        <p>Favorites: {{item.favorites | length}}<p>
-        <p><strong>Stars:</strong>{{item.stars}}</p>
-        <p>{{ item.review }}</p>
-    </div>
+    
 {% endfor %}
 {% endblock %}

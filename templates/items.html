@@ -3,17 +3,11 @@
 <h2> Books </h2>
 <a href="{{url_for('suggest')}}" >Add Suggestion</a></br>
 
-    
-    
 {% for item in items %}
+
     {% import 'card.html' as card with context %}
     {{ card.box('items') }}
-    <div class="card"> 
-        <strong>{{item.title}}</strong>
-        <p>{{item.author}}</p>
-        <p>Favorites: {{item.favorites | length}}<p>
 
-        
-    </div>
 {% endfor %}
+
 {% endblock %}
