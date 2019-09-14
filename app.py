@@ -33,8 +33,8 @@ def delete(item_id):
     items.remove( {'_id':ObjectId(item_id)})
     return redirect(url_for( 'items' ))
 
-@app.route('/favorite/<item_id>')
-def favorite(item_id):
+@app.route('/favorite/<string:page>/<item_id>')
+def favorite(page, item_id):
     items =  mongo.db.items
     items.update( {'_id': ObjectId(item_id)},
     {

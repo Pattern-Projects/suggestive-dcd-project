@@ -16,11 +16,6 @@
         <p>{{item.author}}</p>
         <p>Favorites: {{item.favorites | length}}<p>
 
-        {% if 'John' not in item.favorites %}
-            <a href="{{ url_for('favorite', item_id=item._id )}}" >Favorite</a></br>
-        {% else %}
-            <a href="{{ url_for('unfavorite', item_id=item._id) }}">Unfavorite</a></br>
-        {% endif %}
         
         {% if item.reading %}
             <a href="{{ url_for('remove_reading', item_id=item._id )}}" >Reading</a>
