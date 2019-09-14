@@ -5,9 +5,11 @@
         <strong>{{item.title}}</strong>
         <p>{{item.author}}</p>
         <p>Favorites: {{item.favorites | length}}<p>
-        
-        {{ favorite(page='items') }}
-        
+
+        {% if page != 'reviews'  %}
+            {{ favorite(page='items') }}
+        {% endif %}
+    
         {% if page == 'items' %}
             {{ itemspage() }}
         {% endif %}
