@@ -14,14 +14,6 @@
         <p>Favorites: {{item.favorites | length}}<p>
 
         
-        {% if item.reading %}
-            <a href="{{ url_for('remove_reading', item_id=item._id )}}" >Reading</a>
-        {% else %}
-            <a href="{{ url_for('add_reading', item_id=item._id)}}" >Add to Reading</a>
-        {% endif %}
-        
-        <a href="{{ url_for('delete', item_id=item._id)}}">Delete</a>
-
     </div>
 {% endfor %}
 {% endblock %}

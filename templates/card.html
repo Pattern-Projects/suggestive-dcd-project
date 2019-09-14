@@ -1,27 +1,28 @@
 {% macro box(page='items') -%}
 
-    <div class="card"> 
+    <div class="card red lighten-4"> 
 
         <strong>{{item.title}}</strong>
         <p>{{item.author}}</p>
         <p>Favorites: {{item.favorites | length}}<p>
 
-        {% if page != 'reviews'  %}
-            {{ favorite(page='items') }}
-        {% endif %}
-    
         {% if page == 'items' %}
-            {{ itemspage() }}
+            {{ favorite(page='items') }}
+            {{ itemspage(page='items') }}
         {% endif %}
 
         {% if page == 'reading' %}
-            {{ readingpage() }}
+            {{ favorite(page='reading') }}
+            {{ readingpage(page='reading') }}
         {% endif %}
 
+        <a href="{{ url_for('delete',  page=page, item_id=item._id)}}">Delete</a>
+
+        </br>
+        ---------------------------------
         <p><strong>Stars:</strong>{{item.stars}}</p>
         <p>{{ item.review }}</p>
         
-        <a href="{{ url_for('delete', item_id=item._id)}}">Delete</a>
 
 
     </div>
@@ -39,23 +40,23 @@
 {% endmacro %}
 
 
-{% macro itemspage() %}
+{% macro itemspage(page) %}
         {% if item.reading %}
-            <a href="{{ url_for('remove_reading', item_id=item._id )}}" >Reading</a></br>
+            <a href="{{ url_for('remove_reading', page=page, item_id=item._id )}}" >Reading</a></br>
         {% else %}
-            <a href="{{ url_for('add_reading', item_id=item._id)}}" >Add to Reading</a>
+            <a href="{{ url_for('add_reading', item_id=item._id)}}" >Add to Reading</a></br>
         {% endif %}
         
-        <a href="{{ url_for('delete', item_id=item._id)}}">Delete</a>
 
 {% endmacro %}
 
 
-{% macro readingpage() %}
+{% macro readingpage(page) %}
         {% if item.status == 'current' %}
-            <a href="{{ url_for('complete', item_id=item._id )}}" >Complete</a>
+            <a href="{{ url_for('remove_reading', page=page, item_id=item._id )}}" >Remove from current</a></br>
+            <a href="{{ url_for('complete', item_id=item._id )}}" >Complete</a></br>
         {% else %}
-            <a href="{{ url_for('add_current', item_id=item._id)}}" >Add to Current</a>
+            <a href="{{ url_for('add_current', item_id=item._id)}}" >Add to Current</a></br>
         {% endif %}
 
 {% endmacro %}
