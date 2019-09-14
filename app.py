@@ -42,14 +42,14 @@ def favorite(page, item_id):
     })
     return redirect(url_for( page ) )   
 
-@app.route('/unfavorite/<item_id>')
-def unfavorite(item_id):
+@app.route('/unfavorite/<page>/<item_id>')
+def unfavorite(page, item_id):
     items =  mongo.db.items
     items.update( {'_id': ObjectId(item_id)},
     {
         '$pull': {'favorites': 'John'}
     })
-    return redirect(url_for( 'items' ) )   
+    return redirect(url_for( page ) )   
 
 @app.route('/add_reading/<item_id>')
 def add_reading(item_id):

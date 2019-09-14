@@ -2,15 +2,17 @@
     <div class="card"> 
         <strong>{{item.title}}</strong>
         <p>{{item.author}}</p>
-        <p>Favorites: {{item.favorites | length}}<p>
         <p><strong>Stars:</strong>{{item.stars}}</p>
         <p>{{ item.review }}</p>
+        
+        <p>Favorites: {{item.favorites | length}}<p>
         
         {% if 'John' not in item.favorites %}
             <a href="{{ url_for('favorite', page=page ,  item_id=item._id )}}" >Favorite</a></br>
         {% else %}
-            <a href="{{ url_for('unfavorite', item_id=item._id) }}">Unfavorite</a></br>
+            <a href="{{ url_for('unfavorite', page=page , item_id=item._id) }}">Unfavorite</a></br>
         {% endif %}
+        
         
 
     </div>
