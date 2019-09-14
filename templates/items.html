@@ -10,7 +10,7 @@
     
 {% for item in items %}
     {% import 'card.html' as card with context %}
-    {{ card.box('hello') }}
+    {{ card.box('items') }}
     <div class="card"> 
         <strong>{{item.title}}</strong>
         <p>{{item.author}}</p>
