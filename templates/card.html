@@ -20,6 +20,9 @@
 
         <p><strong>Stars:</strong>{{item.stars}}</p>
         <p>{{ item.review }}</p>
+        
+        <a href="{{ url_for('delete', item_id=item._id)}}">Delete</a>
+
 
     </div>
 
