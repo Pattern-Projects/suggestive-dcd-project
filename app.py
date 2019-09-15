@@ -97,13 +97,14 @@ def complete_item(item_id):
         '$set': {
         'stars': request.form.get('stars'),
         'review': request.form.get('review'),
-        'status': 'complete'
+        'status': 'complete',
+        'complete': True
     }})
     return redirect( url_for( 'reviews') )     
 
 @app.route('/reviews')
 def reviews():
-    return render_template('reviews.html', reviews = mongo.db.items.find({'status': 'complete'}))
+    return render_template('reviews.html', reviews = mongo.db.items.find({'complete': True}))
 
 
 
