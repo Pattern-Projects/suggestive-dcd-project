@@ -60,47 +60,9 @@ def set_status(page, status, item_id):
     })
     return redirect(url_for( page ) )
 
-
-@app.route('/add_reading/<item_id>')
-def add_reading(item_id):
-    items =  mongo.db.items
-    items.update( {'_id': ObjectId(item_id)},
-    {
-        '$set': {'status': 'reading'}
-    })
-    return redirect(url_for( 'items' ) )
-
-@app.route('/remove_reading/<page>/<item_id>')
-def remove_reading(page, item_id):
-    items =  mongo.db.items
-    items.update( {'_id': ObjectId(item_id)},
-    {
-        '$set': {'status': 'suggested'}
-    })
-    return redirect(url_for( page ))
-
 @app.route('/reading')
 def reading():
     return render_template('reading.html', reading = mongo.db.items.find({ 'status': { '$in': [ 'reading', 'current' ] } }))
-
-@app.route('/add_current/<item_id>')
-def add_current(item_id):
-    items = mongo.db.items
-    items.update( {'_id': ObjectId(item_id)},
-    {
-        '$set': {'status': 'current'}
-    })
-    return redirect(url_for( 'reading')) 
-
-@app.route('/remove_current/<page>/<item_id>')
-def remove_current(page, item_id):
-    items =  mongo.db.items
-    items.update( {'_id': ObjectId(item_id)},
-    {
-        '$set': {'status': 'reading'}
-    })
-    return redirect(url_for( page ))
-
 
 @app.route('/complete/<item_id>')
 def complete(item_id):
