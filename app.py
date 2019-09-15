@@ -65,7 +65,7 @@ def remove_reading(page, item_id):
     items =  mongo.db.items
     items.update( {'_id': ObjectId(item_id)},
     {
-        '$set': {'status': 'reading'}
+        '$set': {'status': 'suggested'}
     })
     return redirect(url_for( page ))
 
@@ -81,6 +81,16 @@ def add_current(item_id):
         '$set': {'status': 'current'}
     })
     return redirect(url_for( 'reading')) 
+
+@app.route('/remove_current/<page>/<item_id>')
+def remove_current(page, item_id):
+    items =  mongo.db.items
+    items.update( {'_id': ObjectId(item_id)},
+    {
+        '$set': {'status': 'reading'}
+    })
+    return redirect(url_for( page ))
+
 
 @app.route('/complete/<item_id>')
 def complete(item_id):
@@ -105,10 +115,6 @@ def complete_item(item_id):
 @app.route('/reviews')
 def reviews():
     return render_template('reviews.html', reviews = mongo.db.items.find({'complete': True}))
-
-
-
-
 
 
 if __name__ == '__main__':

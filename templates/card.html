@@ -41,7 +41,7 @@
 
 
 {% macro itemspage(page) %}
-        {% if item.reading %}
+        {% if item.status == 'reading' %}
             <a href="{{ url_for('remove_reading', page=page, item_id=item._id )}}" >Reading</a></br>
         {% else %}
             <a href="{{ url_for('add_reading', item_id=item._id)}}" >Add to Reading</a></br>
@@ -53,9 +53,10 @@
 
 {% macro readingpage(page) %}
         {% if item.status == 'current' %}
-            <a href="{{ url_for('remove_reading', page=page, item_id=item._id )}}" >Remove from current</a></br>
+            <a href="{{ url_for('remove_current', page=page, item_id=item._id )}}" >Remove from Current</a></br>
             <a href="{{ url_for('complete', item_id=item._id )}}" >Complete</a></br>
         {% else %}
+            <a href="{{ url_for('remove_reading', page=page, item_id=item._id )}}" >Remove from Reading</a></br>
             <a href="{{ url_for('add_current', item_id=item._id)}}" >Add to Current</a></br>
         {% endif %}
 
