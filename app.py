@@ -15,16 +15,18 @@ mongo = PyMongo(app)
 @app.route('/items')
 def items():
     
+    # items = mongo.db.items.find()
     items = mongo.db.items.aggregate(
         [{'$unwind': '$favorites' },
-        { '$group': { '_id': '$favorites', 'count':{'$sum':1}}},
-        { '$sort' :{'count': -1}}]
+        { '$group': { '_id': {'_id':'$_id', 'title':'$title', 'author': '$author'}, 'count':{'$sum':1}}},
+        { '$sort' :{'count': 1}}]
     )
     # list = [(item['_id'], len(item['favorites'])) for item in items]
     # sorted_list = sorted(list, key=lambda tup: tup[-1], reverse=True)
     
-    print(items)
-    return render_template('items.html', items=mongo.db.items.find())
+    for item in items:
+        print('Items: ' , item)
+    return render_template('items.html', items=items)
     
     
     
