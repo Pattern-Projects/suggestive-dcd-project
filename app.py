@@ -16,6 +16,8 @@ mongo = PyMongo(app)
 def items():
     return render_template('items.html', items=mongo.db.items.find())
     
+    
+    
 @app.route('/suggest')
 def suggest():
     return render_template('suggest.html',
@@ -24,7 +26,12 @@ def suggest():
 @app.route('/insert_item', methods=['POST'])
 def insert_item():
     items =  mongo.db.items
-    items.insert_one(request.form.to_dict())
+    
+    item = request.form.to_dict()
+    item['favorites'] = []
+    
+    items.insert_one(item)
+    
     return redirect( url_for('items') )     
 
 @app.route('/delete/<page>/<item_id>')
