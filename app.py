@@ -51,6 +51,16 @@ def unfavorite(page, item_id):
     })
     return redirect(url_for( page ) )   
 
+@app.route('/set_status/<page>/<status>/<item_id>')
+def set_status(page, status, item_id):
+    items =  mongo.db.items
+    items.update( {'_id': ObjectId(item_id)},
+    {
+        '$set': {'status': status }
+    })
+    return redirect(url_for( page ) )
+
+
 @app.route('/add_reading/<item_id>')
 def add_reading(item_id):
     items =  mongo.db.items
