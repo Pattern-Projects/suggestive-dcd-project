@@ -1,9 +1,9 @@
 {% extends 'base.html'%} {% block content %}
 
-<h2>Sign Up</h2>
+<h2>Log In</h2>
 
 <div class="row">
-    <form action="{{ url_for('sign_up') }}" method="POST" class="col s12">
+    <form action="{{ url_for('login') }}" method="POST" class="col s12">
       <div class="row">
         <div class="input-field col s6">
           <input placeholder="Username" name="username" type="text" class="validate">

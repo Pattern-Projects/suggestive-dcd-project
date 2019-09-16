@@ -12,25 +12,13 @@ COLLECTION_NAME = "itmes"
 
 mongo = PyMongo(app)
 
-def index():
-    print(hash('dfsfs'))
-    if 'username' in session:
-        return 'Logged in as %s' % escape(session['username'])
-    return 'You are not logged in'
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         session['username'] = request.form['username']
         print(request.form['password'], hash(request.form['password']))
         return redirect(url_for('items'))
-    return '''
-        <form method="post">
-            <p><input type=text name=username>
-            <p><input type=password name=password>
-            <p><input type=submit value=Login>
-        </form>
-    '''
+    return render_template('login.html')
 
 @app.route('/logout')
 def logout():
@@ -42,26 +30,6 @@ def logout():
 @app.route('/items')
 def items():
     return render_template('items.html', items=mongo.db.items.find())
-    
-@app.route('/sign_up_page')
-def sign_up_page():
-    return render_template('sign_up.html')
-    
-@app.route('/sign_up', methods=['POST'])
-def sign_up():
-    data = request.form.to_dict()
-    print(data['username'])
-    return redirect( url_for('items') )
-    
-@app.route('/log_in_page')
-def log_in_page():
-    return render_template('log_in.html')
-    
-@app.route('/log_in', methods=['POST'])
-def log_in():
-    data = request.form.to_dict()
-    print(data['username'])
-    return redirect( url_for('items') )
     
 @app.route('/suggest')
 def suggest():
