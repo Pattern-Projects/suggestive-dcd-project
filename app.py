@@ -22,10 +22,12 @@ def index():
 def login():
     if request.method == 'POST':
         session['username'] = request.form['username']
+        print(request.form['password'], hash(request.form['password']))
         return redirect(url_for('items'))
     return '''
         <form method="post">
             <p><input type=text name=username>
+            <p><input type=password name=password>
             <p><input type=submit value=Login>
         </form>
     '''

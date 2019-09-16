@@ -18,8 +18,9 @@
       </ul>
     </div>
   </nav>
+  <a href="{{url_for('login')}}">Login</a>
   {{ session['username'] }}
-    
+    <a href="{{url_for('logout')}}">Logout</a>
   {% block content %} {% endblock %}
   </div>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
