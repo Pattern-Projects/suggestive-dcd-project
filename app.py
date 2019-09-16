@@ -15,17 +15,34 @@ mongo = PyMongo(app)
 @app.route('/items')
 def items():
     
-    # items = mongo.db.items.find()
-    items = mongo.db.items.aggregate(
-        [{'$unwind': '$favorites' },
-        { '$group': { '_id': {'_id':'$_id', 'title':'$title', 'author': '$author'}, 'count':{'$sum':1}}},
-        { '$sort' :{'count': 1}}]
-    )
+    items = list(mongo.db.items.find())
+    sorted_list = []
+    indexes = {}
+    
+    # for item in items:
+    #     indexes.add({'id': item['_id']})
+        
+    # for key, value in sorted(items.items()):
+    #     print (key, value)
+    
+        # indexes.append([len(item['favorites']), item['_id'] ])
+    
+    # Sort indexs
+    
+    
+    # for each id in indexes add item to sorted list
+    # for i in indexes:
+    #     # print(i[0])
+    #     print(items[{'_id': i[1] }])
+
+    # items = mongo.db.items.aggregate(
+    #     [{'$unwind': '$favorites' },
+    #     { '$group': { '_id': {'_id':'$_id', 'title':'$title', 'author': '$author'}, 'count':{'$sum':1}}},
+    #     { '$sort' :{'count': 1}}]
+    # )
     # list = [(item['_id'], len(item['favorites'])) for item in items]
     # sorted_list = sorted(list, key=lambda tup: tup[-1], reverse=True)
     
-    for item in items:
-        print('Items: ' , item)
     return render_template('items.html', items=items)
     
     
