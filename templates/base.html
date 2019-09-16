@@ -14,13 +14,15 @@
         <li><a href="{{url_for('items')}}">Books</a></li>
         <li><a href="{{url_for('reading')}}">Reading</a></li>
         <li><a href="{{url_for('reviews')}}">Reviews</a></li>
-        <li><a href="{{url_for('login')}}">Sign Up</a></li>
+        {% if 'username' in session %}
+        <li><a href="{{url_for('logout')}}">Log Out</a></li>
+        {% else %}
+        <li><a href="{{url_for('login')}}">Login/Register</a></li>
+        {% endif %}
       </ul>
     </div>
   </nav>
-  <a href="{{url_for('login')}}">Login</a>
   {{ session['username'] }}
-    <a href="{{url_for('logout')}}">Logout</a>
   {% block content %} {% endblock %}
   </div>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
