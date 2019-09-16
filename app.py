@@ -1,17 +1,42 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, session, render_template, redirect, escape, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
+app.secret_key = 'dfa#3jfDl7j?sl'
 DBS_NAME = "suggestive"
 COLLECTION_NAME = "itmes"
 
 mongo = PyMongo(app)
 
 @app.route('/')
+def index():
+    print(hash('dfsfs'))
+    if 'username' in session:
+        return 'Logged in as %s' % escape(session['username'])
+    return 'You are not logged in'
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        session['username'] = request.form['username']
+        return redirect(url_for('index'))
+    return '''
+        <form method="post">
+            <p><input type=text name=username>
+            <p><input type=submit value=Login>
+        </form>
+    '''
+
+@app.route('/logout')
+def logout():
+    # remove the username from the session if it's there
+    session.pop('username', None)
+    return redirect(url_for('index'))
+
 @app.route('/items')
 def items():
     return render_template('items.html', items=mongo.db.items.find())
