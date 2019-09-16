@@ -122,6 +122,8 @@ In particular, you should provide all details of the differences between the dep
 - Different values for environment variables (Heroku Config Vars)?
 - Different configuration files?
 - Separate git branch?
+- White list on MongoDB
+ 
 
 In addition, if it is not obvious, you should also describe how to run your code locally.
 
