@@ -21,46 +21,23 @@ def login():
         found = False
         
         dbusers = mongo.db.users.find({'username': username})
-        print('num', dbusers.count)
         for user in dbusers:
             found = True
             if user['password'] == password:
-                print ('username and password match')
                 session['username'] = user['username']
+                return redirect(url_for('items'))
             else:
-                print ('password doesnt match')
-                return 'The username exists already with a different password'
+                return redirect(url_for('login'))
                 
         if found == False:
-            print ('username doesnt match')
             users =  mongo.db.users
             user = request.form.to_dict()
             user['password'] = password
             users.insert_one(user)
             session['username'] = username
-                
-        # ===============
+            return redirect(url_for('items'))
         
-        # Find users in mongo
-        # matchedusers = mongo.db.users.find({'username': username})
-        
-        # for user in matchedusers:
-        #     if user['password'] == password:  #Bug: hash is randomised
-        #         session['username'] = request.form['username']
-        #         # session['id'] = user['_id']
-        #         found = True
-                
-        # if found is False:
-        #     users =  mongo.db.users
-        #     user = request.form.to_dict()
-        #     user['password'] = password
-        #     users.insert_one(user)  #bug: retrieve _id of inserted user
-        #     session['username'] = request.form['username']
-            # session['id'] = id    #Fix: _id of inseted user
-            # create
-        
-        print(request.form['password'], password)
-        return redirect(url_for('items'))
+        return redirect(url_for('login'))
     return render_template('login.html')
 
 @app.route('/logout')
