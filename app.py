@@ -17,28 +17,49 @@ def login():
     if request.method == 'POST':
         
         username = request.form['username']
-        password = request.form['password']
+        password = hashlib.sha256(request.form['password'].encode()).hexdigest()
         found = False
         
-        # Find users in mongo
-        matchedusers = mongo.db.users.find({'username': username})
-        
-        for user in matchedusers:
-            if user['password'] == hashlib.sha256(password.encode()).hexdigest():  #Bug: hash is randomised
-                session['username'] = request.form['username']
-                # session['id'] = user['_id']
-                found = True
+        dbusers = mongo.db.users.find({'username': username})
+        print('num', dbusers.count)
+        for user in dbusers:
+            found = True
+            if user['password'] == password:
+                print ('username and password match')
+                session['username'] = user['username']
+            else:
+                print ('password doesnt match')
+                return 'The username exists already with a different password'
                 
-        if found is False:
+        if found == False:
+            print ('username doesnt match')
             users =  mongo.db.users
             user = request.form.to_dict()
-            user['password'] = hashlib.sha256(password.encode()).hexdigest()
-            users.insert_one(user)  #bug: retrieve _id of inserted user
-            session['username'] = request.form['username']
+            user['password'] = password
+            users.insert_one(user)
+            session['username'] = username
+                
+        # ===============
+        
+        # Find users in mongo
+        # matchedusers = mongo.db.users.find({'username': username})
+        
+        # for user in matchedusers:
+        #     if user['password'] == password:  #Bug: hash is randomised
+        #         session['username'] = request.form['username']
+        #         # session['id'] = user['_id']
+        #         found = True
+                
+        # if found is False:
+        #     users =  mongo.db.users
+        #     user = request.form.to_dict()
+        #     user['password'] = password
+        #     users.insert_one(user)  #bug: retrieve _id of inserted user
+        #     session['username'] = request.form['username']
             # session['id'] = id    #Fix: _id of inseted user
             # create
         
-        print(request.form['password'], hashlib.sha256(request.form['password'].encode()).hexdigest())
+        print(request.form['password'], password)
         return redirect(url_for('items'))
     return render_template('login.html')
 
