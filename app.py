@@ -48,7 +48,7 @@ def logout():
 @app.route('/')
 @app.route('/items')
 def items():
-    return render_template('items.html', items=mongo.db.items.find())
+    return render_template('items.html', items=mongo.db.items.find({ 'status': { '$in': [ 'suggested', 'reading' ] } }))
     
 @app.route('/suggest')
 def suggest():
@@ -61,6 +61,7 @@ def insert_item():
     
     item = request.form.to_dict()
     item['favorites'] = []
+    item['status'] = 'suggested'
     
     items.insert_one(item)
     

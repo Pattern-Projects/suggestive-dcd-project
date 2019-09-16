@@ -1,7 +1,7 @@
 {% macro box(page='items') -%}
 
     <div class="card red lighten-4"> 
-
+        <small>{{ item.status }}</small></br>
         <strong>{{item.title}}</strong>
         <p>{{item.author}}</p>
         <p>Favorites: {{item.favorites | length}}<p>
@@ -24,10 +24,11 @@
             <a href="{{ url_for('delete',  page=page, item_id=item._id)}}">Delete</a></br>
 
         {% endif %}
-        ---------------------------------</br>
-        {{item.stars}}</br>
-        {{ item.review }}</br>
-        
+        {% if item.complete %}
+            ---------------------------------</br>
+            {{item.stars}}</br>
+            {{ item.review }}</br>
+        {% endif %}
 
 
     </div>
