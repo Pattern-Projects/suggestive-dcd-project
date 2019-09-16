@@ -27,7 +27,7 @@ def login():
                 session['username'] = user['username']
                 return redirect(url_for('items'))
             else:
-                return redirect(url_for('login'))
+                return render_template('login.html', mismatch=True)
                 
         if found == False:
             users =  mongo.db.users
