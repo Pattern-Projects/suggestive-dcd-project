@@ -15,7 +15,29 @@ mongo = PyMongo(app)
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        session['username'] = request.form['username']
+        
+        username = request.form['username']
+        password = request.form['password']
+        found = False
+        
+        # Find users in mongo
+        matchedusers = mongo.db.users.find({'username': username})
+        
+        for user in matchedusers:
+            if user['password'] == hash(password):  #Bug: hash is randomised
+                session['username'] = request.form['username']
+                session['id'] = user['_id']
+                found = True
+                
+        if found is False:
+            users =  mongo.db.users
+            user = request.form.to_dict()
+            user['password'] = hash(password)
+            users.insert_one(user)  #bug: retrieve _id of inserted user
+            session['username'] = request.form['username']
+            # session['id'] = id    #Fix: _id of inseted user
+            # create
+        
         print(request.form['password'], hash(request.form['password']))
         return redirect(url_for('items'))
     return render_template('login.html')
