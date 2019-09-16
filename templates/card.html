@@ -6,24 +6,24 @@
         <p>{{item.author}}</p>
         <p>Favorites: {{item.favorites | length}}<p>
 
-        {% if page == 'items' %}
-            {{ favorite(page='items') }}
-            {{ itemspage(page='items') }}
+        {% if 'username' in session %}
+                
+            {% if page == 'items' %}
+                {{ favorite(page='items') }}
+                {{ itemspage(page='items') }}
+            {% endif %}
+    
+            {% if page == 'reading' %}
+                {{ favorite(page='reading') }}
+                {{ readingpage(page='reading') }}
+            {% endif %}
+    
+            {% if page == 'reviews' %}
+                {{ reviewspage(page='reviews') }}        
+            {% endif %}
+            <a href="{{ url_for('delete',  page=page, item_id=item._id)}}">Delete</a></br>
+
         {% endif %}
-
-        {% if page == 'reading' %}
-            {{ favorite(page='reading') }}
-            {{ readingpage(page='reading') }}
-        {% endif %}
-
-        {% if page == 'reviews' %}
-            {{ reviewspage(page='reviews') }}        
-        {% endif %}
-
-
-        <a href="{{ url_for('delete',  page=page, item_id=item._id)}}">Delete</a>
-
-        </br>
         ---------------------------------</br>
         {{item.stars}}</br>
         {{ item.review }}</br>
@@ -36,12 +36,12 @@
 
 
 {% macro favorite(page) %}
-        {% if 'John' not in item.favorites %}
+        {% if session['username'] not in item.favorites %}
             <a href="{{ url_for('favorite', page=page,   item_id=item._id )}}" >Favorite</a></br>
         {% else %}
             <a href="{{ url_for('unfavorite', page=page, item_id=item._id) }}">Unfavorite</a></br>
         {% endif %}
-
+        
 {% endmacro %}
 
 

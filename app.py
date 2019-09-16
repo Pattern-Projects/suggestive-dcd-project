@@ -34,7 +34,7 @@ def login():
 def logout():
     # remove the username from the session if it's there
     session.pop('username', None)
-    return redirect(url_for('index'))
+    return redirect(url_for('items'))
 
 @app.route('/')
 @app.route('/items')
@@ -86,20 +86,21 @@ def delete(page, item_id):
 @app.route('/favorite/<page>/<item_id>')
 def favorite(page, item_id):
     items =  mongo.db.items
-    
-    items.update( {'_id': ObjectId(item_id)},
-    {
-        '$push': {'favorites': session['username']}
-    })
+    if 'username' in session:
+        items.update( {'_id': ObjectId(item_id)},
+        {
+            '$push': {'favorites': session['username']}
+        })
     return redirect(url_for( page ) )   
 
 @app.route('/unfavorite/<page>/<item_id>')
 def unfavorite(page, item_id):
     items =  mongo.db.items
-    items.update( {'_id': ObjectId(item_id)},
-    {
-        '$pull': {'favorites': session['username']}
-    })
+    if 'username' in session:
+        items.update( {'_id': ObjectId(item_id)},
+        {
+            '$pull': {'favorites': session['username']}
+        })
     return redirect(url_for( page ) )   
 
 @app.route('/set_status/<page>/<status>/<item_id>')
