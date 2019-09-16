@@ -12,7 +12,6 @@ COLLECTION_NAME = "itmes"
 
 mongo = PyMongo(app)
 
-@app.route('/')
 def index():
     print(hash('dfsfs'))
     if 'username' in session:
@@ -23,7 +22,7 @@ def index():
 def login():
     if request.method == 'POST':
         session['username'] = request.form['username']
-        return redirect(url_for('index'))
+        return redirect(url_for('items'))
     return '''
         <form method="post">
             <p><input type=text name=username>
@@ -37,6 +36,7 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('index'))
 
+@app.route('/')
 @app.route('/items')
 def items():
     return render_template('items.html', items=mongo.db.items.find())
@@ -86,9 +86,10 @@ def delete(page, item_id):
 @app.route('/favorite/<page>/<item_id>')
 def favorite(page, item_id):
     items =  mongo.db.items
+    
     items.update( {'_id': ObjectId(item_id)},
     {
-        '$push': {'favorites': 'John'}
+        '$push': {'favorites': session['username']}
     })
     return redirect(url_for( page ) )   
 
@@ -97,7 +98,7 @@ def unfavorite(page, item_id):
     items =  mongo.db.items
     items.update( {'_id': ObjectId(item_id)},
     {
-        '$pull': {'favorites': 'John'}
+        '$pull': {'favorites': session['username']}
     })
     return redirect(url_for( page ) )   
 
