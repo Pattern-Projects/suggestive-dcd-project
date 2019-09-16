@@ -37,7 +37,6 @@ def login():
             session['username'] = username
             return redirect(url_for('items'))
         
-        return redirect(url_for('login'))
     return render_template('login.html')
 
 @app.route('/logout')
