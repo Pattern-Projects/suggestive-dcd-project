@@ -16,7 +16,25 @@ mongo = PyMongo(app)
 def items():
     return render_template('items.html', items=mongo.db.items.find())
     
+@app.route('/sign_up_page')
+def sign_up_page():
+    return render_template('sign_up.html')
     
+@app.route('/sign_up', methods=['POST'])
+def sign_up():
+    data = request.form.to_dict()
+    print(data['username'])
+    return redirect( url_for('items') )
+    
+@app.route('/log_in_page')
+def log_in_page():
+    return render_template('log_in.html')
+    
+@app.route('/log_in', methods=['POST'])
+def log_in():
+    data = request.form.to_dict()
+    print(data['username'])
+    return redirect( url_for('items') )
     
 @app.route('/suggest')
 def suggest():
