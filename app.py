@@ -2,6 +2,7 @@ import os
 from flask import Flask, session, render_template, redirect, escape, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import hashlib
 
 app = Flask(__name__)
 
@@ -9,7 +10,6 @@ app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 app.secret_key = 'dfa#3jfDl7j?sl'
 DBS_NAME = "suggestive"
 COLLECTION_NAME = "itmes"
-
 mongo = PyMongo(app)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -24,21 +24,21 @@ def login():
         matchedusers = mongo.db.users.find({'username': username})
         
         for user in matchedusers:
-            if user['password'] == hash(password):  #Bug: hash is randomised
+            if user['password'] == hashlib.sha256(password.encode()).hexdigest():  #Bug: hash is randomised
                 session['username'] = request.form['username']
-                session['id'] = user['_id']
+                # session['id'] = user['_id']
                 found = True
                 
         if found is False:
             users =  mongo.db.users
             user = request.form.to_dict()
-            user['password'] = hash(password)
+            user['password'] = hashlib.sha256(password.encode()).hexdigest()
             users.insert_one(user)  #bug: retrieve _id of inserted user
             session['username'] = request.form['username']
             # session['id'] = id    #Fix: _id of inseted user
             # create
         
-        print(request.form['password'], hash(request.form['password']))
+        print(request.form['password'], hashlib.sha256(request.form['password'].encode()).hexdigest())
         return redirect(url_for('items'))
     return render_template('login.html')
 
