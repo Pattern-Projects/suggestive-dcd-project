@@ -5,7 +5,7 @@
 <p>Welcome to the home of {{ list_profile }}</p>
 
 {% for profile in profiles %}
-    {{ profile.blurb }}
+    <p>{{ profile.blurb }}</p>
 </br>
 Share {% if list_profile == session['username'] %}your{% else %}this{% endif %} page:</br>
 
@@ -24,7 +24,8 @@ http://suggestive-dcd-project.herokuapp.com/info/{{ list_profile }}</br>
           <input placeholder="Write a blurb" name="blurb" type="text" class="validate">
           <label for="blurb">Write a blurb for your page</label>
         </div>
-
+      </div>
+      <div class="row">
         <div class="switch">
         <label>
           Private
@@ -43,6 +44,10 @@ http://suggestive-dcd-project.herokuapp.com/info/{{ list_profile }}</br>
         </div>
     </form>
 </div>
+
+<a href="{{ url_for('delete_user', user_id=profile._id)}}">Delete Profile</a></br>
+<label>Be very careful - Does not ask confirmation yet!</label>
+
 
 {% endif %}
 {% endfor %}

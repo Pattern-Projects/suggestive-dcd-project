@@ -2,6 +2,13 @@
 <title>Home</title>
 
 <h2>Home</h2>
+
+<p>Public lists appear here for anyone can find</p>
+{% if not session['username'] %}
+<p>Open a list or login to make your own</p>
+{% else %}
+<p>Open your own: <a href="{{url_for('myinfo')}}">My List</a></p>
+{% endif %}
 <div class="row">
 {% for user in users %}
     

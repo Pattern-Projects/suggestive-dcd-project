@@ -59,6 +59,16 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('home'))
 
+@app.route('/delete_user/<user_id>')
+def delete_user(user_id):
+    if session.get('username'):
+        users = mongo.db.users.find({'_id':ObjectId(user_id)})
+        for user in users:
+            if user['username'] == session['username']:
+                mongo.db.users.remove( {'_id':ObjectId(user_id)})
+                mongo.db.items.remove( {'owner': user['username']})
+    return redirect(url_for('logout'))
+
 @app.route('/list/<list_profile>')
 def open(list_profile):
     if list_profile:
