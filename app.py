@@ -91,10 +91,11 @@ def insert_item(list_profile):
         item = request.form.to_dict()
         item['favorites'] = []
         item['status'] = 'suggested'
-        item['owner'] = session['username']
+        item['owner'] = list_profile
+        item['suggester'] = session['username']
         items.insert_one(item)
         
-    return redirect( url_for('items'), list_profile = list_profile )     
+    return redirect( url_for('items', list_profile = list_profile ))     
 
 @app.route('/delete/<list_profile>/<page>/<item_id>')
 def delete(list_profile, page, item_id):

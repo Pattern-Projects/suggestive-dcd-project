@@ -3,7 +3,7 @@
 <h2>Suggest</h2>
 
 <div class="row">
-    <form action="{{ url_for('insert_item') }}" method="POST" class="col s12">
+    <form action="{{ url_for('insert_item', list_profile=list_profile) }}" method="POST" class="col s12">
       <div class="row">
         <div class="input-field col s6">
           <input placeholder="Book Title" name="title" type="text" class="validate">

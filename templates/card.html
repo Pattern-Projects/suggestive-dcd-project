@@ -21,7 +21,7 @@
             {% if page == 'reviews' %}
                 {{ reviewspage(page='reviews') }}        
             {% endif %}
-            <a href="{{ url_for('delete',  page=page, item_id=item._id)}}">Delete</a></br>
+            <a href="{{ url_for('delete', list_profile=list_profile,  page=page, item_id=item._id)}}">Delete</a></br>
 
         {% endif %}
         {% if item.complete %}
@@ -38,9 +38,9 @@
 
 {% macro favorite(page) %}
         {% if session['username'] not in item.favorites %}
-            <a href="{{ url_for('favorite', page=page,   item_id=item._id )}}" >Favorite</a></br>
+            <a href="{{ url_for('favorite', list_profile=list_profile, page=page,   item_id=item._id )}}" >Favorite</a></br>
         {% else %}
-            <a href="{{ url_for('unfavorite', page=page, item_id=item._id) }}">Unfavorite</a></br>
+            <a href="{{ url_for('unfavorite', list_profile=list_profile, page=page, item_id=item._id) }}">Unfavorite</a></br>
         {% endif %}
         
 {% endmacro %}
@@ -48,9 +48,9 @@
 
 {% macro itemspage(page) %}
         {% if item.status == 'reading' %}
-            <a href="{{ url_for('set_status', page=page, status='suggested', item_id=item._id)}}" >Reading</a></br>
+            <a href="{{ url_for('set_status', list_profile=list_profile, page=page, status='suggested', item_id=item._id)}}" >Reading</a></br>
         {% else %}
-            <a href="{{ url_for('set_status', page=page, status='reading', item_id=item._id)}}" >Add to Reading</a></br>
+            <a href="{{ url_for('set_status', list_profile=list_profile, page=page, status='reading', item_id=item._id)}}" >Add to Reading</a></br>
         {% endif %}
         
 
@@ -59,15 +59,15 @@
 
 {% macro readingpage(page) %}
         {% if item.status == 'current' %}
-            <a href="{{ url_for('set_status', page=page, status='reading', item_id=item._id)}}" >Remove from Current</a></br>
-            <a href="{{ url_for('complete', item_id=item._id )}}" >Complete</a></br>
+            <a href="{{ url_for('set_status', list_profile=list_profile, page=page, status='reading', item_id=item._id)}}" >Remove from Current</a></br>
+            <a href="{{ url_for('complete', list_profile=list_profile, item_id=item._id )}}" >Complete</a></br>
         {% else %}
-            <a href="{{ url_for('set_status', page=page, status='suggested', item_id=item._id)}}" >Remove from Reading</a></br>
-            <a href="{{ url_for('set_status', page=page, status='current', item_id=item._id)}}" >Add to Current</a></br>
+            <a href="{{ url_for('set_status', list_profile=list_profile, page=page, status='suggested', item_id=item._id)}}" >Remove from Reading</a></br>
+            <a href="{{ url_for('set_status', list_profile=list_profile, page=page, status='current', item_id=item._id)}}" >Add to Current</a></br>
         {% endif %}
 
 {% endmacro %}
 
 {% macro reviewspage(page) %}
-        <a href="{{ url_for('set_status', page=page, status='suggested', item_id=item._id)}}" >Suggest Again</a></br>
+        <a href="{{ url_for('set_status', list_profile=list_profile, page=page, status='suggested', item_id=item._id)}}" >Suggest Again</a></br>
 {% endmacro %}
