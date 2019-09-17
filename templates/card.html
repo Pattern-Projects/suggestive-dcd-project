@@ -21,6 +21,7 @@
             {% if page == 'reviews' %}
                 {{ reviewspage(page='reviews') }}        
             {% endif %}
+            
             {% if item.owner == session['username'] or item.suggester == session['username']%}
                 <a href="{{ url_for('delete', list_profile=list_profile,  page=page, item_id=item._id)}}">Delete</a></br>
             {% endif %}
@@ -31,7 +32,6 @@
             {{item.stars}}</br>
             {{ item.review }}</br>
         {% endif %}
-
 
     </div>
 

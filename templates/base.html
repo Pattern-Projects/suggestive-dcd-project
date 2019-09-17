@@ -7,14 +7,17 @@
 
 <body>
   <div class="container">
+  <ul id="dropdown1" class="dropdown-content red lighten-3">
+    <li><a class=" white-text" href="{{url_for('myinfo')}}">My List</a></li>
+    <li><a class=" white-text" href="{{url_for('logout')}}">Log Out</a></li>
+</ul>
   <nav>
     <div class="nav-wrapper white">
       <a class="left" href="{{url_for('home')}}" class="brand-logo"><img src="https://raw.githubusercontent.com/Pattern-Projects/suggestive-dcd-project/master/assets/images/logo-no-bg.png" alt="suggestive logo - pink circle with curved line suggesting a face with a smile"/></a>
       <ul id="nav" class="right red lighten-3">
-        <li><a href="{{url_for('home')}}">Lists</a></li>
-        <li><a href="{{url_for('myinfo')}}">My List</a></li>
+        <li><a href="{{url_for('home')}}">Home</a></li>
         {% if 'username' in session %}
-        <li><a href="{{url_for('logout')}}">Log Out</a></li>
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{ session['username'] }}<i class="material-icons right">arrow_drop_down</i></a></li>
         {% else %}
         <li><a href="{{url_for('login')}}">Login/Register</a></li>
         {% endif %}
@@ -22,7 +25,6 @@
     </div>
   </nav>
   
-  {{ session['username'] }}
   {% block content %} {% endblock %}
   </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
