@@ -6,7 +6,8 @@
 {% for user in users %}
     
     <a href="{{url_for('open', list_profile=user.username)}}"><div class="card red lighten-4"> 
-        <p>{{ user.username }}</p>
+        <h3>{{ user.username }}</h3>
+        <p>{{ user.blurb }}</p>
     </div></a>
 {% endfor %}
 </div>

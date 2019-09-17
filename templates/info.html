@@ -6,15 +6,17 @@
 
 {% for profile in profiles %}
     {{ profile.blurb }}
-
+</br>
+</br>
+</br>
 {% if list_profile == session['username'] %}
 
 <div class="row">
     <form action="{{ url_for('update_info', list_profile=list_profile) }}" method="POST" class="col s12">
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="Blurb" name="blurb" type="text" class="validate">
-          <label for="blurb">Blurb</label>
+          <input placeholder="Write a blurb" name="blurb" type="text" class="validate">
+          <label for="blurb">Write a blurb for your page</label>
         </div>
 
         <div class="switch">
@@ -24,6 +26,7 @@
           <span class="lever"></span>
           Public
         </label>
+        <p>Public pages will appear on the home page</p>
       </div>
 
     </div>
