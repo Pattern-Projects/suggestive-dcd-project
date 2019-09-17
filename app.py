@@ -12,6 +12,14 @@ DBS_NAME = "suggestive"
 COLLECTION_NAME = "itmes"
 mongo = PyMongo(app)
 
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
+@app.route('/myinfo')
+def myinfo():
+    return render_template('info.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -46,6 +54,10 @@ def logout():
     return redirect(url_for('items'))
 
 @app.route('/')
+@app.route('/info')
+def info():
+    return render_template('info.html')
+
 @app.route('/items')
 def items():
     return render_template('items.html', items=mongo.db.items.find({ 'status': { '$in': [ 'suggested', 'reading' ] } }))
