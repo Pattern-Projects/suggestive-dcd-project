@@ -82,22 +82,24 @@ def delete(page, item_id):
 
 @app.route('/favorite/<page>/<item_id>')
 def favorite(page, item_id):
-    items =  mongo.db.items
-    if 'username' in session:
-        items.update( {'_id': ObjectId(item_id)},
-        {
-            '$push': {'favorites': session['username']}
-        })
+    if session['username']:
+        items =  mongo.db.items
+        if 'username' in session:
+            items.update( {'_id': ObjectId(item_id)},
+            {
+                '$push': {'favorites': session['username']}
+            })
     return redirect(url_for( page ) )   
 
 @app.route('/unfavorite/<page>/<item_id>')
 def unfavorite(page, item_id):
-    items =  mongo.db.items
-    if 'username' in session:
-        items.update( {'_id': ObjectId(item_id)},
-        {
-            '$pull': {'favorites': session['username']}
-        })
+    if session['username']:
+        items =  mongo.db.items
+        if 'username' in session:
+            items.update( {'_id': ObjectId(item_id)},
+            {
+                '$pull': {'favorites': session['username']}
+            })
     return redirect(url_for( page ) )   
 
 @app.route('/set_status/<page>/<status>/<item_id>')
