@@ -38,7 +38,7 @@ def login():
             found = True
             if user['password'] == password:
                 session['username'] = user['username']
-                return redirect(url_for('items'))
+                return redirect(url_for('myinfo'))
             else:
                 return render_template('login.html', mismatch=True)
                 
@@ -48,7 +48,7 @@ def login():
             user['password'] = password
             users.insert_one(user)
             session['username'] = username
-            return redirect(url_for('items'))
+            return redirect(url_for('login'))
         
     return render_template('login.html')
 
@@ -56,7 +56,7 @@ def login():
 def logout():
     # remove the username from the session if it's there
     session.pop('username', None)
-    return redirect(url_for('items'))
+    return redirect(url_for('home'))
 
 @app.route('/list/<list_profile>')
 def open(list_profile):
@@ -102,7 +102,7 @@ def delete(list_profile, page, item_id):
     if session.get('username'):
         items = mongo.db.items.find({'_id':ObjectId(item_id)})
         for item in items:
-            if item['owner'] == session['username']:
+            if item['owner'] == session['username'] or item['suggestor'] == session['username']:
                 mongo.db.items.remove( {'_id':ObjectId(item_id)})
     return redirect(url_for( page, list_profile = list_profile ))
 

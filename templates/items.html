@@ -1,6 +1,6 @@
 {% extends 'tabs.html'%} {% block list_content %}
 
-<h2> Books </h2>
+<h2> Suggested - {{ list_profile }} </h2>
 <a href="{{url_for('suggest', list_profile = list_profile)}}" >Add Suggestion</a></br>
 
 {% for item in items %}

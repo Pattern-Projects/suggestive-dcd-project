@@ -1,6 +1,6 @@
 {% extends 'tabs.html'%} {% block list_content %}
 
-<h2>Reviews</h2>
+<h2> Reviews - {{ list_profile }} </h2>
 {% for item in reviews %}
     
     {% import 'card.html' as card with context %}
