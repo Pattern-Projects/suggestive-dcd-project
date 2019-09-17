@@ -12,13 +12,20 @@ DBS_NAME = "suggestive"
 COLLECTION_NAME = "itmes"
 mongo = PyMongo(app)
 
+@app.route('/')
 @app.route('/home')
 def home():
-    return render_template('home.html')
+    return render_template('home.html', users=mongo.db.users.find())
 
 @app.route('/myinfo')
 def myinfo():
-    return render_template('info.html')
+    if session.get('username'):
+        list_profile = session['username']
+        url = ''+list_profile+'/info'
+        print('change', list_profile)
+        return render_template('info.html', list_profile = list_profile)
+    return redirect(url_for('login'))
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -53,11 +60,13 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('items'))
 
-@app.route('/')
-@app.route('/info')
-def info():
-    return render_template('info.html')
-
+@app.route('/info/<list_profile>')
+def info(list_profile):
+    if list_profile:
+        print('here', list_profile)
+        return render_template('info.html', list_profile = list_profile)
+    return render_template('home.html')
+    
 @app.route('/items')
 def items():
     return render_template('items.html', items=mongo.db.items.find({ 'status': { '$in': [ 'suggested', 'reading' ] } }))
