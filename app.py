@@ -21,8 +21,6 @@ def home():
 def myinfo():
     if session.get('username'):
         list_profile = session['username']
-        url = ''+list_profile+'/info'
-        print('change', list_profile)
         return render_template('info.html', list_profile = list_profile)
     return redirect(url_for('login'))
 
@@ -60,10 +58,16 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('items'))
 
+@app.route('/list/<list_profile>')
+def open(list_profile):
+    if list_profile:
+        return render_template('info.html', list_profile = list_profile)
+    return render_template('home.html')
+
+
 @app.route('/info/<list_profile>')
 def info(list_profile):
     if list_profile:
-        print('here', list_profile)
         return render_template('info.html', list_profile = list_profile)
     return render_template('home.html')
     
