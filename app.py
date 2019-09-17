@@ -48,7 +48,7 @@ def login():
             user['password'] = password
             users.insert_one(user)
             session['username'] = username
-            return redirect(url_for('login'))
+            return redirect(url_for('home'))
         
     return render_template('login.html')
 
@@ -102,7 +102,7 @@ def delete(list_profile, page, item_id):
     if session.get('username'):
         items = mongo.db.items.find({'_id':ObjectId(item_id)})
         for item in items:
-            if item['owner'] == session['username'] or item['suggestor'] == session['username']:
+            if item['owner'] == session['username'] or item['suggester'] == session['username']:
                 mongo.db.items.remove( {'_id':ObjectId(item_id)})
     return redirect(url_for( page, list_profile = list_profile ))
 
