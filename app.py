@@ -71,20 +71,20 @@ def info(list_profile):
         return render_template('info.html', list_profile = list_profile)
     return render_template('home.html')
     
-@app.route('/items')
-def items():
-    return render_template('items.html', items=mongo.db.items.find({ 'status': { '$in': [ 'suggested', 'reading' ] } }))
+@app.route('/items/<list_profile>')
+def items(list_profile):
+    return render_template('items.html', list_profile = list_profile, items=mongo.db.items.find({ 'status': { '$in': [ 'suggested', 'reading' ] } }))
     
-@app.route('/suggest')
-def suggest():
+@app.route('/suggest/<list_profile>')
+def suggest(list_profile):
     if session.get('username'):
         return render_template('suggest.html',
-                                authors=mongo.db.authors.find())
+                                authors=mongo.db.authors.find(), list_profile = list_profile)
     else:
         return render_template('login.html')
 
-@app.route('/insert_item', methods=['POST'])
-def insert_item():
+@app.route('/insert_item/<list_profile>', methods=['POST'])
+def insert_item(list_profile):
     if session.get('username'):
 
         items =  mongo.db.items
@@ -94,19 +94,19 @@ def insert_item():
         item['owner'] = session['username']
         items.insert_one(item)
         
-    return redirect( url_for('items') )     
+    return redirect( url_for('items'), list_profile = list_profile )     
 
-@app.route('/delete/<page>/<item_id>')
-def delete(page, item_id):
+@app.route('/delete/<list_profile>/<page>/<item_id>')
+def delete(list_profile, page, item_id):
     if session.get('username'):
         items = mongo.db.items.find({'_id':ObjectId(item_id)})
         for item in items:
             if item['owner'] == session['username']:
                 mongo.db.items.remove( {'_id':ObjectId(item_id)})
-    return redirect(url_for( page ))
+    return redirect(url_for( page, list_profile = list_profile ))
 
-@app.route('/favorite/<page>/<item_id>')
-def favorite(page, item_id):
+@app.route('/favorite/<list_profile>/<page>/<item_id>')
+def favorite(list_profile, page, item_id):
     if session.get('username'):
         items =  mongo.db.items
         if 'username' in session:
@@ -114,10 +114,10 @@ def favorite(page, item_id):
             {
                 '$push': {'favorites': session['username']}
             })
-    return redirect(url_for( page ) )   
+    return redirect(url_for( page, list_profile = list_profile ) )   
 
-@app.route('/unfavorite/<page>/<item_id>')
-def unfavorite(page, item_id):
+@app.route('/unfavorite/<list_profile>/<page>/<item_id>')
+def unfavorite(list_profile, page, item_id):
     if session.get('username'):
         items =  mongo.db.items
         if 'username' in session:
@@ -125,10 +125,10 @@ def unfavorite(page, item_id):
             {
                 '$pull': {'favorites': session['username']}
             })
-    return redirect(url_for( page ) )   
+    return redirect(url_for( page, list_profile = list_profile ) )   
 
-@app.route('/set_status/<page>/<status>/<item_id>')
-def set_status(page, status, item_id):
+@app.route('/set_status/<list_profile>/<page>/<status>/<item_id>')
+def set_status(list_profile, page, status, item_id):
     if session.get('username'):
         items = mongo.db.items.find({'_id':ObjectId(item_id)})
         for item in items:
@@ -137,23 +137,23 @@ def set_status(page, status, item_id):
                 {
                     '$set': {'status': status }
                 })
-    return redirect(url_for( page ) )
+    return redirect(url_for( page, list_profile = list_profile ) )
 
-@app.route('/reading')
-def reading():
-    return render_template('reading.html', reading = mongo.db.items.find({ 'status': { '$in': [ 'reading', 'current' ] } }))
+@app.route('/reading/<list_profile>')
+def reading(list_profile):
+    return render_template('reading.html', list_profile = list_profile, reading = mongo.db.items.find({ 'status': { '$in': [ 'reading', 'current' ] } }))
 
-@app.route('/complete/<item_id>')
-def complete(item_id):
+@app.route('/complete/<list_profile><item_id>')
+def complete(list_profile, item_id):
     if session.get('username'):
         item =  mongo.db.items.find_one({"_id": ObjectId(item_id)})
         return render_template('complete.html', item=item) 
-    return render_template('reading.html')
+    return render_template('reading.html', list_profile = list_profile)
     
 #Required - editing of data passed with POST
 
-@app.route('/complete_item/<item_id>', methods=['POST'])
-def complete_item(item_id):
+@app.route('/complete_item/<list_profile>/<item_id>', methods=['POST'])
+def complete_item(list_profile, item_id):
     if session.get('username'):
         items = mongo.db.items.find({'_id':ObjectId(item_id)})
         for item in items:
@@ -166,11 +166,11 @@ def complete_item(item_id):
                     'status': 'complete',
                     'complete': True
                 }})
-    return redirect( url_for( 'reviews') )     
+    return redirect( url_for( 'reviews', list_profile = list_profile) )     
 
-@app.route('/reviews')
-def reviews():
-    return render_template('reviews.html', reviews = mongo.db.items.find({'complete': True}))
+@app.route('/reviews/<list_profile>')
+def reviews(list_profile):
+    return render_template('reviews.html', list_profile = list_profile, reviews = mongo.db.items.find({'complete': True}))
 
 
 if __name__ == '__main__':
