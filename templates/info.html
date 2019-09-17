@@ -7,6 +7,12 @@
 {% for profile in profiles %}
     {{ profile.blurb }}
 </br>
+Share {% if list_profile == session['username'] %}your{% else %}this{% endif %} page:</br>
+
+http://suggestive-dcd-project.herokuapp.com/info/{{ list_profile }}</br>
+
+    
+</br>
 </br>
 </br>
 {% if list_profile == session['username'] %}
