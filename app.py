@@ -52,25 +52,32 @@ def items():
     
 @app.route('/suggest')
 def suggest():
-    return render_template('suggest.html',
+    if session['username']:
+        return render_template('suggest.html',
                                 authors=mongo.db.authors.find())
+    else:
+        return render_template('login')
 
 @app.route('/insert_item', methods=['POST'])
 def insert_item():
-    items =  mongo.db.items
-    
-    item = request.form.to_dict()
-    item['favorites'] = []
-    item['status'] = 'suggested'
-    
-    items.insert_one(item)
-    
+    if session['username']:
+
+        items =  mongo.db.items
+        item = request.form.to_dict()
+        item['favorites'] = []
+        item['status'] = 'suggested'
+        item['owner'] = session['username']
+        items.insert_one(item)
+        
     return redirect( url_for('items') )     
 
 @app.route('/delete/<page>/<item_id>')
 def delete(page, item_id):
-    items = mongo.db.items
-    items.remove( {'_id':ObjectId(item_id)})
+    if session['username']:
+        items = mongo.db.items.find({'_id':ObjectId(item_id)})
+        for item in items:
+            if item['owner'] == session['username']:
+                mongo.db.items.remove( {'_id':ObjectId(item_id)})
     return redirect(url_for( page ))
 
 @app.route('/favorite/<page>/<item_id>')
