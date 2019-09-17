@@ -1,7 +1,8 @@
 {% extends 'tabs.html'%} {% block list_content %}
+<title>{{ list_profile }} - Reading List</title>
 
 <h2>Reading</h2>
-{{ list_profile }}'s reading list
+<p>{{ list_profile }}'s reading list</p>
 {% for item in reading %}
     
     {% import 'card.html' as card with context %}

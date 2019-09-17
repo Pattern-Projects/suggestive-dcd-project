@@ -21,7 +21,7 @@ def home():
 def myinfo():
     if session.get('username'):
         list_profile = session['username']
-        return render_template('info.html', list_profile = list_profile)
+        return render_template('info.html', list_profile = list_profile, profiles=mongo.db.users.find({'username':list_profile}))
     return redirect(url_for('login'))
 
 
@@ -46,6 +46,7 @@ def login():
             users =  mongo.db.users
             user = request.form.to_dict()
             user['password'] = password
+            user['public'] = 'off'
             users.insert_one(user)
             session['username'] = username
             return redirect(url_for('home'))
@@ -61,14 +62,14 @@ def logout():
 @app.route('/list/<list_profile>')
 def open(list_profile):
     if list_profile:
-        return render_template('info.html', list_profile = list_profile)
+        return render_template('info.html', list_profile = list_profile, profiles=mongo.db.users.find({'username':list_profile}))
     return render_template('home.html')
 
 
 @app.route('/info/<list_profile>')
 def info(list_profile):
     if list_profile:
-        return render_template('info.html', list_profile = list_profile)
+        return render_template('info.html', list_profile = list_profile, profiles=mongo.db.users.find({'username':list_profile}))
     return render_template('home.html')
     
 @app.route('/items/<list_profile>')
@@ -97,6 +98,25 @@ def insert_item(list_profile):
         
     return redirect( url_for('items', list_profile = list_profile ))     
 
+@app.route('/update_info/<list_profile>', methods=['POST'])
+def update_info(list_profile):
+    if session.get('username'):
+        item = request.form.to_dict()
+        blurb = item['blurb']
+        if item.get('public'):
+            public = 'on'
+        else:
+            public = 'off'
+
+        users =  mongo.db.users.find({'username': list_profile})
+        for user in users:
+            if user['username'] == session['username']:
+                mongo.db.users.update( {'_id': ObjectId(user['_id'])},
+                {
+                    '$set': {'blurb': blurb, 'public' : public }
+                })
+    return redirect( url_for('info', list_profile = list_profile ))     
+
 @app.route('/delete/<list_profile>/<page>/<item_id>')
 def delete(list_profile, page, item_id):
     if session.get('username'):
@@ -115,7 +135,8 @@ def favorite(list_profile, page, item_id):
             {
                 '$push': {'favorites': session['username']}
             })
-    return redirect(url_for( page, list_profile = list_profile ) )   
+    return redirect(url_for( page, list_profile = list_profile ) )
+    
 
 @app.route('/unfavorite/<list_profile>/<page>/<item_id>')
 def unfavorite(list_profile, page, item_id):
