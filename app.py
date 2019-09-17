@@ -52,15 +52,15 @@ def items():
     
 @app.route('/suggest')
 def suggest():
-    if session['username']:
+    if session.get('username'):
         return render_template('suggest.html',
                                 authors=mongo.db.authors.find())
     else:
-        return render_template('login')
+        return render_template('login.html')
 
 @app.route('/insert_item', methods=['POST'])
 def insert_item():
-    if session['username']:
+    if session.get('username'):
 
         items =  mongo.db.items
         item = request.form.to_dict()
@@ -73,7 +73,7 @@ def insert_item():
 
 @app.route('/delete/<page>/<item_id>')
 def delete(page, item_id):
-    if session['username']:
+    if session.get('username'):
         items = mongo.db.items.find({'_id':ObjectId(item_id)})
         for item in items:
             if item['owner'] == session['username']:
@@ -82,7 +82,7 @@ def delete(page, item_id):
 
 @app.route('/favorite/<page>/<item_id>')
 def favorite(page, item_id):
-    if session['username']:
+    if session.get('username'):
         items =  mongo.db.items
         if 'username' in session:
             items.update( {'_id': ObjectId(item_id)},
@@ -93,7 +93,7 @@ def favorite(page, item_id):
 
 @app.route('/unfavorite/<page>/<item_id>')
 def unfavorite(page, item_id):
-    if session['username']:
+    if session.get('username'):
         items =  mongo.db.items
         if 'username' in session:
             items.update( {'_id': ObjectId(item_id)},
@@ -104,11 +104,14 @@ def unfavorite(page, item_id):
 
 @app.route('/set_status/<page>/<status>/<item_id>')
 def set_status(page, status, item_id):
-    items =  mongo.db.items
-    items.update( {'_id': ObjectId(item_id)},
-    {
-        '$set': {'status': status }
-    })
+    if session.get('username'):
+        items = mongo.db.items.find({'_id':ObjectId(item_id)})
+        for item in items:
+            if item['owner'] == session['username']:
+                mongo.db.items.update( {'_id': ObjectId(item_id)},
+                {
+                    '$set': {'status': status }
+                })
     return redirect(url_for( page ) )
 
 @app.route('/reading')
@@ -117,22 +120,27 @@ def reading():
 
 @app.route('/complete/<item_id>')
 def complete(item_id):
-    item =  mongo.db.items.find_one({"_id": ObjectId(item_id)})
-    return render_template('complete.html', item=item) 
-
+    if session.get('username'):
+        item =  mongo.db.items.find_one({"_id": ObjectId(item_id)})
+        return render_template('complete.html', item=item) 
+    return render_template('reading.html')
+    
 #Required - editing of data passed with POST
 
 @app.route('/complete_item/<item_id>', methods=['POST'])
 def complete_item(item_id):
-    items = mongo.db.items
-    items.update( {'_id': ObjectId(item_id)},
-    {
-        '$set': {
-        'stars': request.form.get('stars'),
-        'review': request.form.get('review'),
-        'status': 'complete',
-        'complete': True
-    }})
+    if session.get('username'):
+        items = mongo.db.items.find({'_id':ObjectId(item_id)})
+        for item in items:
+            if item['owner'] == session['username']:    
+                mongo.db.items.update( {'_id': ObjectId(item_id)},
+                {
+                    '$set': {
+                    'stars': request.form.get('stars'),
+                    'review': request.form.get('review'),
+                    'status': 'complete',
+                    'complete': True
+                }})
     return redirect( url_for( 'reviews') )     
 
 @app.route('/reviews')
