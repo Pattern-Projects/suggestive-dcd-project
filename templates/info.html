@@ -21,7 +21,7 @@ http://suggestive-dcd-project.herokuapp.com/info/{{ list_profile }}</br>
     <form action="{{ url_for('update_info', list_profile=list_profile) }}" method="POST" class="col s12">
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="Write a blurb" name="blurb" type="text" class="validate">
+          <input placeholder="Write a blurb" value="{{ profile.blurb }}" name="blurb" type="text" class="validate">
           <label for="blurb">Write a blurb for your page</label>
         </div>
       </div>
