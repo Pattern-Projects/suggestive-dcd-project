@@ -1,6 +1,6 @@
 {% macro box(page='items') -%}
-
-    <div class="card red lighten-4"> 
+    
+    <div class="card {% if item.status == "current" %}yellow lighten-4{% else %} red lighten-4{%endif%}"> 
         <small>{{ item.status }}</small></br>
         <strong>{{item.title}}</strong>
         <p>{{item.author}}</p>
@@ -10,7 +10,9 @@
                 
             {% if page == 'items' %}
                 {{ favorite(page='items') }}
-                {{ itemspage(page='items') }}
+                {% if item.owner == session['username'] %}
+                    {{ itemspage(page='items') }}
+                {% endif %}
             {% endif %}
     
             {% if page == 'reading' %}
@@ -21,7 +23,9 @@
             {% if page == 'reviews' %}
                 {{ reviewspage(page='reviews') }}        
             {% endif %}
+
             
+
             {% if item.owner == session['username'] or item.suggester == session['username']%}
                 <a href="{{ url_for('delete', list_profile=list_profile,  page=page, item_id=item._id)}}">Delete</a></br>
             {% endif %}
