@@ -1,7 +1,7 @@
 {% macro suggested(page='items') -%}
-<div class="card">
-    <small>{{ item.status }}</small></br>
-    <strong>{{item.title}}</strong>
+<div class="card content">
+    <small>{{ item.status }}</small>
+    <h5>{{item.title}}</h5>
     <p>{{item.author}}</p>
     <p>Favorites: {{item.favorites | length}} {{ favorite(page='reading') }}
 
@@ -41,9 +41,9 @@
 {%- endmacro %} 
 
 {% macro reading(page='reading') -%}
-<div class="card">
-    <small>{{ item.status }}</small></br>
-    <strong>{{item.title}}</strong>
+<div class="card content">
+    <small>{{ item.status }}</small>
+    <h5>{{item.title}}</h5>
     <p>{{item.author}}</p>
     <p>Favorites: {{item.favorites | length}} {{ favorite(page='reviews') }}
 
@@ -86,9 +86,9 @@
 {%- endmacro %} 
 
 {% macro reviews(page='reviews') -%}
-<div class="card">
+<div class="card content">
     <small>{{ item.status }}</small></br>
-    <strong>{{item.title}}</strong>
+    <h5>{{item.title}}</h5>
     <p>{{item.author}}</p>
     <p>Favorites: {{item.favorites | length}} {{ favorite(page='reviews') }}
 
