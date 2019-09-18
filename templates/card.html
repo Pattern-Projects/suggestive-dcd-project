@@ -31,8 +31,10 @@
                 <a href="{{ url_for('delete', list_profile=list_profile,  page=page, item_id=item._id)}}" class="modal-close waves-effect waves-green btn-flat red white-text">Delete</a>
             </div>
         </div>
-
+        
+        
         {% if item.complete %}
+            <p>Previous Review:</p>
             {{item.stars}}</br>
             {{ item.review }}</br>
         {% endif %}
@@ -41,7 +43,7 @@
 {%- endmacro %} 
 
 {% macro reading(page='reading') -%}
-<div class="card content">
+<div class="card content {% if item.status == 'current' %}current{% endif %}">
     <small>{{ item.status }}</small>
     <h5>{{item.title}}</h5>
     <p>{{item.author}}</p>
@@ -78,6 +80,7 @@
 
 
         {% if item.complete %}
+            <p>Previous Review:</p>
             {{item.stars}}</br>
             {{ item.review }}</br>
         {% endif %}
@@ -86,7 +89,7 @@
 {%- endmacro %} 
 
 {% macro reviews(page='reviews') -%}
-<div class="card content">
+<div class="card content current">
     <small>{{ item.status }}</small></br>
     <h5>{{item.title}}</h5>
     <p>{{item.author}}</p>
@@ -117,7 +120,7 @@
             </div>
         </div>
 
-
+        Review:
         {% if item.complete %}
             {{item.stars}}</br>
             {{ item.review }}</br>
