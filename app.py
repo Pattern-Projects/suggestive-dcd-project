@@ -175,7 +175,7 @@ def set_status(list_profile, page, status, item_id):
 def reading(list_profile):
     return render_template('reading.html', list_profile = list_profile, reading = mongo.db.items.find({'owner': list_profile, 'status': { '$in': [ 'reading', 'current' ] } }))
 
-@app.route('/complete/<list_profile><item_id>')
+@app.route('/complete/<list_profile>/<item_id>')
 def complete(list_profile, item_id):
     if session.get('username'):
         item =  mongo.db.items.find_one({"_id": ObjectId(item_id)})
