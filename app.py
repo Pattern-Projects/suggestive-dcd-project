@@ -179,7 +179,7 @@ def reading(list_profile):
 def complete(list_profile, item_id):
     if session.get('username'):
         item =  mongo.db.items.find_one({"_id": ObjectId(item_id)})
-        return render_template('complete.html', item=item) 
+        return render_template('complete.html', list_profile = list_profile, item=item) 
     return render_template('reading.html', list_profile = list_profile)
     
 #Required - editing of data passed with POST

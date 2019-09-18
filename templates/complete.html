@@ -3,7 +3,7 @@
 <h2>Review Book</h2>
 
 <div class="row">
-    <form action="{{ url_for('complete_item', item_id=item._id) }}" method="POST" class="col s12">
+    <form action="{{ url_for('complete_item', list_profile = list_profile, item_id=item._id) }}" method="POST" class="col s12">
       <h3>{{ item.title }}</h3>
       <p>{{ item.author }}</p>
 
