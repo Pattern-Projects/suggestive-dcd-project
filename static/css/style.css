@@ -14,8 +14,8 @@
     background-color: #AFE9AF
 }
 
-.light-blue{
-    background-color: #7EC8F2
+.neat-blue{
+    background-color: #90CAF9
 }
 
 .current{
@@ -60,6 +60,10 @@ nav{
     background-color: #ffcdd2;
     /*color:white;*/
     
+}
+
+.link-bold{
+    font-weight: bold;
 }
 
 .text-bold{
