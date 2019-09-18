@@ -29,7 +29,6 @@
             {% if item.owner == session['username'] or item.suggester == session['username']%}
                 <a class="waves-effect waves-light btn modal-trigger red lighten-2" href="#modal1">Delete</a><br>
 
-                <a href="{{ url_for('delete', list_profile=list_profile,  page=page, item_id=item._id)}}">Delete</a>
                 <div id="modal1" class="modal">
                 <div class="modal-content">
                 <h4>Delete Profile</h4>
