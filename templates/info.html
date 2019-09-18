@@ -1,42 +1,47 @@
 {% extends 'tabs.html'%} {% block list_content %}
+
 <title>{{ list_profile }} - Info</title>
+<div class="card content">
 
 <h2>Info</h2>
 <p>Welcome to the home of {{ list_profile }}</p>
 
 {% for profile in profiles %}
     <p>{{ profile.blurb }}</p>
-</br>
-Share {% if list_profile == session['username'] %}your{% else %}this{% endif %} page:</br>
+</div>
 
-http://suggestive-dcd-project.herokuapp.com/info/{{ list_profile }}</br>
+<div class="card content">
+<h4>
+Share {% if list_profile == session['username'] %}your{% else %}this{% endif %} page:
+</h4>
+<p class="center code">http://suggestive-dcd-project.herokuapp.com/info/{{ list_profile }}</p>
+</div>
 
-    
-</br>
-</br>
-</br>
 {% if list_profile == session['username'] %}
-
+<div class="card content">
+<h4>Make Changes</h4>
 <div class="row">
     <form action="{{ url_for('update_info', list_profile=list_profile) }}" method="POST" class="col s12">
+      
       <div class="row">
         <div class="input-field col s6">
           <input placeholder="Write a blurb" value="{{ profile.blurb }}" name="blurb" type="text" class="validate">
           <label for="blurb">Write a blurb for your page</label>
         </div>
       </div>
+      
       <div class="row">
         <div class="switch">
-        <label>
-          Private
-          <input type="checkbox" name="public" {% if profile.public == 'on' %}checked{% endif %}>
-          <span class="lever"></span>
-          Public
-        </label>
+          <label>
+            Private
+            <input type="checkbox" name="public" {% if profile.public == 'on' %}checked{% endif %}>
+            <span class="lever"></span>
+            Public
+          </label>
         <p>Public pages will appear on the home page</p>
       </div>
-
     </div>
+    
     <div class="row">
         <button class="btn waves-effect waves-light red lighten-3 right" type="submit">Save
             <i class="material-icons right"></i>
@@ -44,10 +49,13 @@ http://suggestive-dcd-project.herokuapp.com/info/{{ list_profile }}</br>
         </div>
     </form>
 </div>
-
+</div>
+<div class="card content">
+  <h4>Delete Profile</h4>
+  <p>If you are finished using the site, you can delete your information forever. All books suggested to you will be deleted too. Books you suggested to others will remain.</p>
   <a class="waves-effect waves-light btn modal-trigger red" href="#modal1">Delete Profile</a><br>
   <label>The danger button</label>
-
+</div>
   <div id="modal1" class="modal">
     <div class="modal-content">
       <h4>Delete Profile</h4>

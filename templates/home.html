@@ -4,7 +4,7 @@
 <h1>Welcome to Suggestive!</h1>
 <p class="flow-text">A book suggestion website</p>
 <div class="card content">
-    <h3>Public Lists</h3>
+<h4>Public Lists</h4>
 <p>Browse these public lists and suggest books for the owners.</p>
 {% if not session['username'] %}
 <p>Open a list or <a href="{{url_for('login')}}">Login</a> to make your own</p>
@@ -15,7 +15,7 @@
 {% for user in users %}
     
     <a href="{{url_for('open', list_profile=user.username)}}"><div class="card card-link"> 
-        <h3>{{ user.username }}</h3>
+        <h5>{{ user.username }}</h5>
         <p>{{ user.blurb }}</p>
     </div></a>
 {% endfor %}
