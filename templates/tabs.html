@@ -1,7 +1,7 @@
 {% extends 'base.html'%}{% block content %}
-<nav>
+<nav class="lower-nav">
     <div class="nav-wrapper white">
-      <h4 class="left black-text">{{ list_profile }}'s Profile</h4>
+      <h4 class="left black-text profile-header">{{ list_profile }}'s Profile</h4>
       <ul id="nav" class="right blue lighten-3">
         <li><a href="{{url_for('info', list_profile = list_profile)}}">Info</a></li>
         <li><a href="{{url_for('items', list_profile = list_profile)}}">Suggested</a></li>
