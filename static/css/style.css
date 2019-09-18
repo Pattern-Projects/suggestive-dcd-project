@@ -6,6 +6,37 @@
     color: #3D3D3D;
 }
 
-#logo-container{
-    height:57px;
+.logo{
+    height: 100%;
+    padding-left: 10px;
+    margin-top: 6px;
+}
+
+.content{
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.card-link {
+    transition: all 0.5s;
+    padding: 15px;
+    padding-left: 25px;
+    color: black;
+}
+
+.card-link:hover {
+    transition: all 0.5s;
+    background-color: #ffcdd2;
+    /*color:white;*/
+    
+}
+
+.text-bold{
+    transition: all 0.5s;
+    font-weight: bold;
+}
+
+footer{
+    margin-top: 10px;
+    text-align: center;
 }

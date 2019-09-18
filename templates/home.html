@@ -1,21 +1,24 @@
 {% extends 'base.html'%} {% block content %}
-<title>Home</title>
+<title>Suggestive</title>
 
-<h2>Home</h2>
-
-<p>Public lists appear here for anyone can find</p>
+<h1>Welcome to Suggestive!</h1>
+<p class="flow-text">A book suggestion website</p>
+<div class="card content">
+    <h3>Public Lists</h3>
+<p>Browse these public lists and suggest books for the owners.</p>
 {% if not session['username'] %}
-<p>Open a list or login to make your own</p>
+<p>Open a list or <a href="{{url_for('login')}}">Login</a> to make your own</p>
 {% else %}
 <p>Open your own: <a href="{{url_for('myinfo')}}">My List</a></p>
 {% endif %}
 <div class="row">
 {% for user in users %}
     
-    <a href="{{url_for('open', list_profile=user.username)}}"><div class="card red lighten-4"> 
+    <a href="{{url_for('open', list_profile=user.username)}}"><div class="card card-link"> 
         <h3>{{ user.username }}</h3>
         <p>{{ user.blurb }}</p>
     </div></a>
 {% endfor %}
 </div>
 {% endblock %}
+</div>

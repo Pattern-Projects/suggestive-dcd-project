@@ -3,16 +3,16 @@
 
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
     
 </head>
 
 <body>
   <div class="container">
-  <ul id="dropdown1" class="dropdown-content red lighten-3">
+  <ul id="dropdown1" class="dropdown-content red lighten-4 text-bold">
     <li><a class=" white-text" href="{{url_for('myinfo')}}">My List</a></li>
     <li><a class=" white-text" href="{{url_for('logout')}}">Log Out</a></li>
-</ul>
+  </ul>
   <nav>
 
 
@@ -20,10 +20,8 @@
 
     <div class="nav-wrapper white">
       <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="material-icons">menu</i></a>
-      <div id="logo-container">
-      <a class="left" href="{{url_for('home')}}" class="brand-logo"><img src="assets/images/logo-no-bg.png" alt="suggestive logo - pink circle with curved line suggesting a face with a smile"/></a>
-      </div>
-      <ul id="nav" class="right red lighten-3">
+      <a class="left" href="{{url_for('home')}}" class="brand-logo"><img class="logo"src="https://raw.githubusercontent.com/Pattern-Projects/suggestive-dcd-project/master/assets/images/logo-no-bg.png" alt="suggestive logo - pink circle with curved line suggesting a face with a smile"/></a>
+      <ul id="nav" class="right red lighten-4 text-bold">
         <li><a href="{{url_for('home')}}">Home</a></li>
         {% if 'username' in session %}
         <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{ session['username'] }}<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -53,6 +51,9 @@
   
   {% block content %} {% endblock %}
   </div>
+  
+  <footer><a href="https://github.com/Pattern-Projects/suggestive-dcd-project">This website was created as a milestone project for the fullstack developer course at Code Institute - John O Sullivan (2019).</a></footer>
+  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
