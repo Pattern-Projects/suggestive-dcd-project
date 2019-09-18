@@ -45,9 +45,20 @@ http://suggestive-dcd-project.herokuapp.com/info/{{ list_profile }}</br>
     </form>
 </div>
 
-<a href="{{ url_for('delete_user', user_id=profile._id)}}">Delete Profile</a></br>
-<label>Be very careful - Does not ask confirmation yet!</label>
+  <a class="waves-effect waves-light btn modal-trigger red" href="#modal1">Delete Profile</a><br>
+  <label>The danger button</label>
 
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Delete Profile</h4>
+      <p>Are you sure you want to delete your account?
+      You will lose all your suggested books.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+      <a href="{{ url_for('delete_user', user_id=profile._id)}}" class="modal-close waves-effect waves-green btn-flat red white-text">Delete</a>
+    </div>
+  </div>
 
 {% endif %}
 {% endfor %}

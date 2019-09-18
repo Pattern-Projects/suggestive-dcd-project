@@ -2,11 +2,12 @@
 <title>{{ list_profile }} - Suggested</title>
 <h2>Suggested</h2>
 
+<p>List of suggested books for {{ list_profile }}</p>
+
 {% for profile in profiles %}
     <p>{{ profile.blurb }}</p>
 {% endfor %}
 
-<p>List of suggested books for {{ list_profile }}</p>
 <a href="{{url_for('suggest', list_profile = list_profile)}}" >Add Suggestion</a></br>
 
 {% for item in items %}
