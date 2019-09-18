@@ -1,6 +1,7 @@
 {% extends 'tabs.html'%} {% block list_content %}
 <title>{{ list_profile }} - Reviews</title>
 
+<div class="card content">
 <h2> Reviews</h2>
 <p>Books reviewed by {{ list_profile }}</p>
 {% for item in reviews %}
@@ -9,4 +10,5 @@
     {{ card.reviews('reviews') }}
     
 {% endfor %}
+</div>
 {% endblock %}
