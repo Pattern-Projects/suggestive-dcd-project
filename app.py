@@ -84,13 +84,13 @@ def info(list_profile):
     
 @app.route('/items/<list_profile>')
 def items(list_profile):
-    return render_template('items.html', list_profile = list_profile, items=mongo.db.items.find({'owner': list_profile,  'status': { '$in': [ 'suggested', 'reading' ] } }))
+    return render_template('items.html',profiles=mongo.db.users.find({'username':list_profile}), list_profile = list_profile, items=mongo.db.items.find({'owner': list_profile,  'status': { '$in': [ 'suggested', 'reading' ] } }))
     
 @app.route('/suggest/<list_profile>')
 def suggest(list_profile):
     if session.get('username'):
         return render_template('suggest.html',
-                                authors=mongo.db.authors.find(), list_profile = list_profile)
+                                profiles=mongo.db.users.find({'username':list_profile}), list_profile = list_profile)
     else:
         return render_template('login.html')
 
