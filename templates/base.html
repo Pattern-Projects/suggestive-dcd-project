@@ -24,6 +24,8 @@
       <ul id="nav" class="right red lighten-4 text-bold">
         <li><a href="{{url_for('home')}}">Home</a></li>
         {% if 'username' in session %}
+        <li><a class=" white-text" href="{{url_for('myinfo')}}">My List</a></li>
+        <li><a class=" white-text" href="{{url_for('logout')}}">Log Out</a></li>
         <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{ session['username'] }}<i class="material-icons right">arrow_drop_down</i></a></li>
         {% else %}
         <li><a href="{{url_for('login')}}">Login/Register</a></li>
