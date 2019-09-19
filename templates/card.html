@@ -3,7 +3,7 @@
     <small>{{ item.status }}</small>
     <h5>{{item.title}}</h5>
     <p>{{item.author}}</p>
-    <p>Favorites: {{item.favorites | length}} {{ favorite(page='items') }}
+    <p>Favorites: {{ item.favorites_count }} {{ favorite(page='items') }}
 
         <div class="row">
             {% if item.owner == session['username'] %}
@@ -47,7 +47,7 @@
     <small>{{ item.status }}</small>
     <h5>{{item.title}}</h5>
     <p>{{item.author}}</p>
-    <p>Favorites: {{item.favorites | length}} {{ favorite(page='reading') }}
+    <p>Favorites: {{item.favorites_count }} {{ favorite(page='reading') }}
 
         <div class="row">
             {% if item.owner == session['username'] %}
@@ -93,7 +93,7 @@
     <small>{{ item.status }}</small></br>
     <h5>{{item.title}}</h5>
     <p>{{item.author}}</p>
-    <p>Favorites: {{item.favorites | length}} {{ favorite(page='reviews') }}
+    <p>Favorites: {{item.favorites_count }} {{ favorite(page='reviews') }}
 
         <div class="row">
 
