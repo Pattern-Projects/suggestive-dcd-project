@@ -8,7 +8,19 @@
 
 {% for profile in profiles %}
     <p class="quote">{{ profile.blurb }}</p>
-
+<table>
+        <tbody>
+          <tr>
+            <td>Books Suggested:</td>
+            <td>{{ suggested }}</td>
+          </tr>
+          <tr>
+            <td>Complete</td>
+            <td>{{ complete }}</td>
+          </tr>
+        </tbody>
+      </table>
+            
 <a class="text-bold cheeky-pink waves-effect waves-light btn" href="{{url_for('suggest', list_profile = list_profile)}}" >Suggest a book</a></br>
 </div>
 

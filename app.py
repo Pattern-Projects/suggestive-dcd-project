@@ -72,7 +72,10 @@ def delete_user(user_id):
 @app.route('/info/<list_profile>')
 def info(list_profile):
     if list_profile:
-        return render_template('info.html', list_profile = list_profile, profiles=mongo.db.users.find({'username':list_profile}))
+        suggested = mongo.db.items.find({'username': list_profile})
+        complete = mongo.db.items.find({'username': list_profile, 'complete':True})
+
+        return render_template('info.html',suggested=suggested.count(), complete=complete.count(), list_profile = list_profile, profiles=mongo.db.users.find({'username':list_profile}))
     return render_template('home.html')
     
 @app.route('/items/<list_profile>')
