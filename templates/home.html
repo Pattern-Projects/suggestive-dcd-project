@@ -14,7 +14,7 @@
 <div class="row">
 {% for user in users %}
     
-    <a href="{{url_for('open', list_profile=user.username)}}"><div class="card card-link"> 
+    <a href="{{url_for('info', list_profile=user.username)}}"><div class="card card-link"> 
         <h5>{{ user.username }}</h5>
         <p>{{ user.blurb }}</p>
     </div></a>

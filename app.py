@@ -69,13 +69,6 @@ def delete_user(user_id):
                 mongo.db.items.remove( {'owner': user['username']})
     return redirect(url_for('logout'))
 
-@app.route('/list/<list_profile>')
-def open(list_profile):
-    if list_profile:
-        return render_template('info.html', list_profile = list_profile, profiles=mongo.db.users.find({'username':list_profile}))
-    return render_template('home.html')
-
-
 @app.route('/info/<list_profile>')
 def info(list_profile):
     if list_profile:
