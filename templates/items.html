@@ -7,10 +7,10 @@
 <p>List of suggested books for {{ list_profile }}</p>
 
 {% for profile in profiles %}
-    <p>{{ profile.blurb }}</p>
+    <p class="quote">{{ profile.blurb }}</p>
 {% endfor %}
 
-<a class="text-bold cheeky-pink waves-effect waves-light btn" href="{{url_for('suggest', list_profile = list_profile)}}" >Add Suggestion</a></br>
+<a class="text-bold cheeky-pink waves-effect waves-light btn" href="{{url_for('suggest', list_profile = list_profile)}}" >Suggest a book</a></br>
 
 {% for item in items %}
 

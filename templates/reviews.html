@@ -4,6 +4,9 @@
 <div class="card content">
 <h2> Reviews</h2>
 <p>Books reviewed by {{ list_profile }}</p>
+
+<a class="text-bold cheeky-pink waves-effect waves-light btn" href="{{url_for('suggest', list_profile = list_profile)}}" >Suggest a book</a></br>
+
 {% for item in reviews %}
     
     {% import 'card.html' as card with context %}
