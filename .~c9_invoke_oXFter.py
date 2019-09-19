@@ -140,7 +140,7 @@ def favorite(list_profile, page, item_id):
             items.update( {'_id': ObjectId(item_id)},
             {
                 '$push': {'favorites': session['username'],
-                     '$inc': { 'favorites_count': 1 }
+                    'favorites_count' : +1
                 }
             })
             
@@ -155,7 +155,7 @@ def unfavorite(list_profile, page, item_id):
             items.update( {'_id': ObjectId(item_id)},
             {
                 '$pull': {'favorites': session['username'],
-                     '$inc': { 'favorites_count': -1 }
+                    'favorites_count' : -1
                 }
             })
     return redirect(url_for( page, list_profile = list_profile ) )   
