@@ -1,4 +1,4 @@
-{% extends 'base.html'%} {% block content %}
+{% extends 'tabs.html'%} {% block list_content %}
 
 <h2>Review Book</h2>
 
@@ -14,7 +14,7 @@
           <!--<input value="{{ item.author }}" name="author" type="text" class="validate">-->
           <!--<input value="{{ item.favorites }}" name="author" type="text" class="validate">-->
           
-          <input placeholder="{{ item.stars }}" name="stars" type="number" class="validate">
+          <input placeholder="{{ item.stars }}" name="stars" type="number" min="1" max="5" class="validate">
           <label for="stars">Stars</label>
         </div>
         <div class="input-field col s6">
