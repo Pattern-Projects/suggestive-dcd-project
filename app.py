@@ -64,7 +64,7 @@ def logout():
 
 @app.route('/delete_user/<user_id>')
 def delete_user(user_id):
-    if session.get('username'):
+    if 'username' in session:
         users = mongo.db.users.find({'_id':ObjectId(user_id)})
         for user in users:
             if user['username'] == session['username']:
@@ -87,7 +87,7 @@ def items(list_profile):
     
 @app.route('/suggest/<list_profile>')
 def suggest(list_profile):
-    if session.get('username'):
+    if 'username' in session:
         return render_template('suggest.html',
                                 profiles=mongo.db.users.find({'username':list_profile}), list_profile = list_profile)
     else:
@@ -95,7 +95,7 @@ def suggest(list_profile):
 
 @app.route('/insert_item/<list_profile>', methods=['POST'])
 def insert_item(list_profile):
-    if session.get('username'):
+    if 'username' in session:
 
         items =  mongo.db.items
         item = request.form.to_dict()
@@ -109,7 +109,7 @@ def insert_item(list_profile):
 
 @app.route('/update_info/<list_profile>', methods=['POST'])
 def update_info(list_profile):
-    if session.get('username'):
+    if 'username' in session:
         item = request.form.to_dict()
         blurb = item['blurb']
         if item.get('public'):
@@ -128,7 +128,7 @@ def update_info(list_profile):
 
 @app.route('/delete/<list_profile>/<page>/<item_id>')
 def delete(list_profile, page, item_id):
-    if session.get('username'):
+    if 'username' in session:
         items = mongo.db.items.find({'_id':ObjectId(item_id)})
         for item in items:
             if item['owner'] == session['username'] or item['suggester'] == session['username']:
@@ -137,7 +137,7 @@ def delete(list_profile, page, item_id):
 
 @app.route('/favorite/<list_profile>/<page>/<item_id>')
 def favorite(list_profile, page, item_id):
-    if session.get('username'):
+    if 'username' in session:
         items =  mongo.db.items
         if 'username' in session:
             items.update( {'_id': ObjectId(item_id)},
@@ -152,7 +152,7 @@ def favorite(list_profile, page, item_id):
 
 @app.route('/unfavorite/<list_profile>/<page>/<item_id>')
 def unfavorite(list_profile, page, item_id):
-    if session.get('username'):
+    if 'username' in session:
         items =  mongo.db.items
         if 'username' in session:
             items.update( {'_id': ObjectId(item_id)},
@@ -165,7 +165,7 @@ def unfavorite(list_profile, page, item_id):
 
 @app.route('/set_status/<list_profile>/<page>/<status>/<item_id>')
 def set_status(list_profile, page, status, item_id):
-    if session.get('username'):
+    if 'username' in session:
         items = mongo.db.items.find({'_id':ObjectId(item_id)})
         for item in items:
             if item['owner'] == session['username']:
@@ -181,16 +181,14 @@ def reading(list_profile):
 
 @app.route('/complete/<list_profile>/<item_id>')
 def complete(list_profile, item_id):
-    if session.get('username'):
+    if 'username' in session:
         item =  mongo.db.items.find_one({"_id": ObjectId(item_id)})
         return render_template('complete.html', list_profile = list_profile, item=item) 
     return render_template('reading.html', list_profile = list_profile)
     
-#Required - editing of data passed with POST
-
 @app.route('/complete_item/<list_profile>/<item_id>', methods=['POST'])
 def complete_item(list_profile, item_id):
-    if session.get('username'):
+    if 'username' in session:
         items = mongo.db.items.find({'_id':ObjectId(item_id)})
         for item in items:
             if item['owner'] == session['username']:    
