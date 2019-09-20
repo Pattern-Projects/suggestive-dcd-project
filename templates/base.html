@@ -15,9 +15,9 @@
 
 
     <div class="nav-wrapper white">
-      <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="material-icons">menu</i></a>
+      <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="material-icons cheeky-pink-text">menu</i></a>
       <a class="left" href="{{url_for('home')}}" class="brand-logo"><img class="logo"src="{{ url_for('static', filename='images/logo-no-bg.png') }}" alt="suggestive logo - pink circle with curved line suggesting a face with a smile"/></a>
-      <ul id="nav" class="right red lighten-4 text-bold">
+      <ul id="nav" class="right red lighten-4 text-bold m0">
         <li><a href="{{url_for('home')}}">Home</a></li>
         {% if 'username' in session %}
         <li><a class=" white-text" href="{{url_for('myinfo')}}">My List</a></li>
@@ -35,14 +35,17 @@
         <img src="images/office.jpg">
       </div>
       <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
-      <a href="#name"><span class="white-text name">John Doe</span></a>
-      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+      <a href="#name"><span class="white-text name">Home</span></a>
+      <a href="#email"><span class="white-text email">Login/Register</span></a>
     </div></li>
-    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-    <li><a href="#!">Second Link</a></li>
+    <li><a href="#!">Home</a></li>
+    <li><a href="#!">Login/Register</a></li>
     <li><div class="divider"></div></li>
-    <li><a class="subheader">Subheader</a></li>
-    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+    <li><a class="subheader"><strong>{{ list_profile }}</strong></a></li>
+    <li><a class="subheader">Info</a></li>
+    <li><a class="subheader">Suggested</a></li>
+    <li><a class="subheader">Reading</a></li>
+    <li><a class="subheader">Reviews</a></li>
   </ul>
   
   
