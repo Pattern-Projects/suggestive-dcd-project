@@ -1,6 +1,8 @@
 {% macro suggested(page='items') -%}
 <div class="card content">
-    <small>{{ item.status }}</small>
+    {% if item.status == 'reading' %}
+    <small class="right">On Reading List</small>
+    {% endif %}
     <h5>{{item.title}}</h5>
     <p>{{item.author}}</p>
     <p>Favorites: {{ item.favorites_count }} {{ favorite(page='items') }}
@@ -44,7 +46,11 @@
 
 {% macro reading(page='reading') -%}
 <div class="card content {% if item.status == 'current' %}current{% endif %}">
-    <small>{{ item.status }}</small>
+
+    {% if item.status == 'current' %}
+    <small class="right">Currently Reading</small>
+    {% endif %}
+
     <h5>{{item.title}}</h5>
     <p>{{item.author}}</p>
     <p>Favorites: {{item.favorites_count }} {{ favorite(page='reading') }}
@@ -90,7 +96,11 @@
 
 {% macro reviews(page='reviews') -%}
 <div class="card content current">
-    <small>{{ item.status }}</small></br>
+
+    {% if item.status == 'suggested' %}
+    <small class="right">Suggested for Rereading</small>
+    {% endif %}
+
     <h5>{{item.title}}</h5>
     <p>{{item.author}}</p>
     <p>Favorites: {{item.favorites_count }} {{ favorite(page='reviews') }}
