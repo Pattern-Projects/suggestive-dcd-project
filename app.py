@@ -197,7 +197,7 @@ def complete_item(list_profile, item_id):
                 mongo.db.items.update( {'_id': ObjectId(item_id)},
                 {
                     '$set': {
-                    'stars': request.form.get('stars'),
+                    'stars': int(request.form.get('stars')),
                     'review': request.form.get('review'),
                     'status': 'complete',
                     'complete': True
