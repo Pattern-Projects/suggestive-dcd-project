@@ -21,10 +21,9 @@ def home():
 def myinfo():
     if 'username' in session:
         list_profile = session['username']
-        suggested = mongo.db.items.count_documents({'username': list_profile})
-        print(suggested)
-        complete = mongo.db.items.find({'username': list_profile, 'complete':True})        
-        return render_template('info.html',suggested=suggested, complete=complete.count(), list_profile = list_profile, profiles=mongo.db.users.find({'username':list_profile}))
+        suggested = mongo.db.items.count_documents({'owner': list_profile})
+        complete = mongo.db.items.count_documents({'owner': list_profile, 'complete':True})        
+        return render_template('info.html',suggested=suggested, complete=complete, list_profile = list_profile, profiles=mongo.db.users.find({'username':list_profile}))
     return redirect(url_for('login'))
 
 
@@ -75,10 +74,10 @@ def delete_user(user_id):
 @app.route('/info/<list_profile>')
 def info(list_profile):
     if list_profile:
-        suggested = mongo.db.items.find({'username': list_profile})
-        complete = mongo.db.items.find({'username': list_profile, 'complete':True})
+        suggested = mongo.db.items.count_documents({'owner': list_profile})
+        complete = mongo.db.items.count_documents({'owner': list_profile, 'complete':True})
 
-        return render_template('info.html',suggested=suggested.count(), complete=complete.count(), list_profile = list_profile, profiles=mongo.db.users.find({'username':list_profile}))
+        return render_template('info.html',suggested=suggested, complete=complete, list_profile = list_profile, profiles=mongo.db.users.find({'username':list_profile}))
     return render_template('home.html')
     
 @app.route('/items/<list_profile>')
