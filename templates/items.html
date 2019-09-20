@@ -4,7 +4,7 @@
 <div class="card content">
 <h2>Suggested</h2>
 
-<p>List of suggested books for {{ list_profile }}</p>
+<p>List of suggested books for {{ list_profile }} to read. If you would like {{ list_profile }} to read on of these books be sure to add a favorite to move it up the list.</p>
 
 {% for profile in profiles %}
     <p class="quote">{% if profile.blurb %}"{{ profile.blurb }}"{% endif %}</p>

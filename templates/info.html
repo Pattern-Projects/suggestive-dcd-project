@@ -4,7 +4,7 @@
 <div class="card content">
 
 <h2>Info</h2>
-<p>Welcome to the home of {{ list_profile }}!</p>
+<p>Welcome to the home of {{ list_profile }}! Here you can see the books suggested, waiting to read and reviews for books completed. Feel free to suggest a book. {{ list_profile }}'s quote will give you an idea of the kinds of books they enjoy. Happy reading.</p>
 
 {% for profile in profiles %}
     <p class="quote">{% if profile.blurb %}"{{ profile.blurb }}"{% endif %}</p>
@@ -32,6 +32,7 @@
 <h4>
 Share {% if list_profile == session['username'] %}your{% else %}this{% endif %} page:
 </h4>
+
 <p class="center code">http://suggestive-dcd-project.herokuapp.com/info/{{ list_profile }}</p>
 </div>
 
