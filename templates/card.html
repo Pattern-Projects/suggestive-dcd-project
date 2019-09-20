@@ -113,11 +113,11 @@
     <p>Favorites: {{item.favorites_count }} {{ favorite(page='reviews') }}
 
         <div class="row">
+            {% if item.status == 'complete' %}
+            <a class="neat-blue text-bold waves-effect btn" href="{{ url_for('set_status', list_profile=list_profile, page=page, status='suggested', item_id=item._id)}}">Suggest Again</a></br>
+            {% endif %}
 
             {% if item.owner == session['username'] %}
-            {% if item.status == 'complete' %}
-            <a class="neat-blue text-bold waves-effect waves-light btn" href="{{ url_for('set_status', list_profile=list_profile, page=page, status='suggested', item_id=item._id)}}">Suggest Again</a></br>
-            {% endif %}
 
             {% if item.owner == session['username'] or item.suggester == session['username']%}
             <a class="text-bold waves-effect waves-light btn right modal-trigger red lighten-1" href="#modal1">Delete</a><br> 

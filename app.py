@@ -175,7 +175,9 @@ def set_status(list_profile, page, status, item_id):
                 {
                     '$set': {'status': status }
                 })
-    return redirect(url_for( page, list_profile = list_profile ) )
+        return redirect(url_for( page, list_profile = list_profile ) )
+    return render_template('login.html')
+
 
 @app.route('/reading/<list_profile>')
 def reading(list_profile):
