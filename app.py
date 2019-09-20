@@ -169,6 +169,8 @@ def set_status(list_profile, page, status, item_id):
         items = mongo.db.items.find({'_id':ObjectId(item_id)})
         for item in items:
             if item['owner'] == session['username']:
+                print(status)
+                
                 mongo.db.items.update( {'_id': ObjectId(item_id)},
                 {
                     '$set': {'status': status }
