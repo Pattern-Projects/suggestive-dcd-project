@@ -3,7 +3,7 @@
 <h2>Suggest a book</h2>
 <p>Suggest a book for {{ list_profile }}.</p>
 {% for profile in profiles %}
-    <p class="quote">"{{ profile.blurb }}"</p>
+    <p class="quote">{% if profile.blurb %}"{{ profile.blurb }}"{% endif %}</p>
 {% endfor %}
 <div class="row content">
     <form action="{{ url_for('insert_item', list_profile=list_profile) }}" method="POST" class="col s12">
