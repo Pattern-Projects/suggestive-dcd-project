@@ -19,9 +19,12 @@ def home():
 
 @app.route('/myinfo')
 def myinfo():
-    if session.get('username'):
+    if 'username' in session:
         list_profile = session['username']
-        return render_template('info.html', list_profile = list_profile, profiles=mongo.db.users.find({'username':list_profile}))
+        suggested = mongo.db.items.count_documents({'username': list_profile})
+        print(suggested)
+        complete = mongo.db.items.find({'username': list_profile, 'complete':True})        
+        return render_template('info.html',suggested=suggested, complete=complete.count(), list_profile = list_profile, profiles=mongo.db.users.find({'username':list_profile}))
     return redirect(url_for('login'))
 
 

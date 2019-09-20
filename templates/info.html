@@ -7,9 +7,13 @@
 <p>Welcome to the home of {{ list_profile }}!</p>
 
 {% for profile in profiles %}
-    <p class="quote">{{ profile.blurb }}</p>
+    <p class="quote">{% if profile.blurb %}"{{ profile.blurb }}"{% endif %}</p>
 <table>
         <tbody>
+          <tr>
+            <td>Account:</td>
+            <td>{% if profile.public == 'on' %}Public{% else %}Private{% endif %}</td>
+          </tr>
           <tr>
             <td>Books Suggested:</td>
             <td>{{ suggested }}</td>
