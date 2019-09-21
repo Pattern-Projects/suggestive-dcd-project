@@ -61,6 +61,10 @@ nav{
     height: 60px;
 }
 
+.sidenav-trigger{
+    font-size: 3rem;
+}
+
 .nav-bar-title{
     font-size: 45px;
 }
