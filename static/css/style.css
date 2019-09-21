@@ -65,7 +65,10 @@ nav{
 .content{
     border-radius: 5px;
     padding: 15px;
+    width: 100%;
 }
+
+
 
 .card-link {
     transition: background 0.5s;
