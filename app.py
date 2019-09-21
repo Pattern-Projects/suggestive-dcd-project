@@ -7,7 +7,8 @@ import hashlib
 app = Flask(__name__)
 
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
-app.secret_key = 'dfa#3jfDl7j?sl'
+app.secret_key = 'fpGtZxrgKzXBNgGeZjgF1GxgbvL24i4U'
+print('SECRET_KEY: ', os.getenv(' SECRET_KEY'))
 DBS_NAME = "suggestive"
 COLLECTION_NAME = "itmes"
 mongo = PyMongo(app)

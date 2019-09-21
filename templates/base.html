@@ -36,16 +36,26 @@
       </div>
       <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
       <a href="#name"><span class="white-text name">Home</span></a>
+      {% if 'username' in session %}
+        <a class=" white-text" href="{{url_for('myinfo')}}">My List</a>
+        <a class=" white-text" href="{{url_for('logout')}}">Log Out</a>
+        {% else %}
+
       <a href="#email"><span class="white-text email">Login/Register</span></a>
+      {% endif %}
     </div></li>
-    <li><a href="#!">Home</a></li>
-    <li><a href="#!">Login/Register</a></li>
+    <li><a href="{{url_for('home')}}">Home</a></li>
+    
+    <li><a href="{{url_for('myinfo')}}">My List</a></li>
+    <li><a href="{{url_for('logout')}}">Login/Register</a></li>
     <li><div class="divider"></div></li>
+    {% if list_profile %}
     <li><a class=""><strong>{{ list_profile }}</strong></a></li>
-    <li><a class="subheader">Info</a></li>
-    <li><a class="subheader">Suggested</a></li>
-    <li><a class="subheader">Reading</a></li>
-    <li><a class="subheader">Reviews</a></li>
+    <li><a href="{{url_for('info', list_profile = list_profile)}}" class="">Info</a></li>
+    <li><a href="{{url_for('items', list_profile = list_profile)}}" class="">Suggested</a></li>
+    <li><a href="{{url_for('reading', list_profile = list_profile)}}" class="">Reading</a></li>
+    <li><a href="{{url_for('reviews', list_profile = list_profile)}}" class="">Reviews</a></li>
+    {% endif %}
   </ul>
   
   

@@ -152,5 +152,6 @@ Thank you to the following for inspiration, motivation and the direction I neede
 - Heather Olcot     @heather
 - Simen Daehlin     @Eventyret_mentor
 - Sonya             @Sonya_alumni
+- Selina Erhabor    @Sel_lead
 
 - Code Institute
