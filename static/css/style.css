@@ -12,13 +12,6 @@ body{
 .container {
     width: 70%;
 }
-}
-
-@media only screen and (min-width: 601px){
-.container {
-    width: 85%;
-}
-
 body {
     font-size: 1rem;
 }
@@ -61,8 +54,8 @@ nav{
     height: 60px;
 }
 
-.sidenav-trigger{
-    font-size: 3rem;
+i.cheeky-pink-text {
+    font-size: 4rem !important;
 }
 
 .nav-bar-title{
