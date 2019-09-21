@@ -8,16 +8,18 @@ app = Flask(__name__)
 
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 app.secret_key = os.getenv('SECRET_KEY')
-print('test')
 DBS_NAME = "suggestive"
 COLLECTION_NAME = "itmes"
 mongo = PyMongo(app)
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static', 'images'),
+                               'favicon.ico', mimetype='image/png')
+
 @app.route('/')
 @app.route('/home')
 def home():
-    print('test')
-
     return render_template('home.html', users=mongo.db.users.find({'public': 'on'}))
 
 @app.route('/myinfo')
@@ -171,8 +173,7 @@ def set_status(list_profile, page, status, item_id):
         items = mongo.db.items.find({'_id':ObjectId(item_id)})
         for item in items:
             if item['owner'] == session['username']:
-                print(status)
-                
+
                 mongo.db.items.update( {'_id': ObjectId(item_id)},
                 {
                     '$set': {'status': status }
