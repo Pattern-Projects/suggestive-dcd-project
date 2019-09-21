@@ -25,7 +25,7 @@
         </tbody>
       </table>
             
-<a class="text-bold cheeky-pink waves-effect waves-light btn col-12 col-lg-4" href="{{url_for('suggest', list_profile = list_profile)}}" >Suggest a book</a></br>
+<a class="text-bold cheeky-pink waves-effect waves-light btn mx-auto col-12 col-lg-4" href="{{url_for('suggest', list_profile = list_profile)}}" >Suggest a book</a></br>
 </div>
 
 <div class="card content">
@@ -62,7 +62,7 @@ Share {% if list_profile == session['username'] %}your{% else %}this{% endif %} 
     </div>
     
     <div class="row">
-        <button class="btn waves-effect waves-light red lighten-3 right  col-12 col-lg-4" type="submit">Save
+        <button class="btn waves-effect waves-light red lighten-3 mx-auto  col-12 col-lg-4" type="submit">Save
             <i class="material-icons right"></i>
             </button>
         </div>
@@ -72,8 +72,8 @@ Share {% if list_profile == session['username'] %}your{% else %}this{% endif %} 
 <div class="card content">
   <h4>Delete Profile</h4>
   <p>If you are finished using the site, you can delete your information forever. All books suggested to you will be deleted too. Books you suggested to others will remain.</p>
-  <a class="waves-effect waves-light btn modal-trigger red  col-12 col-lg-4" href="#modal1">Delete Profile</a><br>
-  <label>The danger button</label>
+  <a class="waves-effect waves-light btn modal-trigger red mx-auto col-12 col-lg-4" href="#modal1">Delete Profile</a><br>
+  <label class="mx-auto">The danger button</label>
 </div>
   <div id="modal1" class="modal">
     <div class="modal-content">
@@ -81,9 +81,9 @@ Share {% if list_profile == session['username'] %}your{% else %}this{% endif %} 
       <p>Are you sure you want to delete your account?
       You will lose all your suggested books.</p>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat col s12">Cancel</a>
-      <a href="{{ url_for('delete_user', user_id=profile._id)}}" class="modal-close waves-effect waves-green btn-flat red white-text col s12">Delete</a>
+    <div class="row modal-footer">
+      <a href="{{ url_for('delete_user', user_id=profile._id)}}" class="modal-close waves-effect waves-green btn-flat red white-text col-12 col-lg-4 text-center">Delete</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat  col-12 col-lg-4 text-center">Cancel</a>
     </div>
   </div>
 
