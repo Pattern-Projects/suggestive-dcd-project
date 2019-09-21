@@ -38,7 +38,7 @@
         <a class=" white-text" href="{{url_for('logout')}}">Log Out</a>
         {% else %}
 
-      <a href="#email"><span class="white-text email">Login/Register</span></a>
+      <a href="{{url_for('login')}}"><span class="white-text email">Login/Register</span></a>
       {% endif %}
     </div></li>
     <li><a href="{{url_for('home')}}">Home</a></li>
