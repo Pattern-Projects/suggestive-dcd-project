@@ -139,6 +139,7 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 ### Media
 - The photos used in this site were obtained from ...
+- (Default Book Thumbnail)[https://www.rgbstock.com/photo/nEI3N1c/Vintage+Paper]
 
 ### Acknowledgements
 Thank you to the following for inspiration, motivation and the direction I needed:

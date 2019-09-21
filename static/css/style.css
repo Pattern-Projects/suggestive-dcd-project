@@ -108,7 +108,11 @@ i.material-icons.cheeky-pink-text {
     width: 100%;
 }
 
-
+img.thumb{
+    height: 120px;
+    width: 100px;
+    margin-top: 15px;
+}
 
 .card-link {
     transition: background 0.5s;

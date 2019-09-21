@@ -3,10 +3,16 @@
     {% if item.status == 'reading' %}
     <small class="right">On Reading List</small>
     {% endif %}
+    <div class="row col-12">
+    <div class="col-12 col-lg-2">
+        <img src="{% if item.img_url %}{{ item.img_url}}{% else %}{{url_for('static', filename='images/thumbnail.jpg')}}{% endif %}" class="thumb"></img>
+    </div>
+    <div class="col-sm-12 col-lg-8">
     <h5>{{item.title}}</h5>
     <p>{{item.author}}</p>
     <p>Favorites: {{ item.favorites_count }} {{ favorite(page='items') }}
-
+    </div>
+    </div>
         <div class="row col-12">
             {% if item.owner == session['username'] %}
 
