@@ -16,6 +16,8 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/home')
 def home():
+    print('test')
+
     return render_template('home.html', users=mongo.db.users.find({'public': 'on'}))
 
 @app.route('/myinfo')
