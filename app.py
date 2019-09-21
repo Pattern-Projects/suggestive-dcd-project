@@ -7,15 +7,10 @@ import hashlib
 app = Flask(__name__)
 
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
-app.secret_key = os.getenv('SECRET_KEY')
+app.secret_key = 'asdwdsda'
 DBS_NAME = "suggestive"
 COLLECTION_NAME = "itmes"
 mongo = PyMongo(app)
-
-@app.route('/favicon.ico')
-def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static', 'images'),
-                               'favicon.ico', mimetype='image/png')
 
 @app.route('/')
 @app.route('/home')

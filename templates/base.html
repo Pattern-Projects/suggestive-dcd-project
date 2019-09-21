@@ -2,13 +2,14 @@
 <HTML>
 
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
     <link rel="shortcut icon" href="{{url_for('static', filename='images/favicon.ico') }}">    
 </head>
 
 <body>
-  <div class="container">
+  <div class="container s12">
   <nav>
 
 
@@ -31,20 +32,19 @@
   
   <ul id="slide-out" class="sidenav">
     <li><div class="user-view">
-      <a href="{{url_for('home')}}"><img class="circle" src="{{ url_for('static', filename='images/logo-no-text-no-bg.png') }}"></a>
-      <a href="{{url_for('home')}}"><span class="white-text name">Home</span></a>
-      {% if 'username' in session %}
-        <a class=" white-text" href="{{url_for('myinfo')}}">My List</a>
-        <a class=" white-text" href="{{url_for('logout')}}">Log Out</a>
-        {% else %}
-
-      <a href="{{url_for('login')}}"><span class="white-text email">Login/Register</span></a>
-      {% endif %}
+      <a href="{{url_for('home')}}"><img class="circle" src="{{ url_for('static', filename='images/logo-no-text-no-bg.png') }}">
+      <p class="cheeky-pink-text">Suggestive</p>
+      </a>
     </div></li>
     <li><a href="{{url_for('home')}}">Home</a></li>
+      {% if 'username' in session %}
     
     <li><a href="{{url_for('myinfo')}}">My List</a></li>
-    <li><a href="{{url_for('logout')}}">Login/Register</a></li>
+    <li><a href="{{url_for('logout')}}">Logout</a></li>
+      {% else %}
+    <li><a href="{{url_for('login')}}">Login/Register</a></li>
+      {% endif %}
+      
     <li><div class="divider"></div></li>
     {% if list_profile %}
     <li><a class=""><strong>{{ list_profile }}</strong></a></li>
