@@ -75,6 +75,10 @@ nav{
     font-weight: bold;
 }
 
+.btn{
+    margin-top: 4px;
+}
+
 .quote{
     text-align:center;
     font-style: italic;
