@@ -17,7 +17,7 @@
     <div class="nav-wrapper white">
       <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="material-icons cheeky-pink-text">menu</i></a>
       <a class="left" href="{{url_for('home')}}" class="brand-logo"><img class="logo"src="{{ url_for('static', filename='images/logo-no-bg.png') }}" alt="suggestive logo - pink circle with curved line suggesting a face with a smile"/></a>
-      <ul id="nav" class="right red lighten-4 text-bold  hide-on-med-and-down">
+      <ul id="nav" class="right red lighten-4 text-bold hide-on-med-and-down">
         <li><a href="{{url_for('home')}}">Home</a></li>
         {% if 'username' in session %}
         <li><a class=" white-text" href="{{url_for('myinfo')}}">My List</a></li>
@@ -31,11 +31,8 @@
   
   <ul id="slide-out" class="sidenav">
     <li><div class="user-view">
-      <div class="background">
-        <img src="images/office.jpg">
-      </div>
-      <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
-      <a href="#name"><span class="white-text name">Home</span></a>
+      <a href="{{url_for('home')}}"><img class="circle" src="{{ url_for('static', filename='images/logo-no-text-no-bg.png') }}"></a>
+      <a href="{{url_for('home')}}"><span class="white-text name">Home</span></a>
       {% if 'username' in session %}
         <a class=" white-text" href="{{url_for('myinfo')}}">My List</a>
         <a class=" white-text" href="{{url_for('logout')}}">Log Out</a>
