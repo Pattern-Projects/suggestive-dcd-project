@@ -5,7 +5,7 @@
 <h2>Reading</h2>
 <p>{{ list_profile }} has added these books to their reading list. Highlighted books are currently being read. Check back later for their reviews under the Reviews tab.</p>
 
-<a class="text-bold cheeky-pink waves-effect waves-light btn" href="{{url_for('suggest', list_profile = list_profile)}}" >Suggest a book</a></br>
+<a class="text-bold cheeky-pink waves-effect waves-light btn col-12 col-lg-4" href="{{url_for('suggest', list_profile = list_profile)}}" >Suggest a book</a></br>
 
 {% for item in reading %}
     

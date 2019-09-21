@@ -10,7 +10,7 @@
     <p class="quote">{% if profile.blurb %}"{{ profile.blurb }}"{% endif %}</p>
 {% endfor %}
 
-<a class="text-bold cheeky-pink waves-effect waves-light btn" href="{{url_for('suggest', list_profile = list_profile)}}" >Suggest a book</a></br>
+<a class="text-bold cheeky-pink waves-effect waves-light btn col-12 col-lg-4" href="{{url_for('suggest', list_profile = list_profile)}}" >Suggest a book</a></br>
 
 {% for item in items %}
 
