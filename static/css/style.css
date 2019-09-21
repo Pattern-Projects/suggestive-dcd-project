@@ -1,20 +1,21 @@
 body{
-    font-size: 1.5rem;
+    font-size: 3.5rem;
+}
+
+h1{
+    font-size: 5rem;
+}
+
+h4{
+    font-size: 4.5rem;
+}
+
+p.flow-text{
+    font-size: 3.5rem;
 }
 
 .container{
     width: 100%;
-}
-
-
-
-@media only screen and (min-width: 993px){
-.container {
-    width: 70%;
-}
-body {
-    font-size: 1rem;
-}
 }
 
 .text-white{
@@ -45,21 +46,37 @@ body {
     background-color: #FFF4CB
 }
 
+nav.hide-on-large-only{
+    height: 130px;
+}
+
 nav{
     background: none;
 }
 
-.sidenav li>a {
-    font-size: 45px;
-    height: 60px;
+ul#slide-out{
+    width: 90%;    
 }
 
-i.cheeky-pink-text {
-    font-size: 4rem !important;
+.sidenav .user-view .circle{
+    height:8rem;
+    width: auto;
+}
+
+.sidenav li>a {
+    font-size: 7rem;
+    height: 8rem;
+}
+
+i.material-icons.cheeky-pink-text {
+    font-size: 9rem !important;
+    line-height: 130px;
 }
 
 .nav-bar-title{
-    font-size: 45px;
+    font-size: 8rem;
+    height:9rem;
+    line-height:7rem;
 }
 
 .logo{
@@ -70,7 +87,7 @@ i.cheeky-pink-text {
 
 .brand-logo{
     margin:auto;
-    width: 50px;
+    width: 120px;
     height: auto;
 }
 
@@ -116,9 +133,11 @@ i.cheeky-pink-text {
     font-weight: bold;
 }
 
-.btn{
+a.btn{
     margin-top: 4px;
 }
+
+
 
 .quote{
     text-align:center;
@@ -126,6 +145,10 @@ i.cheeky-pink-text {
     font-weight: bold;
     color: #E9AFAF;
     font-size: 20px;
+}
+
+td, tr{
+    font-size: medium;
 }
 
 .code{
@@ -136,3 +159,38 @@ footer{
     margin-top: 10px;
     text-align: center;
 }
+
+
+@media only screen and (max-width: 993px){
+    .btn {
+    margin-top: 4px;
+    height: 100px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.form-element.active{
+    height: 8rem;
+    font-size:3rem;
+}
+
+.quote{
+    font-size: 4rem;
+}
+
+td, tr{
+    font-size: 4rem;
+}
+
+}
+
+@media only screen and (min-width: 993px){
+.container {
+    width: 70%;
+}
+body {
+    font-size: 1rem;
+}
+
+}
+
