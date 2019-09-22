@@ -1,3 +1,4 @@
+<!--Extends tabs-->
 {% extends 'tabs.html'%} {% block list_content %}
 <title>{{ list_profile }} - Reviews</title>
 
@@ -7,6 +8,7 @@
 
 <a class="text-bold cheeky-pink waves-effect waves-light btn col-12 col-lg-4" href="{{url_for('suggest', list_profile = list_profile)}}" >Suggest a book</a></br>
 
+<!--Display reviewd books-->
 {% for item in reviews %}
     
     {% import 'card.html' as card with context %}

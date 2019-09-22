@@ -1,3 +1,4 @@
+<!--Extends base-->
 {% extends 'base.html'%} {% block content %}
 <title>Suggestive</title>
 
@@ -11,6 +12,8 @@
 {% else %}
 <p>Open your own: <a class="link-bold" href="{{url_for('myinfo')}}">My List</a></p>
 {% endif %}
+
+<!--List of users-->
 <div class="row">
 {% for user in users %}
     

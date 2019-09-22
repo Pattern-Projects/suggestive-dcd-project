@@ -1,3 +1,4 @@
+/*Body, headers and others*/
 body{
     font-size: 3.5rem;
 }
@@ -14,10 +15,7 @@ p.flow-text{
     font-size: 3.5rem;
 }
 
-.container{
-    width: 100%;
-}
-
+/*Colours*/
 .text-white{
     color: #ffffff;
 }
@@ -44,6 +42,11 @@ p.flow-text{
 
 .current{
     background-color: #FFF4CB
+}
+
+/*Container and navs*/
+.container{
+    width: 100%;
 }
 
 nav.hide-on-large-only{
@@ -79,6 +82,18 @@ i.material-icons.cheeky-pink-text {
     line-height:7rem;
 }
 
+.lower-nav{
+    box-shadow: none;
+    margin-top: 10px;
+    line-height: 3;
+    height: 50px;
+}
+
+.profile-header{
+    margin: 0.52rem 0 .912rem 0;
+}
+
+/*Logo*/
 .logo{
     height: 75%;
     padding-left: 10px;
@@ -91,17 +106,7 @@ i.material-icons.cheeky-pink-text {
     height: auto;
 }
 
-.lower-nav{
-    box-shadow: none;
-    margin-top: 10px;
-    line-height: 3;
-    height: 50px;
-}
-
-.profile-header{
-    margin: 0.52rem 0 .912rem 0;
-}
-
+/*Page content - cards, links, buttons*/
 .content{
     border-radius: 5px;
     padding: 15px;
@@ -159,12 +164,13 @@ td, tr{
     background-color: #F1EFEF;
 }
 
+/*Footer*/
 footer{
     margin-top: 10px;
     text-align: center;
 }
 
-
+/*Small and med screens*/
 @media only screen and (max-width: 993px){
     .btn {
     margin-top: 4px;
@@ -188,6 +194,7 @@ td, tr{
 
 }
 
+/*Large screens*/
 @media only screen and (min-width: 993px){
 .container {
     width: 70%;

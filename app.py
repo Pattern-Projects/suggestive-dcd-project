@@ -6,44 +6,47 @@ import hashlib
 
 app = Flask(__name__)
 
+# environment variables
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 app.secret_key = 'asdwdsda'
-DBS_NAME = "suggestive"
-COLLECTION_NAME = "itmes"
+
+# inti pymongo
 mongo = PyMongo(app)
 
+
+# Home, Login, Logout
+
+# Home page - from home button
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template('home.html', users=mongo.db.users.find({'public': 'on'}))
 
-@app.route('/myinfo')
-def myinfo():
-    if 'username' in session:
-        list_profile = session['username']
-        suggested = mongo.db.items.count_documents({'owner': list_profile})
-        complete = mongo.db.items.count_documents({'owner': list_profile, 'complete':True})        
-        return render_template('info.html',suggested=suggested, complete=complete, list_profile = list_profile, profiles=mongo.db.users.find({'username':list_profile}))
-    return redirect(url_for('login'))
-
-
+# Login Page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    # if theres info in post
     if request.method == 'POST':
         
+        # extract data from post
         username = request.form['username']
         password = hashlib.sha256(request.form['password'].encode()).hexdigest()
         found = False
         
+        # Look for users with these details
         dbusers = mongo.db.users.find({'username': username})
         for user in dbusers:
+            # That username was found
             found = True
             if user['password'] == password:
+                # Passwords matched
                 session['username'] = user['username']
                 return redirect(url_for('myinfo'))
             else:
+                # Passwords didn't match - back to login with warning
                 return render_template('login.html', mismatch=True)
-                
+
+        # username not found - one created and logged in
         if found == False:
             users =  mongo.db.users
             user = request.form.to_dict()
@@ -55,62 +58,50 @@ def login():
         
     return render_template('login.html')
 
+# Log out and redirect to home
 @app.route('/logout')
 def logout():
-    # remove the username from the session if it's there
+    # remove the username from the session
     session.pop('username', None)
     return redirect(url_for('home'))
 
-@app.route('/delete_user/<user_id>')
-def delete_user(user_id):
-    if 'username' in session:
-        users = mongo.db.users.find({'_id':ObjectId(user_id)})
-        for user in users:
-            if user['username'] == session['username']:
-                mongo.db.users.remove( {'_id':ObjectId(user_id)})
-                mongo.db.items.remove( {'owner': user['username']})
-    return redirect(url_for('logout'))
 
+# Users
+
+# My Info Page
+@app.route('/myinfo')
+def myinfo():
+    # if the user is signed in
+    if 'username' in session:
+        # Render users info page
+        list_profile = session['username']
+        suggested = mongo.db.items.count_documents({'owner': list_profile})
+        complete = mongo.db.items.count_documents({'owner': list_profile, 'complete':True})        
+        return render_template('info.html',suggested=suggested, complete=complete, list_profile = list_profile, profiles=mongo.db.users.find({'username':list_profile}))
+    # Else redirect to lgin page
+    return redirect(url_for('login'))
+
+# Open info page for given user
 @app.route('/info/<list_profile>')
 def info(list_profile):
     if list_profile:
+        # Retrieve info for user table
         suggested = mongo.db.items.count_documents({'owner': list_profile})
         complete = mongo.db.items.count_documents({'owner': list_profile, 'complete':True})
 
+        # Render page
         return render_template('info.html',suggested=suggested, complete=complete, list_profile = list_profile, profiles=mongo.db.users.find({'username':list_profile}))
+    # otehrwise return to home page
     return render_template('home.html')
     
-@app.route('/items/<list_profile>')
-def items(list_profile):
-    return render_template('items.html',profiles=mongo.db.users.find({'username':list_profile}), list_profile = list_profile, items=mongo.db.items.find({'owner': list_profile,  'status': { '$in': [ 'suggested', 'reading' ] } }).sort([('favorites_count',-1)]))
-    
-@app.route('/suggest/<list_profile>')
-def suggest(list_profile):
-    if 'username' in session:
-        return render_template('suggest.html',
-                                profiles=mongo.db.users.find({'username':list_profile}), list_profile = list_profile)
-    else:
-        return render_template('login.html')
-
-@app.route('/insert_item/<list_profile>', methods=['POST'])
-def insert_item(list_profile):
-    if 'username' in session:
-
-        items =  mongo.db.items
-        item = request.form.to_dict()
-        item['favorites'] = []
-        item['status'] = 'suggested'
-        item['owner'] = list_profile
-        item['suggester'] = session['username']
-        items.insert_one(item)
-        
-    return redirect( url_for('items', list_profile = list_profile ))     
-
+# Update the users list information - including their blurb and whether their list is public
 @app.route('/update_info/<list_profile>', methods=['POST'])
 def update_info(list_profile):
+    # If a user is logged in
     if 'username' in session:
         item = request.form.to_dict()
         blurb = item['blurb']
+        # set list to public if switch is on
         if item.get('public'):
             public = 'on'
         else:
@@ -125,17 +116,98 @@ def update_info(list_profile):
                 })
     return redirect( url_for('info', list_profile = list_profile ))     
 
-@app.route('/delete/<list_profile>/<page>/<item_id>')
-def delete(list_profile, page, item_id):
+# Delete user
+@app.route('/delete_user/<user_id>')
+def delete_user(user_id):
+    # Ensure a user is logged in
+    if 'username' in session:
+        users = mongo.db.users.find({'_id':ObjectId(user_id)})
+        for user in users:
+        # Ensure it is correct user
+            if user['username'] == session['username']:
+                mongo.db.users.remove( {'_id':ObjectId(user_id)})
+                mongo.db.items.remove( {'owner': user['username']})
+    # Log out deleted user
+    return redirect(url_for('logout'))
+
+
+# Pages - Suggested, Reading, Reviews
+
+# Open the Suggested books page page
+@app.route('/items/<list_profile>')
+def items(list_profile):
+    return render_template('items.html',profiles=mongo.db.users.find({'username':list_profile}), list_profile = list_profile, items=mongo.db.items.find({'owner': list_profile,  'status': { '$in': [ 'suggested', 'reading' ] } }).sort([('favorites_count',-1)]))
+
+# Open reading list page
+@app.route('/reading/<list_profile>')
+def reading(list_profile):
+    return render_template('reading.html', list_profile = list_profile, reading = mongo.db.items.find({'owner': list_profile, 'status': { '$in': [ 'reading', 'current' ] } }).sort([('favorites_count',-1)]))
+
+# Open reviews page
+@app.route('/reviews/<list_profile>')
+def reviews(list_profile):
+    return render_template('reviews.html', list_profile = list_profile, reviews = mongo.db.items.find({'owner': list_profile, 'complete': True}).sort([('favorites_count',-1)]))
+
+# Books - Insert, Update, Delete
+
+# Render the suggest a book page    
+@app.route('/suggest/<list_profile>')
+def suggest(list_profile):
+    if 'username' in session:
+        return render_template('suggest.html',
+                                profiles=mongo.db.users.find({'username':list_profile}), list_profile = list_profile)
+    else:
+        return render_template('login.html')
+
+# Insert a suggested book
+@app.route('/insert_item/<list_profile>', methods=['POST'])
+def insert_item(list_profile):
+    # If a user is logged in
+    if 'username' in session:
+        # Massage data and insert
+        items =  mongo.db.items
+        item = request.form.to_dict()
+        item['favorites'] = []
+        item['status'] = 'suggested'
+        item['owner'] = list_profile
+        item['suggester'] = session['username']
+        items.insert_one(item)
+        
+    return redirect( url_for('items', list_profile = list_profile ))     
+
+# Open the complete a book page
+@app.route('/complete/<list_profile>/<item_id>')
+def complete(list_profile, item_id):
+    # If a user is logged in
+    if 'username' in session:
+        item =  mongo.db.items.find_one({"_id": ObjectId(item_id)})
+        return render_template('complete.html', list_profile = list_profile, item=item) 
+    return render_template('reading.html', list_profile = list_profile)
+    
+# Complete a book - add a star rating and a review
+@app.route('/complete_item/<list_profile>/<item_id>', methods=['POST'])
+def complete_item(list_profile, item_id):
+    # If a user is signed in
     if 'username' in session:
         items = mongo.db.items.find({'_id':ObjectId(item_id)})
         for item in items:
-            if item['owner'] == session['username'] or item['suggester'] == session['username']:
-                mongo.db.items.remove( {'_id':ObjectId(item_id)})
-    return redirect(url_for( page, list_profile = list_profile ))
+            # If signed in user is the owner of the book
+            if item['owner'] == session['username']:    
+                mongo.db.items.update( {'_id': ObjectId(item_id)},
+                {
+                    '$set': {
+                    'stars': int(request.form.get('stars')),
+                    'review': request.form.get('review'),
+                    'status': 'complete',
+                    'complete': True
+                }})
+    return redirect( url_for( 'reviews', list_profile = list_profile) )     
 
+
+# Add a favorite to the book
 @app.route('/favorite/<list_profile>/<page>/<item_id>')
 def favorite(list_profile, page, item_id):
+    # If a user is logged in
     if 'username' in session:
         items =  mongo.db.items
         if 'username' in session:
@@ -148,7 +220,7 @@ def favorite(list_profile, page, item_id):
             
     return redirect(url_for( page, list_profile = list_profile ) )
     
-
+# Remove a favorite from the book
 @app.route('/unfavorite/<list_profile>/<page>/<item_id>')
 def unfavorite(list_profile, page, item_id):
     if 'username' in session:
@@ -162,11 +234,14 @@ def unfavorite(list_profile, page, item_id):
             })
     return redirect(url_for( page, list_profile = list_profile ) )   
 
+# Update the status of the book - dictates which page it will appear on
 @app.route('/set_status/<list_profile>/<page>/<status>/<item_id>')
 def set_status(list_profile, page, status, item_id):
+    # If a user is logged in
     if 'username' in session:
         items = mongo.db.items.find({'_id':ObjectId(item_id)})
         for item in items:
+            # If the logged in user is the owner of the book
             if item['owner'] == session['username']:
 
                 mongo.db.items.update( {'_id': ObjectId(item_id)},
@@ -176,39 +251,19 @@ def set_status(list_profile, page, status, item_id):
         return redirect(url_for( page, list_profile = list_profile ) )
     return render_template('login.html')
 
-
-@app.route('/reading/<list_profile>')
-def reading(list_profile):
-    return render_template('reading.html', list_profile = list_profile, reading = mongo.db.items.find({'owner': list_profile, 'status': { '$in': [ 'reading', 'current' ] } }).sort([('favorites_count',-1)]))
-
-@app.route('/complete/<list_profile>/<item_id>')
-def complete(list_profile, item_id):
-    if 'username' in session:
-        item =  mongo.db.items.find_one({"_id": ObjectId(item_id)})
-        return render_template('complete.html', list_profile = list_profile, item=item) 
-    return render_template('reading.html', list_profile = list_profile)
-    
-@app.route('/complete_item/<list_profile>/<item_id>', methods=['POST'])
-def complete_item(list_profile, item_id):
+# Delete book
+@app.route('/delete/<list_profile>/<page>/<item_id>')
+def delete(list_profile, page, item_id):
+    # If a user is logged in
     if 'username' in session:
         items = mongo.db.items.find({'_id':ObjectId(item_id)})
         for item in items:
-            if item['owner'] == session['username']:    
-                mongo.db.items.update( {'_id': ObjectId(item_id)},
-                {
-                    '$set': {
-                    'stars': int(request.form.get('stars')),
-                    'review': request.form.get('review'),
-                    'status': 'complete',
-                    'complete': True
-                }})
-    return redirect( url_for( 'reviews', list_profile = list_profile) )     
+            # if the user is the owner of the list or the suggestor of the book
+            if item['owner'] == session['username'] or item['suggester'] == session['username']:
+                mongo.db.items.remove( {'_id':ObjectId(item_id)})
+    return redirect(url_for( page, list_profile = list_profile ))
 
-@app.route('/reviews/<list_profile>')
-def reviews(list_profile):
-    return render_template('reviews.html', list_profile = list_profile, reviews = mongo.db.items.find({'owner': list_profile, 'complete': True}).sort([('favorites_count',-1)]))
-
-
+# Run the app
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),

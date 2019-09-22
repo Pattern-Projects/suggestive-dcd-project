@@ -1,5 +1,7 @@
+<!--Extends tabs-->
 {% extends 'tabs.html'%} {% block list_content %}
 
+<!--Seen by all users-->
 <title>{{ list_profile }} - Info</title>
 <div class="card content left">
 
@@ -36,6 +38,7 @@ Share {% if list_profile == session['username'] %}your{% else %}this{% endif %} 
 <p class="center code">http://suggestive-dcd-project.herokuapp.com/info/{{ list_profile }}</p>
 </div>
 
+<!--Seen by owner of list-->
 {% if list_profile == session['username'] %}
 <div class="card content col-12">
 <h4>Make Changes</h4>
@@ -69,6 +72,8 @@ Share {% if list_profile == session['username'] %}your{% else %}this{% endif %} 
     </form>
 </div>
 </div>
+
+<!--Delete the logged in user and logout-->
 <div class="card content">
   <h4>Delete Profile</h4>
   <p>If you are finished using the site, you can delete your information forever. All books suggested to you will be deleted too. Books you suggested to others will remain.</p>

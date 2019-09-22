@@ -138,8 +138,9 @@ In addition, if it is not obvious, you should also describe how to run your code
 - The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
 
 ### Media
-- The photos used in this site were obtained from ...
-- (Default Book Thumbnail)[https://www.rgbstock.com/photo/nEI3N1c/Vintage+Paper]
+- Default Book Thumbnail was sourced from [REB Stock](https://www.rgbstock.com/photo/nEI3N1c/Vintage+Paper)
+Book thumbnails attached to entries are sourced by users from all over the web. 
+Suggestive project does not claim any ownership of the images used.
 
 ### Acknowledgements
 Thank you to the following for inspiration, motivation and the direction I needed:

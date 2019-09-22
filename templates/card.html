@@ -1,3 +1,4 @@
+<!--Card Layout for suggested page items-->
 {% macro suggested(page='items') -%}
 <div class="card content">
     {% if item.status == 'reading' %}
@@ -50,6 +51,7 @@
 </div>
 {%- endmacro %} 
 
+<!--Card Layout for reading list page items-->
 {% macro reading(page='reading') -%}
 <div class="card content {% if item.status == 'current' %}current{% endif %}">
 
@@ -107,6 +109,7 @@
 </div>
 {%- endmacro %} 
 
+<!--Card Layout for reviews page items-->
 {% macro reviews(page='reviews') -%}
 <div class="card content current">
 
@@ -152,6 +155,7 @@
 </div>
 {%- endmacro %} 
 
+<!--Favorites macros-->
 {% macro favorite(page) %} 
     {% if session['username'] not in item.favorites %}
         <a href="{{ url_for('favorite', list_profile=list_profile, page=page,   item_id=item._id )}}">Favorite</a></br>
