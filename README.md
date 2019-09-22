@@ -116,6 +116,7 @@ Features planned, implemented and outlined for later development
 ### Features Left to Implement
 - Similar existing book titles - Fuzzy matching
 - Extend beyond books - Movies, TV Shows, Live Performances, etc..
+- Search By Book
 
 ## Technologies Used
 
@@ -160,8 +161,37 @@ In this section, you should mention all of the languages, frameworks, libraries,
     - **Git** used for Version Control
 - [GitHub](https://github.com/)
     - Repository hosted on **GitHub**
+- [Google Search Console](https://search.google.com)
+    - SEO and usage analytics from **Google Search Console**
 
 ## Testing
+
+The site was tested through a number of means.
+
+### User Stories
+The user stories created during the design phase were inacted:
+1. A content creator user wants to create a space in which to recieve book suggestions
+    - The user visits the login page
+    - They input a unique username and a password 
+    - They are redirected to their newly created list info page
+    - They set their list to public and add a blurb
+    - They can now recieve book suggestions
+2. A creator fan users wants to make suggestions on which books the creator should read
+    - Visiting the login page they input a unique username and password creating a newaccount
+    - They visit the creators list info page
+    - Clicking the 'Suggest a Book' button they can input a book suggestion
+    - They enter a Title, author and a url for the book thumbnail
+    - Clicking 'Suggest' The book is now added to the list of suggestions
+3. An avid reader user looks for reviews of books they may like
+    - Having learned a creator has completed a book they may like they visit the creators list through their personal url link
+    - They open the reviews page
+    - Finding the book the can read the creators review of the book and a star rating
+4. A publisher user wants to gauge the popularity of certain genres among demographics
+    - Visiting the Suggestive home page they have access to public suggestion lists
+    - Reading through these they can find reviews, ratings and popularity of genres
+5. An author user surveys star response to their work
+    - Searching their book on google the user finds a link to it on Suggestive
+    - Opening the page they can read a written review as well as a star rating
 
 In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
 
