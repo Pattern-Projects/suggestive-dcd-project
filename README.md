@@ -245,9 +245,9 @@ The website was viewed at various resolutions using [InfoByIp Resolution Test](h
 The website looks well at high and medium resolutions. There is some overlay of logo and menu button at very smll screens.
 
 ### Bugs
-- Some overlap of logo and button on very small screens.
-    ![Image showing overlap of logo and button](/documentation/overlap.png)
 
+![Image showing overlap of logo and button](/documentation/overlap.png)
+- Some overlap of logo and button on very small screens.
 - Reload after favorite/unfavorite seems unncessary.
     - The page update could be achieved using javascript without the need to reload page
 
