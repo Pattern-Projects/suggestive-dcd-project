@@ -8,9 +8,11 @@ Fans can suggest books for the site owner to read and upvote other suggestions, 
 ![Responsive Views of Home Page](documentation/Responsive.png)
 
 ### Users
+
 Expected users of the website include content creators, creator fans, book readers, publishers, authors.
 
 ### User Stories
+
 1. A content creator user recieves book suggestions, chooses which to read and gives reviews.
 2. A creator fan user leaves suggestions on which books to read.
 3. A reader user finds descriptive reviews of books they may like.
@@ -18,6 +20,7 @@ Expected users of the website include content creators, creator fans, book reade
 5. An author user surveys star-rating reviews of their work.
 
 ### Design
+
 ![Website Logo - Pink circle with a white line inside representing a smile on a face](documentation/logo.png)
 - Colour Scheme consists of complementary colours with additional subtle accents
     - cheeky-pink:  ![#E9AFAF](https://placehold.it/15/E9AFAF/000000?text=+) `#E9AFAF`
@@ -31,16 +34,20 @@ Expected users of the website include content creators, creator fans, book reade
 - [Custom designed logo](documentation/logo.png) representing a smile on a face.
 
 ### Mockups
+
 - [Suggested Books](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A2)
 - [Suggest a Book](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A26)
 - [Reading List](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A71)
 - [Write Review](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=2%3A2)
 - [Reviews](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A112)
 
+
 ## Features
+
 Features planned, implemented and outlined for later development
 
 ### Planned Features
+
 - Suggest a new book
     - Title
     - Author
@@ -74,8 +81,9 @@ Features planned, implemented and outlined for later development
 - Git - Version Control System
 - GitHub - Remote Repository
 - Deployed - Hosted on Heroku
- 
+
 ### Existing Features
+
 - Suggest a new book
     - Title
     - Author
@@ -114,9 +122,11 @@ Features planned, implemented and outlined for later development
 
 
 ### Features Left to Implement
+
 - Similar existing book titles - Fuzzy matching
 - Extend beyond books - Movies, TV Shows, Live Performances, etc..
 - Search By Book
+
 
 ## Technologies Used
 
@@ -210,6 +220,7 @@ Issues returned were of the following type:
 Solving the remaining errors and warnings is outside of the current scope of the project
 
 ### CSS Validation
+
 The websites CSS was tested with W3's [Jigsaw](https://jigsaw.w3.org/css-validator/) CSS Validation Service. 
 Many Errors and warnings were returned. These originate at the Bootstrap CSS files. 
 Fixing these issues is outside the scope of the project.
@@ -224,6 +235,7 @@ The results were:
 Suggestions provided to improve mobile performance include:
 - Eliminate render-blocking resources
 - Enable text compression
+
 
 ### Resolution
 
@@ -253,19 +265,22 @@ In addition, if it is not obvious, you should also describe how to run your code
 - git pull
 - mongodb
 - heroku
-- 
+
 
 ## Credits
 
 ### Content
+
 - The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
 
 ### Media
+
 - Default Book Thumbnail was sourced from [REB Stock](https://www.rgbstock.com/photo/nEI3N1c/Vintage+Paper)
 Book thumbnails attached to entries are sourced by users from all over the web. 
 Suggestive project does not claim any ownership of the images used.
 
 ### Acknowledgements
+
 Thank you to the following for inspiration, motivation and the direction I needed:
 
 - Seun Owonikoko    @seun_mentor
