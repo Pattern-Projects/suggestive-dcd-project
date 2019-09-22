@@ -163,6 +163,8 @@ In this section, you should mention all of the languages, frameworks, libraries,
     - Material Design by Google
     - [**JQuery**](https://jquery.com/) used by Materialize components
     - [**JavaScript**](https://www.w3schools.com/js/) used by Materialize components
+- [Font Awesome](https://fontawesome.com/)
+    - Favorites hearts icons recieved from **Font Awesome**
 - [Python](https://www.python.org/)
     - Developed and run with python3
 - [Flask](https://palletsprojects.com/p/flask/)
