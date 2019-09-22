@@ -6,7 +6,7 @@
 <div class="card content left">
 
 <h2>Info</h2>
-<p>Welcome to the home of {{ list_profile }}! Here you can see the books suggested, waiting to read and reviews for books completed. Feel free to suggest a book. {{ list_profile }}'s quote will give you an idea of the kinds of books they enjoy. Happy reading.</p>
+<p>Welcome to {{ list_profile }}'s list! Here you can see suggest books for {{ list_profile }} to read, see books on thier reading list and reviews for books completed. Feel free to suggest a book. {{ list_profile }}'s quote will give you an idea of the kinds of books they enjoy. Happy suggesting!</p>
 
 {% for profile in profiles %}
     <p class="quote">{% if profile.blurb %}"{{ profile.blurb }}"{% endif %}</p>

@@ -174,9 +174,9 @@
 <!--Favorites macros-->
 {% macro favorite(page) %} 
     {% if session['username'] not in item.favorites %}
-        <a class="favorites-block" href="{{ url_for('favorite', list_profile=list_profile, page=page,   item_id=item._id )}}"><i class="material-icons">star_border</i></a></br>
+        <a class="favorites-block" title="Favorite" href="{{ url_for('favorite', list_profile=list_profile, page=page,   item_id=item._id )}}"><i class="cheeky-pink-text far fa-heart"></i></a></br>
     {% else %}
-        <a class="favorites-block" href="{{ url_for('unfavorite', list_profile=list_profile, page=page, item_id=item._id) }}"><i class="material-icons">star</i></a></br>
+        <a class="favorites-block" title="Unfavorite" href="{{ url_for('unfavorite', list_profile=list_profile, page=page, item_id=item._id) }}"><i class="cheeky-pink-text fas fa-heart"></i></a></br>
     {% endif %}
 
 {% endmacro %} 

@@ -158,6 +158,10 @@ In this section, you should mention all of the languages, frameworks, libraries,
     - Connecting to MongoDB with Python
 - [dnspython](https://pypi.org/project/dnspython/)
     - DNS toolkit for Python
+- [hashlib](https://docs.python.org/2/library/hashlib.html)
+    - The **hashlib** library was used for hashing stored passwords
+- [cProfile](https://docs.python.org/2/library/profile.html#module-cProfile)
+    - cProfile was used for effeciency testing the software
 - [Mongodb Cloud](https://cloud.mongodb.com)
     - Cloud storage with **MongoDB** 
 - [Heroku](https://www.heroku.com/)
@@ -233,6 +237,7 @@ Suggestions provided to improve mobile performance include:
 - Eliminate render-blocking resources
 - Enable text compression
 
+[cProfile](https://docs.python.org/2/library/profile.html#module-cProfile) was used to test for efficiency bottlenecks in the app.
 
 ### Resolution
 
@@ -248,27 +253,23 @@ The website looks well at high and medium resolutions. There is some overlay of 
 
 ## Deployment
 
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
+The project is deployed to Heroku, making use of Mongodb Cloud for database storage. Users can use the site by visiting: https://suggestive-dcd-project.herokuapp.com/
 
+The project can also be deployed by anyone with some technical know how. Here are the steps.
 In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
 - Different values for environment variables (Heroku Config Vars)?
 - Different configuration files?
 - Separate git branch?
 - White list on MongoDB
- 
 
 In addition, if it is not obvious, you should also describe how to run your code locally.
-
+- environment
 - git pull
 - mongodb
 - heroku
 
 
 ## Credits
-
-### Content
-
-- The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
 
 ### Media
 
