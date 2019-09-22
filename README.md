@@ -193,6 +193,17 @@ The user stories created during the design phase were inacted:
     - Searching their book on google the user finds a link to it on Suggestive
     - Opening the page they can read a written review as well as a star rating
 
+### Performance
+
+Using Google's [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) the website was tested for network performance.
+The results were:
+- [Desktop:  100%](documentation/desktop-performance.png)
+- [Mobile:   99%](documentation/mobile-performance.png)
+
+Suggestions provided to improve mobile performance include:
+- Eliminate render-blocking resources
+- Enable text compression
+
 In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
 
 Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
