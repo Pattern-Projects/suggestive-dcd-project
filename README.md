@@ -284,6 +284,7 @@ The project can also be deployed by anyone with some technical know how. Here ar
     - SECRET_KEY    Create one by opening a terminal and typing: 'openssl rand -base64 32 | colrm 33'
 - Set a temporary open whitelist on mongo so that anywhere can connect to it
 - Open a new terminal in cloud9 and enter: 'git clone https://github.com/Pattern-Projects/suggestive-dcd-project.git'
+- Install dependencies with: 'pip3 install requirements.txt'
 - When complete run python3 app.py to run it in cloud9 and view it with Preview > Preview Running Application
 - Take this as a troubleshooting moment. If anything is not working, fix it now.
 - Find the IP address of your heroku project and whitelist it permanently on Mongo
