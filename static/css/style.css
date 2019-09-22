@@ -177,6 +177,7 @@ footer{
     height: 100px;
     font-size: 25px;
     font-weight: bold;
+    line-height: 100px;
 }
 
 input.form-element{
