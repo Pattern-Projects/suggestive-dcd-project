@@ -5,7 +5,7 @@ Fans can suggest books for the site owner to read and upvote other suggestions, 
 
 ## UX
  
-[responsive image missing]
+![Responsive Views of Home Page](documentation/Responsive.png)
 
 ### Users
 Expected users of the website include content creators, creator fans, book readers, publishers, authors.
@@ -19,7 +19,7 @@ Expected users of the website include content creators, creator fans, book reade
 
 ### Design
 ![Website Logo - Pink circle with a white line inside representing a smile on a face](documentation/logo.png)
-- Colour Scheme consists of complementary colours
+- Colour Scheme consists of complementary colours with additional subtle accents
     - cheeky-pink:  ![#E9AFAF](https://placehold.it/15/E9AFAF/000000?text=+) `#E9AFAF`
     - cool-green:   ![#AFE9AF](https://placehold.it/15/AFE9AF/000000?text=+) `#AFE9AF`
     - light-blue:   ![#7EC8F2](https://placehold.it/15/7EC8F2/000000?text=+) `#7EC8F2`
@@ -33,8 +33,8 @@ Expected users of the website include content creators, creator fans, book reade
 - [Custom designed logo](documentation/logo.png) representing a smile on a face.
 
 ### Mockups
-- [Suggest a Book](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A26)
 - [Suggested Books](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A2)
+- [Suggest a Book](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A26)
 - [Reading List](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A71)
 - [Write Review](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=2%3A2)
 - [Reviews](https://www.figma.com/file/bP38XbhERWhJPxhbrLVaxg/Book-suggester?node-id=1%3A112)
