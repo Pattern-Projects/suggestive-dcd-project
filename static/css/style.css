@@ -179,9 +179,9 @@ footer{
     font-weight: bold;
 }
 
-.form-element.active{
+input.form-element{
     height: 8rem;
-    font-size:3rem;
+    font-size:3rem!important;
 }
 
 .quote{
