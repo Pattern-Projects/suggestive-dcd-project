@@ -255,25 +255,40 @@ The website looks well at high and medium resolutions. There is some overlay of 
 
 The project is deployed to Heroku, making use of Mongodb Cloud for database storage. Users can use the site by visiting: https://suggestive-dcd-project.herokuapp.com/
 
-The project can also be deployed by anyone with some technical know how. Here are the steps.
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
-- Different values for environment variables (Heroku Config Vars)?
-- Different configuration files?
-- Separate git branch?
-- White list on MongoDB
+The project can also be deployed by anyone with some technical know how. Here are the steps:
+- Visit https://github.com/Pattern-Projects/suggestive-dcd-project and get a [clone link](https://github.com/Pattern-Projects/suggestive-dcd-project.git)
+- Sign in to AWS Cloud9 and create a new project, name it suggestive
+- Sign in to mongodb.com and create a new database, create two collections:
+    - users
+    - items
+- Using the connect feature copy the connection srv down for later
+- Open Heroku and create a new project, name it suggestive
+- Add the following config vars to your Heroku project:
+    - IP    0.0.0.0
+    - PORT  8000
+    - MONGO_URI     This is the srv copied from Mongodb
+    - SECRET_KEY    Create one by opening a terminal and typing: 'openssl rand -base64 32 | colrm 33'
+- Set a temporary open whitelist on mongo so that anywhere can connect to it
+- Open a new terminal in cloud9 and enter: 'git clone https://github.com/Pattern-Projects/suggestive-dcd-project.git'
+- When complete run python3 app.py to run it in cloud9 and view it with Preview > Preview Running Application
+- Take this as a troubleshooting moment. If anything is not working, fix it now.
+- Find the IP address of your heroku project and whitelist it permanently on Mongo
+- Create a new github repo and push the project to it
+- Connect heroku to the github repo
+- Turn on automatic deploys and click deploy now
+- On the top of the heroku project page, click 'Open app'
 
-In addition, if it is not obvious, you should also describe how to run your code locally.
-- environment
-- git pull
-- mongodb
-- heroku
+### Tips
+
+- Give it a few moments after deplying to start running
+- It will take time to run the page again after a period of inactivity
 
 
 ## Credits
 
 ### Media
 
-- Default Book Thumbnail was sourced from [REB Stock](https://www.rgbstock.com/photo/nEI3N1c/Vintage+Paper)
+- Default Book Thumbnail was sourced from [RGB Stock](https://www.rgbstock.com/photo/nEI3N1c/Vintage+Paper)
 Book thumbnails attached to entries are sourced by users from all over the web. 
 Suggestive project does not claim any ownership of the images used.
 
