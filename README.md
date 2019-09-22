@@ -209,6 +209,11 @@ Issues returned were of the following type:
 
 Solving the remaining errors and warnings is outside of the current scope of the project
 
+### CSS Validation
+The websites CSS was tested with W3's [Jigsaw](https://jigsaw.w3.org/css-validator/) CSS Validation Service. 
+Many Errors and warnings were returned. These originate at the Bootstrap CSS files. 
+Fixing these issues is outside the scope of the project.
+
 ### Performance
 
 Using Google's [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) the website was tested for network performance.
@@ -267,6 +272,7 @@ Thank you to the following for inspiration, motivation and the direction I neede
 
 - Sean Murphy       @Seán_alumni
 - Anna Greave       @Anna_G
+- Edel O' Sullivan  @Edel O' Sullivan
 - Shane Muirhead    @Shane Muirhead
 - Sunny Hebbar      @hebs97
 - Heather Olcot     @heather
