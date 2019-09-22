@@ -3,6 +3,9 @@
 A book suggestion tool geared toward social media content creators with a medium to large fanbase.
 Fans can suggest books for the site owner to read and upvote other suggestions, the site owner can add books to their reading list and review them when finished.
 
+Hosted on [Heroku](https://suggestive-dcd-project.herokuapp.com/),
+Repository on [GitHub](https://github.com/Pattern-Projects/blender-ucd-project)
+
 ## License
 The project is shared for use with the [GNU General Public License v3](LICENCE)
 
