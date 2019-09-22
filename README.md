@@ -83,6 +83,8 @@ Features planned, implemented and outlined for later development
     - Cards
     - Icons
 - Responsive design - Mobile First
+- Defensive design
+    - Double checking to ensure nothing breaks flow
 - Accesibility
 - Semantic HTML - nav, article, etc
 - Colour Scheme
@@ -319,5 +321,6 @@ Thank you to the following for inspiration, motivation and the direction I neede
 - Simen Daehlin     @Eventyret_mentor
 - Sonya             @Sonya_alumni
 - Selina Erhabor    @Sel_lead
+- Anyone I may have missed
 
 - Code Institute

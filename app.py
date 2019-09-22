@@ -27,7 +27,7 @@ app = Flask(__name__)
 
 # environment variables
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
-app.secret_key = 'asdwdsda'
+app.secret_key = os.getenv("MONGO_URI")
 
 # inti pymongo
 mongo = PyMongo(app)
@@ -286,4 +286,4 @@ def delete(list_profile, page, item_id):
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=True)
+            debug=False)
