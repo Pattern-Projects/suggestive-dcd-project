@@ -3,6 +3,8 @@ from flask import Flask, session, render_template, redirect, escape, request, ur
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import hashlib
+import cProfile
+import re
 
 app = Flask(__name__)
 

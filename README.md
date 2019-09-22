@@ -22,13 +22,11 @@ Expected users of the website include content creators, creator fans, book reade
 - Colour Scheme consists of complementary colours with additional subtle accents
     - cheeky-pink:  ![#E9AFAF](https://placehold.it/15/E9AFAF/000000?text=+) `#E9AFAF`
     - cool-green:   ![#AFE9AF](https://placehold.it/15/AFE9AF/000000?text=+) `#AFE9AF`
-    - light-blue:   ![#7EC8F2](https://placehold.it/15/7EC8F2/000000?text=+) `#7EC8F2`
-    - cheeky-pink buttons are seen by all users. cool-green and light-blue buttons are seen by site owner.
+    - neat-blue:   ![#7EC8F2](https://placehold.it/15/7EC8F2/000000?text=+) `#7EC8F2`
+    - cheeky-pink buttons are seen by all users. cool-green and neat-blue buttons are seen by site owner.
     - active-gold:  ![#FFF4CB](https://placehold.it/15/FFF4CB/000000?text=+) `#FFF4CB`
     - text-grey:    ![#3D3D3D](https://placehold.it/15/3D3D3D/000000?text=+) `#3D3D3D`
     - text-white:   ![#FFFFFF](https://placehold.it/15/FFFFFF/000000?text=+) `#FFFFFF`
-    - star-gold:    ![#F1B929](https://placehold.it/15/F1B929/000000?text=+) `#F1B929`
-    - star-grey:    ![#C4C4C4](https://placehold.it/15/C4C4C4/000000?text=+) `#C4C4C4`
     - bg-grey:      ![#F1EFEF](https://placehold.it/15/F1EFEF/000000?text=+) `#F1EFEF`
 - [Custom designed logo](documentation/logo.png) representing a smile on a face.
 
@@ -46,16 +44,22 @@ Features planned, implemented and outlined for later development
 - Suggest a new book
     - Title
     - Author
+    - Thumbnail Image
     - Similar existing book titles are suggested
 - View existing suggestions
     - Favorite / Upvote books
-- Owner can add books to reading list
-- Owner can remove books from suggestions
-- Owner can review books on reading list, removing them from list
+- Owner can 
+    - Add books to reading list
+    - Remove books from suggestions
+    - Review books on reading list, removing them from list
+    - Make list public or private
+    - Add blurb
 - Sign Up and Login
+- Home Page with list of users
 - Flask Routing
 - Jinja web templates
 - Documentation - ReadMe File & Mockups
+- Materialize - Framework
 - Bootstrap - HTML, CSS Framework
     - Grid System - Columns and Rows
     - Cards
@@ -72,27 +76,90 @@ Features planned, implemented and outlined for later development
 - Deployed - Hosted on Heroku
  
 ### Existing Features
-- Feature 1 - allows users X to achieve Y, by having them fill out Z
-- ...
+- Suggest a new book
+    - Title
+    - Author
+    - Thumbnail Image
+- View existing suggestions
+    - Favorite / Upvote books
+- Owner can 
+    - Add books to reading list
+    - Remove books from suggestions
+    - Review books on reading list
+    - Removing them from list
+    - Make list public or private
+    - Add blurb
+- Sign Up and Login
+- Home Page with list of users
 
-For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
+- Flask Routing
+- Jinja web templates
+- Documentation - ReadMe File & Mockups
+- Materialize - Framework
+- Bootstrap - HTML, CSS Framework
+    - Grid System - Columns and Rows
+    - Cards
+    - Icons
+- Responsive design - Mobile First
+- Accesibility
+- Semantic HTML - nav, article, etc
+- Colour Scheme
+- Custom Logo
+- Favicon
+- Testing
+- Git - Version Control System
+- GitHub - Remote Repository
+- Deployed - Hosted on Heroku
+ 
 
 
 ### Features Left to Implement
-- Another feature idea
+- Similar existing book titles - Fuzzy matching
+- Extend beyond books - Movies, TV Shows, Live Performances, etc..
 
 ## Technologies Used
 
 In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
-- [Python](https://www.python.org/)
-- [Flask](https://palletsprojects.com/p/flask/)
-- [Jinja](https://palletsprojects.com/p/jinja/)
-- [Flask-Pymongo](https://flask-pymongo.readthedocs.io/en/latest/)
-- [dnspython](https://pypi.org/project/dnspython/)
-- [JQuery](https://jquery.com)
-    - The project uses **JQuery** to simplify DOM manipulation.
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+    - HTML for strucutre
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+    - CSS for Styling
+- [Google Chrome](https://www.google.com/chrome/)
+    - Used for browser and dev tools
+- [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/new)
+    - Used for browser and dev tools
+- [Figma](https://www.figma.com)
+    - Development made use of **figma** for creating mockups.
+- [Inkscape](https://inkscape.org)
+    - Custom logo created using **Inkscape**.
+- [Google](https://www.google.com/)
+    - **Google** was used for research.
+- [Bootstrap](https://getbootstrap.com/)
+    - HTML and CSS Framework from **Bootstrap**
 - [Materialize](https://materializecss.com/about.html)
     - Material Design by Google
+    - [**JQuery**](https://jquery.com/) used by Materialize components
+    - [**JavaScript**](https://www.w3schools.com/js/) used by Materialize components
+- [Python](https://www.python.org/)
+    - Developed and run with python3
+- [Flask](https://palletsprojects.com/p/flask/)
+    - Microframework routing by Flask
+- [Jinja](https://palletsprojects.com/p/jinja/)
+    - Web template engine for use with Python
+- [Flask-Pymongo](https://flask-pymongo.readthedocs.io/en/latest/)
+    - Connecting to MongoDB with Python
+- [dnspython](https://pypi.org/project/dnspython/)
+    - DNS toolkit for Python
+- [Mongodb Cloud](https://cloud.mongodb.com)
+    - Cloud storage with **MongoDB** 
+- [Heroku](https://www.heroku.com/)
+    - App hosted on **Heroku**
+- [Cloud9](https://c9.io/)
+    - This project was built using the **Cloud9** IDE
+- [Git](https://git-scm.com/)
+    - **Git** used for Version Control
+- [GitHub](https://github.com/)
+    - Repository hosted on **GitHub**
 
 ## Testing
 
