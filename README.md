@@ -55,7 +55,7 @@ Features planned, implemented and outlined for later development
     - Similar existing book titles are suggested
 - View existing suggestions
     - Favorite / Upvote books
-- Owner can 
+- Owner can:
     - Add books to reading list
     - Remove books from suggestions
     - Review books on reading list, removing them from list
@@ -90,7 +90,7 @@ Features planned, implemented and outlined for later development
     - Thumbnail Image
 - View existing suggestions
     - Favorite / Upvote books
-- Owner can 
+- Owner can:
     - Add books to reading list
     - Remove books from suggestions
     - Review books on reading list
@@ -99,7 +99,6 @@ Features planned, implemented and outlined for later development
     - Add blurb
 - Sign Up and Login
 - Home Page with list of users
-
 - Flask Routing
 - Jinja web templates
 - Documentation - ReadMe File & Mockups
@@ -118,8 +117,6 @@ Features planned, implemented and outlined for later development
 - Git - Version Control System
 - GitHub - Remote Repository
 - Deployed - Hosted on Heroku
- 
-
 
 ### Features Left to Implement
 
@@ -230,7 +227,7 @@ Fixing these issues is outside the scope of the project.
 Using Google's [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) the website was tested for network performance.
 The results were:
 - [Desktop:  100%](documentation/desktop-performance.png)
-- [Mobile:   99%](documentation/mobile-performance.png)
+- [Mobile:   96%](documentation/mobile-performance.png)
 
 Suggestions provided to improve mobile performance include:
 - Eliminate render-blocking resources

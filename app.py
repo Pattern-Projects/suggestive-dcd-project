@@ -219,8 +219,9 @@ def favorite(list_profile, page, item_id):
             
         })
             
-    return redirect(url_for( page, list_profile = list_profile ) )
-    
+        return redirect(url_for( page, list_profile = list_profile ) )
+    return render_template('login.html')
+
 # Remove a favorite from the book
 @app.route('/unfavorite/<list_profile>/<page>/<item_id>')
 def unfavorite(list_profile, page, item_id):
@@ -232,7 +233,8 @@ def unfavorite(list_profile, page, item_id):
                  '$inc': { 'favorites_count': -1 }
             
         })
-    return redirect(url_for( page, list_profile = list_profile ) )   
+        return redirect(url_for( page, list_profile = list_profile ) )   
+    return render_template('login.html')
 
 # Update the status of the book - dictates which page it will appear on
 @app.route('/set_status/<list_profile>/<page>/<status>/<item_id>')
