@@ -1,6 +1,8 @@
 /*Body, headers and others*/
 body{
     font-size: 3.5rem;
+    background-color: #F1EFEF;
+
 }
 
 h1{
@@ -42,6 +44,11 @@ p.flow-text{
 
 .current{
     background-color: #FFF4CB
+}
+
+.star-row{
+    color: #3D3D3D;
+    font-weight: bold;
 }
 
 /*Container and navs*/
