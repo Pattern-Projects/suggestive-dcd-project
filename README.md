@@ -163,6 +163,8 @@ In this section, you should mention all of the languages, frameworks, libraries,
     - Repository hosted on **GitHub**
 - [Google Search Console](https://search.google.com)
     - SEO and usage analytics from **Google Search Console**
+- [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/)
+    - Dektop and Mobile page performance testing from **PSI**    
 
 ## Testing
 
@@ -193,6 +195,20 @@ The user stories created during the design phase were inacted:
     - Searching their book on google the user finds a link to it on Suggestive
     - Opening the page they can read a written review as well as a star rating
 
+### HTML Check
+
+![Warning: Consider adding a lang attribute to the html start tag to declare the language of this document.](documentation/add-lang-attribute.png)
+
+Using W3's [Nu HTML Checker](https://validator.w3.org/nu/) the website was checked for structure and syntax validation.
+
+Issues returned were of the following type:
+- Warning: Consider adding a lang attribute to the html start tag to declare the language of this document.
+    - This issue is solved by adding ```<html lang="en">``` to the top of base.html
+- Error: Missing space before doctype name.
+- Error: Nameless doctype.
+
+Solving the remaining errors and warnings is outside of the current scope of the project
+
 ### Performance
 
 Using Google's [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) the website was tested for network performance.
@@ -204,23 +220,17 @@ Suggestions provided to improve mobile performance include:
 - Eliminate render-blocking resources
 - Enable text compression
 
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
+### Resolution
 
-Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
+The website was viewed at various resolutions using [InfoByIp Resolution Test](http://www.infobyip.com/testwebsiteresolution.php).
+The website looks well at high and medium resolutions. There is some overlay of logo and menu button at very smll screens.
 
-For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
+### Bugs
+- Some overlap of logo and button on very small screens.
+    ![Image showing overlap of logo and button](/documentation/overlap.png)
+- Reload after favorite/unfavorite seems unncessary.
+    - The page update could be achieved using javascript without the need to reload page
 
-1. Contact form:
-    1. Go to the "Contact Us" page
-    2. Try to submit the empty form and verify that an error message about the required fields appears
-    3. Try to submit the form with an invalid email address and verify that a relevant error message appears
-    4. Try to submit the form with all inputs valid and verify that a success message appears.
-
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
-
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
-
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
 
 ## Deployment
 
