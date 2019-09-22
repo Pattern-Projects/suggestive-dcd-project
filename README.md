@@ -43,6 +43,8 @@ Expected users of the website include content creators, creator fans, book reade
     - text-white:   ![#FFFFFF](https://placehold.it/15/FFFFFF/000000?text=+) `#FFFFFF`
     - bg-grey:      ![#F1EFEF](https://placehold.it/15/F1EFEF/000000?text=+) `#F1EFEF`
 - [Custom designed logo](documentation/logo.png) representing a smile on a face.
+- Fonts chosem:     'Roboto', 'helvetica', sans-serif
+
 
 ### Mockups
 
