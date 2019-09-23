@@ -301,7 +301,9 @@ The project can also be deployed by anyone with some technical know how. Here ar
 
 - Give it a few moments after deplying to start running
 - It will take time to run the page again after a period of inactivity
-
+- SEO and visitor statistics are available by:
+    - Create a Google Search Console Account
+    - replace the meta tag on line 23 of base.html with your own
 
 ## Credits
 
