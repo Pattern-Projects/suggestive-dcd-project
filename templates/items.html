@@ -35,9 +35,6 @@
     {% import 'card.html' as card with context %}
     {{ card.suggested('items') }}
 
-{% empty %}
-    <p class="center">No books have been suggested for {{ list_profile }} to read.</p>
-    <p class="center">Why not suggest one now?</p>
 {% endfor %}
 
 </div>
