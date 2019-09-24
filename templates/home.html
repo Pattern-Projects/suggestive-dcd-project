@@ -24,7 +24,7 @@
 <h4>Public Lists</h4>
 <p>Browse these public lists and suggest books for the owners.</p>
 {% if not session['username'] %}
-<p>Open a list or <a class="link-bold" href="{{url_for('login')}}">Login</a> to make your own</p>
+<p>Open a list or <a class="link-bold" href="{{url_for('login', return_page='home', list_profile='none')}}">Login</a> to make your own</p>
 {% else %}
 <p>Open your own: <a class="link-bold" href="{{url_for('myinfo')}}">My List</a></p>
 {% endif %}

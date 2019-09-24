@@ -42,11 +42,15 @@ def home():
     return render_template('home.html', users=mongo.db.users.find({'public': 'on'}))
 
 # Login Page
-@app.route('/login', methods=['GET', 'POST'])
-def login():
+@app.route('/login/<return_page>/<list_profile>')
+def login( return_page='home', list_profile='none'):
+    return render_template('login.html', return_page=return_page, list_profile=list_profile)
+
+@app.route('/login/<return_page>/<list_profile>', methods=['GET', 'POST'])
+def login_check(return_page='home', list_profile='none'):
     # if theres info in post
     if request.method == 'POST':
-        
+
         # extract data from post
         username = request.form['username']
         password = hashlib.sha256(request.form['password'].encode()).hexdigest()
@@ -60,7 +64,10 @@ def login():
             if user['password'] == password:
                 # Passwords matched
                 session['username'] = user['username']
-                return redirect(url_for('myinfo'))
+                if list_profile == 'none':
+                    return redirect(url_for('myinfo'))
+                else:
+                    return redirect(url_for(return_page, list_profile=list_profile))
             else:
                 # Passwords didn't match - back to login with warning
                 return render_template('login.html', mismatch=True)
@@ -73,9 +80,12 @@ def login():
             user['public'] = 'off'
             users.insert_one(user)
             session['username'] = username
-            return redirect(url_for('home'))
+            if list_profile == 'none':
+                return redirect(url_for('myinfo'))
+            else:
+                return redirect(url_for(return_page, list_profile=list_profile))
         
-    return render_template('login.html')
+    return render_template('login.html',list_profile=list_profile, return_page=return_page)
 
 # Log out and redirect to home
 @app.route('/logout')
@@ -170,13 +180,13 @@ def reviews(list_profile):
 # Books - Insert, Update, Delete
 
 # Render the suggest a book page    
-@app.route('/suggest/<list_profile>')
-def suggest(list_profile):
+@app.route('/suggest/<return_page>/<list_profile>')
+def suggest(return_page, list_profile):
     if 'username' in session:
         return render_template('suggest.html',
                                 profiles=mongo.db.users.find({'username':list_profile}), list_profile = list_profile)
     else:
-        return render_template('login.html')
+        return render_template('login.html', return_page = return_page, list_profile = list_profile)
 
 # Insert a suggested book
 @app.route('/insert_item/<list_profile>', methods=['POST'])
@@ -286,4 +296,4 @@ def delete(list_profile, page, item_id):
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=False)
+            debug=True)
