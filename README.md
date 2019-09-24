@@ -328,6 +328,7 @@ Thank you to the following for inspiration, motivation and the direction I neede
 - Simen Daehlin     @Eventyret_mentor
 - Sonya             @Sonya_alumni
 - Selina Erhabor    @Sel_lead
+- Elias O. Prado    @Oliveira
 - Anyone I may have missed
 
 - Code Institute
