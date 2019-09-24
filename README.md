@@ -75,6 +75,7 @@ Features planned, implemented and outlined for later development
     - Make list public or private
     - Add blurb
 - Sign Up and Login
+- Page Redirects
 - Home Page with list of users
 - Flask Routing
 - Jinja web templates
@@ -113,6 +114,7 @@ Features planned, implemented and outlined for later development
     - Make list public or private
     - Add blurb
 - Sign Up and Login
+- Page redirects after login
 - Home Page with list of users
 - Flask Routing
 - Jinja web templates
