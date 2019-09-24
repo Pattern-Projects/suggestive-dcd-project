@@ -263,8 +263,14 @@ The website looks well at high and medium resolutions. There is some overlay of 
 
 ### Bugs
 
+![Image shows overly extended page with buttons pushed way down](/documentation/extension.png)
+- User reported bug: 
+    - Page extends with each reload, pushing buttons furthere and further down the page.
+    - Attempts to recreate the issue were unsuccessful.
+
 ![Image showing overlap of logo and button](/documentation/overlap.png)
 - Some overlap of logo and button on very small screens.
+
 - Reload after favorite/unfavorite seems unncessary.
     - The page update could be achieved using javascript without the need to reload page
 
