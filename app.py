@@ -46,6 +46,7 @@ def home():
 def login( return_page='home', list_profile='none'):
     return render_template('login.html', return_page=return_page, list_profile=list_profile)
 
+# Login functionality
 @app.route('/login/<return_page>/<list_profile>', methods=['GET', 'POST'])
 def login_check(return_page='home', list_profile='none'):
     # if theres info in post
@@ -67,6 +68,7 @@ def login_check(return_page='home', list_profile='none'):
                 if list_profile == 'none':
                     return redirect(url_for('myinfo'))
                 else:
+                    # return to previous page after login
                     return redirect(url_for(return_page, list_profile=list_profile))
             else:
                 # Passwords didn't match - back to login with warning
@@ -83,6 +85,7 @@ def login_check(return_page='home', list_profile='none'):
             if list_profile == 'none':
                 return redirect(url_for('myinfo'))
             else:
+                # return to previous page after registration
                 return redirect(url_for(return_page, list_profile=list_profile))
         
     return render_template('login.html',list_profile=list_profile, return_page=return_page)
