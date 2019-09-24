@@ -30,6 +30,10 @@
     {% import 'card.html' as card with context %}
     {{ card.reading('reading') }}
     
+{% empty %}
+    <p class="center"{{ list_profile }} is not currently reading any books.</p>
+    <p class="center">Why not suggest one to read now?</p>
+    
 {% endfor %}
 </div>
 {% endblock %}

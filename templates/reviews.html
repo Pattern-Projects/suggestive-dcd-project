@@ -29,7 +29,10 @@
     
     {% import 'card.html' as card with context %}
     {{ card.reviews('reviews') }}
-    
+
+{% empty %}
+    <p class="center">{{ list_profile }} has not reviewed any books yet.</p>
+    <p class="center">Why not suggest one you would like to see reviewed by {{ list_profile }}?</p>    
 {% endfor %}
 </div>
 {% endblock %}
