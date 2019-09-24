@@ -335,6 +335,10 @@ Thank you to the following for inspiration, motivation and the direction I neede
 - Sonya             @Sonya_alumni
 - Selina Erhabor    @Sel_lead
 - Elias O. Prado    @Oliveira
+
+- Pawel Gnas
+- Huilan Wang
+
 - Anyone I may have missed
 
 - Code Institute
