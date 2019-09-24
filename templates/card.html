@@ -84,10 +84,18 @@
     {% if item.status == 'current' %}
     <small class="right">Currently Reading</small>
     {% endif %}
-
+    <div class="row col-12">
+    <div class="col-12 col-lg-2">
+        <img src="{% if item.img_url %}{{ item.img_url}}{% else %}{{url_for('static', filename='images/thumbnail.jpg')}}{% endif %}" class="thumb"></img>
+    </div>
+    <div class="col-sm-12 col-lg-8">
     <h5>{{item.title}}</h5>
     <p>{{item.author}}</p>
-    {{item.favorites_count }} {{ favorite(page='reading') }}
+    <div class="star-row">
+    {{ item.favorites_count }} {{ favorite(page='items') }}
+    </div>
+    </div>
+    </div>
 
         <div class="row col-12">
             {% if item.owner == session['username'] %}
@@ -141,10 +149,18 @@
     {% if item.status == 'suggested' %}
     <small class="right">Suggested for Rereading</small>
     {% endif %}
-
+    <div class="row col-12">
+    <div class="col-12 col-lg-2">
+        <img src="{% if item.img_url %}{{ item.img_url}}{% else %}{{url_for('static', filename='images/thumbnail.jpg')}}{% endif %}" class="thumb"></img>
+    </div>
+    <div class="col-sm-12 col-lg-8">
     <h5>{{item.title}}</h5>
     <p>{{item.author}}</p>
-    {{item.favorites_count }} {{ favorite(page='reviews') }}
+    <div class="star-row">
+    {{ item.favorites_count }} {{ favorite(page='items') }}
+    </div>
+    </div>
+    </div>
 
         <div class="row col-12">
             {% if item.status == 'complete' %}
